@@ -28,6 +28,8 @@ const check = async (path, sel, label) => {
 };
 
 const results = [];
+results.push(await check("#ds", ".star-card", "页脚 Star 卡片"));
+results.push(await check("#ds", 'a[href*="github.com/zhouPi-314/Visual408-Lab"]', "页脚 GitHub 链接"));
 results.push(await check("#co", 'select[aria-label="学习档案"]', "学习档案切换器"));
 results.push(await check("#co/co.cache-direct-mapped", 'input[aria-label="实验内搜索"]', "实验内搜索"));
 results.push(await check("#co/co.cache-direct-mapped", ".related", "相关实验"));
