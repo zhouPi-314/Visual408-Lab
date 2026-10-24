@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { PracticePanel } from "./PracticePanel";
+import { InlineSearch, RelatedExperiments } from "./ExperimentTools";
 import type { SubjectKey } from "./catalog";
 import type { StorageApi } from "./storage";
 import type { AnyRenderer } from "./types";
@@ -26,10 +27,11 @@ export interface ExperimentViewProps {
   subject: SubjectKey;
   subjectLabel: string;
   onBack: () => void;
+  onOpenModule: (id: string) => void;
   store: StorageApi;
 }
 
-export function ExperimentView({ moduleId, renderer: R, subjectLabel, onBack, store }: ExperimentViewProps) {
+export function ExperimentView({ moduleId, renderer: R, subjectLabel, onBack, onOpenModule, store }: ExperimentViewProps) {
   const [input, setInput] = useState<unknown>(R.defaultInput);
   const sim = useMemo(() => R.simulate(input), [R, input]);
   const issues = useMemo(() => [...sim.validate()], [sim]);
@@ -124,6 +126,8 @@ export function ExperimentView({ moduleId, renderer: R, subjectLabel, onBack, st
         <span style={{ color: "var(--ink)" }}>{R.meta.title}</span>
       </nav>
 
+      <InlineSearch moduleId={moduleId} />
+
       <Inputs input={input} onChange={setInput} issues={issues} />
 
       {hasError && (
@@ -153,6 +157,8 @@ export function ExperimentView({ moduleId, renderer: R, subjectLabel, onBack, st
       </div>
 
       <PracticePanel moduleId={moduleId} store={store} />
+
+      <RelatedExperiments moduleId={moduleId} subject={subject} onOpen={onOpenModule} />
 
       <footer className="transport">
         <button type="button" className="btn btn-icon" onClick={() => go(0)} aria-label="回到第一步" disabled={frames.length === 0}>⏮</button>

@@ -20,6 +20,13 @@ const PRESETS: { label: string; accesses: string[]; note: string }[] = [
   { label: "同一页内", accesses: ["0x1A3C", "0x1A40", "0x1A48"], note: "同页不同块，TLB 命中但 Cache 未必" },
 ];
 
+const fmtTable = (t: { vpn: number; pfn: number }[]) => t.map((e) => e.vpn + ":" + e.pfn).join(", ");
+const parseTable = (raw: string) =>
+  raw.split(/[,\s]+/).filter(Boolean).map((pair) => {
+    const parts = pair.split(":");
+    return { vpn: Number(parts[0]), pfn: Number(parts[1]) };
+  }).filter((e) => Number.isInteger(e.vpn) && Number.isInteger(e.pfn));
+
 function Inputs({ input, onChange }: { input: CrossInput; onChange: (n: CrossInput) => void; issues: readonly Issue[] }) {
   return (
     <div className="input-bar">
@@ -34,6 +41,15 @@ function Inputs({ input, onChange }: { input: CrossInput; onChange: (n: CrossInp
         <select value={input.frameCount} onChange={(e) => onChange({ ...input, frameCount: Number(e.target.value) })}>
           {[2, 4, 8].map((v) => <option key={v} value={v}>{v} 帧</option>)}
         </select>
+      </label>
+      <label className="field" style={{ flex: "1 1 220px" }}>
+        <span>页表（VPN:PFN，可编辑）</span>
+        <input type="text" value={fmtTable(input.pageTable)} spellCheck={false}
+          style={{ fontFamily: "var(--mono)", fontSize: 12.5 }}
+          onChange={(ev) => {
+            const next = parseTable(ev.target.value);
+            if (next.length > 0) onChange({ ...input, pageTable: next });
+          }} />
       </label>
       <label className="field field-grow">
         <span>虚拟地址序列（16 位十六进制）</span>

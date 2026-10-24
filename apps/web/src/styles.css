@@ -570,3 +570,29 @@ kbd { font-family: var(--mono); font-size: 11px; padding: 1px 5px; border-radius
 .star-btn span[aria-hidden] { color: var(--accent); font-size: 15px; line-height: 1; }
 .star-label { font-size: 12.5px; }
 @media (max-width: 720px) { .star-label { display: none; } }
+/* ---------- 实验内搜索 / 相关实验 ---------- */
+.inline-search { margin-bottom: 14px; }
+.inline-search input[type="search"] {
+  width: 100%; max-width: 520px; padding: 8px 12px;
+  border: 1px solid var(--line-strong); border-radius: var(--r-md); background: var(--surface);
+}
+.inline-results { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 6px; max-width: 720px; }
+.inline-results li {
+  display: flex; gap: 8px; align-items: flex-start;
+  padding: 8px 10px; border: 1px solid var(--line); border-radius: var(--r-md);
+  background: var(--surface-2); font-size: 12.5px; color: var(--ink-2);
+}
+.related { margin-top: 16px; display: grid; gap: 8px; }
+.related strong { font-size: 12.5px; color: var(--ink-2); }
+.related-chip { border: 1px solid var(--line); font-size: 12.5px; }
+.related-chip:hover { border-color: var(--primary); color: var(--primary-hover); }
+/* ---------- 学习档案 ---------- */
+.profile-picker select {
+  min-height: 34px; padding: 6px 8px; font-size: 12.5px;
+  border: 1px solid var(--line-strong); border-radius: var(--r-md); background: var(--surface);
+}
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+@media (max-width: 720px) { .profile-picker { display: none; } }

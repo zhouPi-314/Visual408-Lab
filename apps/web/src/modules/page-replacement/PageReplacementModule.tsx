@@ -8,6 +8,7 @@ import type {
   Frame,
   Issue,
 } from "@visual408/sim-core";
+import { useState } from "react";
 import { CodePanel, Metrics, Panel } from "@visual408/display";
 import type { ModuleRenderer } from "../../app/types";
 
@@ -66,25 +67,35 @@ function Stage({ frame }: { frame: Frame<ReplacementState, ReplacementEvent> | u
   const capacity = state?.slots.length ?? 0;
   const ev = frame?.event;
   const activeColumn = ev && ev.type === "ACCESS" ? ev.column : Math.max(history.length - 1, -1);
+  // 小屏救命开关：只显示当前列附近的一段，避免横向滚动找列
+  const [compact, setCompact] = useState(false);
+  const windowStart = compact ? Math.max(0, activeColumn - 3) : 0;
+  const windowEnd = compact ? Math.min(history.length, activeColumn + 4) : history.length;
+  const shown = history.slice(windowStart, windowEnd);
 
   return (
     <section className="panel" aria-label="页面置换过程">
       <div className="panel-head">
         <h2>置换过程表</h2>
         <span className="hint">每列一次访问：× 缺页 · · 命中</span>
+        <button type="button" className="btn btn-quiet" style={{ marginLeft: "auto" }}
+          aria-pressed={compact}
+          onClick={() => setCompact((v) => !v)}>
+          {compact ? "显示全部列" : "只看当前列"}
+        </button>
       </div>
       <div className="panel-body" style={{ overflowX: "auto" }}>
         {history.length === 0 ? (
           <p className="empty">还没有访问记录</p>
         ) : (
-          <table className="data-table" style={{ minWidth: Math.max(history.length * 38, 320) }}>
+          <table className="data-table" style={{ minWidth: Math.max(shown.length * 38, 320) }}>
             <caption>物理块状态（共 {capacity} 块）</caption>
             <thead>
               <tr>
                 <th scope="col" style={{ width: 68 }}>块 \ 访问</th>
-                {history.map((h, i) => (
-                  <th key={i} scope="col"
-                    className={`mono${i === activeColumn ? " yes" : ""}`}
+                {shown.map((h, i) => (
+                  <th key={windowStart + i} scope="col"
+                    className={`mono${windowStart + i === activeColumn ? " yes" : ""}`}
                     title={h.hit ? `命中页 ${h.page}` : `缺页：页 ${h.page}`}>
                     {h.page}
                   </th>
@@ -95,11 +106,11 @@ function Stage({ frame }: { frame: Frame<ReplacementState, ReplacementEvent> | u
               {Array.from({ length: capacity }, (_, slot) => (
                 <tr key={slot}>
                   <th scope="row">块 {slot}</th>
-                  {history.map((h, i) => {
+                  {shown.map((h, i) => {
                     const v = h.frames[slot];
-                    const justLoaded = i === activeColumn && !h.hit && v === h.page;
+                    const justLoaded = windowStart + i === activeColumn && !h.hit && v === h.page;
                     return (
-                      <td key={i} className={`mono${justLoaded ? " no" : ""}`}>
+                      <td key={windowStart + i} className={`mono${justLoaded ? " no" : ""}`}>
                         {v === null || v === undefined ? <span className="muted">·</span> : v}
                       </td>
                     );
@@ -108,8 +119,8 @@ function Stage({ frame }: { frame: Frame<ReplacementState, ReplacementEvent> | u
               ))}
               <tr>
                 <th scope="row">结果</th>
-                {history.map((h, i) => (
-                  <td key={i} className={h.hit ? "yes" : "no"} aria-label={h.hit ? "命中" : "缺页"}>
+                {shown.map((h, i) => (
+                  <td key={windowStart + i} className={h.hit ? "yes" : "no"} aria-label={h.hit ? "命中" : "缺页"}>
                     {h.hit ? "·" : "×"}
                   </td>
                 ))}

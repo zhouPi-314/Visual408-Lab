@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState, type ChangeEvent } from "react";
 import type { Backup } from "@visual408/storage";
-import { useStorage } from "./app/storage";
+import { listProfiles, useStorage } from "./app/storage";
 import { ExperimentView } from "./app/ExperimentView";
 import { SearchOverlay } from "./app/SearchOverlay";
 import { AttemptsOverlay } from "./app/AttemptsOverlay";
@@ -170,6 +170,26 @@ export function App() {
             <span className="star-label">Star</span>
           </a>
           <ThemeToggle />
+          <label className="profile-picker" title="学习档案：不同档案的进度互相隔离">
+            <span className="sr-only">学习档案</span>
+            <select
+              value={store.profile}
+              aria-label="学习档案"
+              onChange={(e) => { store.setProfile(e.target.value); window.location.reload(); }}
+            >
+              {listProfiles().map((p) => <option key={p} value={p}>{p}</option>)}
+            </select>
+          </label>
+          <button
+            type="button"
+            className="btn btn-quiet"
+            title="新建学习档案"
+            aria-label="新建学习档案"
+            onClick={() => {
+              const name = window.prompt("新档案名称（与现有档案隔离进度）");
+              if (name && name.trim()) { store.setProfile(name.trim()); window.location.reload(); }
+            }}
+          >＋档案</button>
           <span className="save-state" aria-live="polite">{saveLabel}</span>
           <button type="button" className="btn search-trigger" onClick={() => setSearchOpen(true)}>
             <span aria-hidden="true">⌕</span> 搜索 <kbd>/</kbd>
@@ -213,6 +233,7 @@ export function App() {
             renderer={ready.renderer}
             subject={route.subject}
             subjectLabel={subject.label}
+            onOpenModule={openModule}
             store={store}
             onBack={() => navigate({ subject: route.subject })}
           />
