@@ -1,0 +1,47 @@
+id: cross.va-access-chain
+subject: cross
+title: 虚拟地址访问链路
+syllabusVersion: "2026"
+prerequisites:
+  - 分页存储管理与 TLB
+  - Cache 直接映射
+related:
+  - co.cache-direct-mapped
+  - os.page-replacement
+objectives:
+  - 能把一次访存拆成「拆分 → TLB → 页表 → 缺页 → 物理地址 → Cache → 主存 → 返回」八段
+  - 能理解 TLB 命中与 Cache 命中是相互独立的两个判定
+  - 能说清缺页与 Cache 缺失分别动的是哪一层
+theory: theory.mdx
+displayer: timeline
+inputModes:
+  - preset
+  - custom
+simulator: "@visual408/sim-core#cross.va-access-chain"
+codeExamples: []
+labTasks:
+  - 把 TLB 项数改成 2，观察 TLB 抖动如何增加页表访问
+  - 构造两个「同 VPN 不同 offset」的地址，验证 TLB 命中但 Cache 可能缺失
+questions:
+  - id: q1
+    kind: hand-calculation
+    stem: 页大小 4 KB、地址 0x1A3C，VPN 与页内偏移分别是多少？若 PFN=5，物理地址是多少？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: "VPN=1，偏移=0xA3C，物理地址=0x5A3C"
+    explanation: 低 12 位是偏移（0xA3C），高位是 VPN（0x1）；物理地址 = 5×4096 + 0xA3C = 0x5A3C。
+  - id: q2
+    kind: choice
+    stem: TLB 命中之后，是否一定 Cache 命中？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 不一定
+    explanation: TLB 只决定物理页，Cache 是否命中要看物理地址的 tag 是否与目标行相同，两层判定互不蕴含。
+tests: tests.json
+sources:
+  - label: 408 考试大纲·操作系统·虚拟存储器 / 计算机组成原理·存储系统
+  - label: 本项目原创跨学科组合实验

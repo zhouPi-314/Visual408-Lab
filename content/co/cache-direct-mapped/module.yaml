@@ -1,0 +1,50 @@
+id: co.cache-direct-mapped
+subject: co
+title: Cache 直接映射与地址划分
+syllabusVersion: "2026"
+prerequisites:
+  - 二进制与十六进制
+  - 主存地址与字节编址
+related:
+  - cross.va-access-chain
+objectives:
+  - 给定 Cache 参数能独立算出 tag / index / offset 的位数
+  - 能区分强制缺失与冲突缺失，并解释同一 index 的块为何互相踢出
+  - 能计算命中率并说明块大小、行数、相联度之间的取舍
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+  - boundary
+simulator: "@visual408/sim-core#co.cache-direct-mapped"
+codeExamples:
+  - lang: cpp
+    file: examples/cache_direct.cpp
+    verified: true
+labTasks:
+  - 把块大小改成 32 字节，观察 index 位数如何变化
+  - 构造一组「同一 index、不同 tag」的地址，解释冲突缺失
+questions:
+  - id: q1
+    kind: choice
+    stem: 16 位地址、块大小 16 B、8 行直接映射 Cache，tag 字段占多少位？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: "9"
+    explanation: 16 - log2(16) - log2(8) = 16 - 4 - 3 = 9 位。
+  - id: q2
+    kind: hand-calculation
+    stem: 访问序列 0x0A3、0x1A3、0x2A3、0x0A3 的命中次数是多少？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: "0"
+    explanation: 四次访问都落在 index 2，tag 依次为 1、3、5、1，每次都被上一次替换掉，因此全部缺失。
+tests: tests.json
+sources:
+  - label: 408 考试大纲·计算机组成原理·存储系统
+  - label: 本项目原创教学复述

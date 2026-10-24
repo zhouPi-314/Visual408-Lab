@@ -1,0 +1,45 @@
+{
+  "module": "ds.sorting",
+  "cases": [
+    {
+      "name": "bubble-small",
+      "algorithm": "bubble",
+      "data": "5, 2, 9, 1",
+      "expect": {
+        "array": [
+          1,
+          2,
+          5,
+          9
+        ],
+        "swaps": 4,
+        "compares": 6
+      }
+    },
+    {
+      "name": "sorted-early-exit",
+      "algorithm": "bubble",
+      "data": "1, 2, 3, 4",
+      "expect": {
+        "passes": 1,
+        "swaps": 0
+      }
+    },
+    {
+      "name": "insertion-prefix",
+      "algorithm": "insertion",
+      "data": "49, 38, 65, 97, 76, 13, 27",
+      "expect": {
+        "array": [
+          13,
+          27,
+          38,
+          49,
+          65,
+          76,
+          97
+        ]
+      }
+    }
+  ]
+}

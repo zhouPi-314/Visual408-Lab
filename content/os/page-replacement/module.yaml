@@ -1,0 +1,51 @@
+id: os.page-replacement
+subject: os
+title: 页面置换：FIFO / LRU / OPT
+syllabusVersion: "2026"
+prerequisites:
+  - 分页存储管理
+  - 缺页中断
+related:
+  - cross.va-access-chain
+  - co.cache-direct-mapped
+objectives:
+  - 能对给定引用串逐列填出物理块状态与缺页标记
+  - 能解释 LRU 与 FIFO 的判定差异，并说明命中时必须更新 LRU 次序
+  - 能用 Belady 异常说明「帧数增加不一定更好」，并知道它只出现在 FIFO
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+  - boundary
+simulator: "@visual408/sim-core#os.page-replacement"
+codeExamples:
+  - lang: cpp
+    file: examples/page_replace.cpp
+    verified: false
+labTasks:
+  - 把物理块数从 3 改成 4，观察 FIFO 在 Belady 用例上缺页反而增加
+  - 只改引用串的最后 4 位，预测缺页数变化再验证
+questions:
+  - id: q1
+    kind: hand-calculation
+    stem: 引用串 7,0,1,2,0,3,0,4,2,3,0,3,2,1,2,0,1,7,0,1 在 3 个物理块下，LRU 的缺页次数是多少？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: "12"
+    explanation: 逐列模拟：只有第 5、7、12、13、15、17、19、20 次访问命中，共 8 次命中，缺页 12 次。
+  - id: q2
+    kind: choice
+    stem: 下面哪种置换算法可能出现 Belady 异常（帧数增加而缺页增加）？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: FIFO
+    explanation: FIFO 不满足栈算法性质；LRU 与 OPT 属于栈算法，帧数增加时缺页数不会上升。
+tests: tests.json
+sources:
+  - label: 408 考试大纲·操作系统·虚拟内存与页面置换
+  - label: 本项目原创教学复述（数值已与教材经典结果交叉核对）

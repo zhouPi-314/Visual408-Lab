@@ -1,0 +1,50 @@
+id: ds.binary-tree-traversal
+subject: ds
+title: 二叉树遍历与递归栈
+syllabusVersion: "2026"
+prerequisites:
+  - 递归
+  - 树与二叉树的基本概念
+related:
+  - co.cache-direct-mapped
+objectives:
+  - 能说出三种深度优先遍历中「访问根结点」的时机差异，而不是背口诀
+  - 能画出任意一棵树的递归栈进出过程，并解释中序非递归为何要用栈
+  - 能把「栈的最大深度 = 树高」这一不变量与访问序列对上号
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+  - boundary
+simulator: "@visual408/sim-core#ds.binary-tree-traversal"
+codeExamples:
+  - lang: cpp
+    file: examples/traversal.cpp
+    verified: true
+labTasks:
+  - 把遍历序依次切到先序/中序/后序，只观察「访问点」在代码里的位置变化
+  - 换成退化链 A-B-C-D，观察栈深如何线性增长
+questions:
+  - id: q1
+    kind: hand-calculation
+    stem: 二叉树 A(B(D,E), C(_,F)) 的中序遍历序列是什么？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: "D B E A C F"
+    explanation: 左子树 D B E，根 A，右子树 C F，合起来是 D B E A C F。
+  - id: q2
+    kind: choice
+    stem: 后序遍历过程中，访问根结点的时刻是？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 左右子树都返回之后
+    explanation: 后序的访问点位于两次递归调用之后，因此栈中会同时保留整条祖先链。
+tests: tests.json
+sources:
+  - label: 408 考试大纲·数据结构·树与二叉树
+  - label: 本项目原创教学复述

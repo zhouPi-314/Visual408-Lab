@@ -1,0 +1,47 @@
+id: ds.sorting
+subject: ds
+title: 排序：插入 / 冒泡 / 快速
+syllabusVersion: "2026"
+prerequisites:
+  - 数组与下标
+  - 时间复杂度
+related:
+  - ds.binary-tree-traversal
+objectives:
+  - 能说出插入排序「空位 + 待插入值」的操作过程，而不是背代码
+  - 能解释冒泡为什么每趟能确定一个最大值，以及提前结束的条件
+  - 能说明快排的枢轴定位为什么是「左边都小、右边都大」
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+  - boundary
+simulator: "@visual408/sim-core#ds.sorting"
+codeExamples: []
+labTasks:
+  - 同一个序列分别用三种算法排一遍，比较「比较次数 / 移动次数」
+  - 输入近乎有序的序列，观察冒泡如何提前结束、插入为什么最快
+questions:
+  - id: q1
+    kind: hand-calculation
+    stem: 对 5, 2, 9, 1 用冒泡排序（升序），共发生多少次交换？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: "4"
+    explanation: 第 1 趟交换 2 次得 2,5,1,9；第 2 趟交换 1 次得 2,1,5,9；第 3 趟交换 1 次得 1,2,5,9，合计 4 次。
+  - id: q2
+    kind: choice
+    stem: 快速排序的最坏时间复杂度是？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: O(n²)
+    explanation: 每次划分都极不均衡（枢轴为最大或最小值）时，递归深度退化为 n，时间复杂度 O(n²)。
+tests: tests.json
+sources:
+  - label: 408 考试大纲·数据结构·内部排序
+  - label: 本项目原创教学复述

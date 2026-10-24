@@ -1,0 +1,44 @@
+{
+  "module": "co.cache-direct-mapped",
+  "cases": [
+    {
+      "name": "default-4-accesses",
+      "input": {
+        "addrBits": 16,
+        "blockBytes": 16,
+        "lines": 8,
+        "accesses": [
+          "0x0A3",
+          "0x1A3",
+          "0x2A3",
+          "0x0A3"
+        ]
+      },
+      "expect": {
+        "hits": 0,
+        "misses": 4,
+        "compulsory": 1,
+        "conflict": 3
+      }
+    },
+    {
+      "name": "fifth-access-hits",
+      "input": {
+        "addrBits": 16,
+        "blockBytes": 16,
+        "lines": 8,
+        "accesses": [
+          "0x0A3",
+          "0x1A3",
+          "0x2A3",
+          "0x0A3",
+          "0x0A3"
+        ]
+      },
+      "expect": {
+        "hits": 1,
+        "misses": 4
+      }
+    }
+  ]
+}

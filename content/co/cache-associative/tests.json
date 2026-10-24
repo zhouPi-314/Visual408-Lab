@@ -1,0 +1,29 @@
+{
+  "module": "co.cache-associative",
+  "params": {
+    "addrBits": 16,
+    "blockBytes": 16,
+    "lines": 8
+  },
+  "accesses": [
+    "0x003",
+    "0x043",
+    "0x083",
+    "0x003",
+    "0x083"
+  ],
+  "expect": {
+    "ways1": {
+      "hits": 0,
+      "misses": 5
+    },
+    "ways2": {
+      "hits": 1,
+      "misses": 4
+    },
+    "ways2Evictions": [
+      0,
+      1
+    ]
+  }
+}

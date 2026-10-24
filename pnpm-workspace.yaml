@@ -1,0 +1,12 @@
+packages:
+  - "apps/*"
+  - "packages/*"
+
+# pnpm 11 设置写在这里（package.json 的 pnpm 字段已不再读取）
+allowBuilds:
+  esbuild: true
+
+verifyDepsBeforeRun: false
+# pnpm 专属设置（放在这里，npm 就不会报 unknown config）
+storeDir: D:\pnpm-store
+confirmModulesPurge: false

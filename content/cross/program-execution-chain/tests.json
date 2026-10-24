@@ -1,0 +1,30 @@
+{
+  "module": "cross.program-execution-chain",
+  "cases": [
+    {
+      "name": "default",
+      "input": {
+        "arrayIndex": 3,
+        "quantum": 5
+      },
+      "expect": {
+        "instructions": 6,
+        "stalls": 2,
+        "totalCycles": 12,
+        "cpi": 2,
+        "slices": 3,
+        "switches": 2
+      }
+    },
+    {
+      "name": "no-switch",
+      "input": {
+        "quantum": 12
+      },
+      "expect": {
+        "slices": 1,
+        "switches": 0
+      }
+    }
+  ]
+}

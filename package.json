@@ -1,0 +1,25 @@
+{
+  "name": "visual408-lab",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.28.5",
+  "scripts": {
+    "dev": "pnpm content:index && pnpm --filter @visual408/web dev",
+    "build": "pnpm content:index && pnpm --filter @visual408/web build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc -b --pretty false",
+    "content:check": "node scripts/validate-content.mjs",
+    "content:index": "node scripts/build-content-index.mjs",
+    "a11y": "node scripts/a11y-audit.mjs http://127.0.0.1:4173/"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "axe-core": "^4.14.0",
+    "fake-indexeddb": "^6.2.6",
+    "puppeteer-core": "^25.16.0",
+    "typescript": "^5.7.0",
+    "vitest": "^4.1.12",
+    "yaml": "^2.6.1"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "module": "cross.va-access-chain",
+  "params": {
+    "pageSize": 4096,
+    "tlbEntries": 4,
+    "blockBytes": 16,
+    "cacheLines": 8,
+    "frameCount": 8
+  },
+  "accesses": [
+    "0x1A3C",
+    "0x1A44",
+    "0x1A3C",
+    "0x2A7C",
+    "0x1A3C"
+  ],
+  "expect": {
+    "tlbHits": 3,
+    "tlbMisses": 2,
+    "pageFaults": 2,
+    "cacheHits": 2,
+    "cacheMisses": 3,
+    "addresses": [
+      {
+        "va": "0x1A3C",
+        "vpn": 1,
+        "pfn": 5,
+        "pa": "0x5A3C",
+        "index": 3,
+        "tag": "0xB4"
+      },
+      {
+        "va": "0x1A44",
+        "vpn": 1,
+        "pfn": 5,
+        "pa": "0x5A44",
+        "index": 4,
+        "tag": "0xB4"
+      },
+      {
+        "va": "0x2A7C",
+        "vpn": 2,
+        "pfn": 7,
+        "pa": "0x7A7C",
+        "index": 7,
+        "tag": "0xF4"
+      }
+    ]
+  }
+}

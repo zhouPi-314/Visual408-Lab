@@ -1,0 +1,46 @@
+id: os.scheduling
+subject: os
+title: 进程调度 FCFS / SJF / RR
+syllabusVersion: "2026"
+prerequisites:
+  - 进程状态与就绪队列
+  - 周转时间、等待时间的定义
+related:
+  - os.page-replacement
+objectives:
+  - 能画出给定进程集的甘特图，并逐格算出完成、周转、等待
+  - 能说明 SJF 为什么平均等待最短，以及它的饥饿问题
+  - 能解释时间片大小如何影响 RR 的表现
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+simulator: "@visual408/sim-core#os.scheduling"
+codeExamples: []
+labTasks:
+  - 同一组进程分别用 FCFS / SJF / RR(q=1) 跑一遍，比较平均等待时间
+  - 把 RR 的时间片调到 10，观察它退化成 FCFS
+questions:
+  - id: q1
+    kind: hand-calculation
+    stem: 进程 P1(0,3)、P2(1,2)、P3(2,1) 在 FCFS 下，P2 的等待时间是多少？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: "2"
+    explanation: P1 从 0 跑到 3，P2 到 3 才开始，到达时间是 1，所以等待 = 3 − 1 = 2。
+  - id: q2
+    kind: choice
+    stem: SJF 的主要缺点是什么？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 长作业可能饥饿
+    explanation: 只要不断有更短的作业到达，长作业就一直排不上，这称为饥饿（starvation）。
+tests: tests.json
+sources:
+  - label: 408 考试大纲·操作系统·处理机调度
+  - label: 本项目原创教学复述

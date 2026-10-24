@@ -1,0 +1,66 @@
+{
+  "module": "os.scheduling",
+  "processes": [
+    {
+      "pid": "P1",
+      "arrive": 0,
+      "burst": 3
+    },
+    {
+      "pid": "P2",
+      "arrive": 1,
+      "burst": 2
+    },
+    {
+      "pid": "P3",
+      "arrive": 2,
+      "burst": 1
+    }
+  ],
+  "cases": [
+    {
+      "algorithm": "fcfs",
+      "expect": {
+        "gantt": [
+          "P1:0-3",
+          "P2:3-5",
+          "P3:5-6"
+        ],
+        "waits": [
+          0,
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "algorithm": "sjf",
+      "expect": {
+        "gantt": [
+          "P1:0-3",
+          "P3:3-4",
+          "P2:4-6"
+        ],
+        "waits": [
+          0,
+          3,
+          1
+        ]
+      }
+    },
+    {
+      "algorithm": "rr",
+      "quantum": 1,
+      "expect": {
+        "gantt": [
+          "P1:0-1",
+          "P2:1-2",
+          "P1:2-3",
+          "P3:3-4",
+          "P2:4-5",
+          "P1:5-6"
+        ]
+      }
+    }
+  ]
+}

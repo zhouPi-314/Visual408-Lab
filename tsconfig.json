@@ -1,0 +1,17 @@
+{
+  "files": [],
+  "references": [
+    {
+      "path": "./packages/sim-core"
+    },
+    {
+      "path": "./packages/content-schema"
+    },
+    {
+      "path": "./packages/storage"
+    },
+    {
+      "path": "./packages/display"
+    }
+  ]
+}

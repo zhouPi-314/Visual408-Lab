@@ -1,0 +1,49 @@
+id: cross.program-execution-chain
+subject: cross
+title: 程序执行链路
+syllabusVersion: "2026"
+prerequisites:
+  - 指令与寄存器
+  - 5 级流水线
+  - 进程时间片
+related:
+  - co.cache-direct-mapped
+  - os.scheduling
+  - cross.va-access-chain
+objectives:
+  - 能把一行 C++ 语句拆成取数、算地址、访存、运算、写回几步
+  - 能看懂 5 级流水线时空图，并指出 load-use 冒险造成的停顿在哪一拍
+  - 能说明 CPI 为什么从理想值 1 上升到 2
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+simulator: "@visual408/sim-core#cross.program-execution-chain"
+codeExamples: []
+labTasks:
+  - 改变数组下标，观察地址计算那条指令的立即数变化
+  - 把时间片从 12 改到 3，观察上下文切换次数
+questions:
+  - id: q1
+    kind: hand-calculation
+    stem: 6 条指令、发生 2 次 load-use 停顿，在不考虑其他冒险的情况下共需多少拍？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: "12"
+    explanation: 理想流水线为 5 + (6 − 1) = 10 拍，两次停顿各多 1 拍，共 12 拍。
+  - id: q2
+    kind: choice
+    stem: 上题对应的 CPI 是多少？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: "2"
+    explanation: CPI = 总周期 / 指令数 = 12 / 6 = 2.00。
+tests: tests.json
+sources:
+  - label: 408 考试大纲·计算机组成原理·流水线 / 操作系统·进程切换
+  - label: 本项目原创跨层组合实验（教学抽象模型）

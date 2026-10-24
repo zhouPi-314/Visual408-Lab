@@ -1,0 +1,57 @@
+{
+  "module": "net.tcp-handshake",
+  "isn": {
+    "client": 1000,
+    "server": 5000
+  },
+  "cases": [
+    {
+      "name": "handshake",
+      "expect": [
+        {
+          "from": "C",
+          "flags": "SYN",
+          "seq": 1000
+        },
+        {
+          "from": "S",
+          "flags": "SYN,ACK",
+          "seq": 5000,
+          "ack": 1001
+        },
+        {
+          "from": "C",
+          "flags": "ACK",
+          "seq": 1001,
+          "ack": 5001
+        }
+      ]
+    },
+    {
+      "name": "teardown",
+      "expect": [
+        {
+          "from": "C",
+          "flags": "FIN,ACK",
+          "seq": 2001,
+          "ack": 5201
+        },
+        {
+          "from": "S",
+          "flags": "ACK",
+          "ack": 2002
+        },
+        {
+          "from": "S",
+          "flags": "FIN,ACK",
+          "seq": 5201
+        },
+        {
+          "from": "C",
+          "flags": "ACK",
+          "ack": 5202
+        }
+      ]
+    }
+  ]
+}

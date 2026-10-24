@@ -1,0 +1,50 @@
+id: net.tcp-handshake
+subject: net
+title: TCP 连接建立与释放
+syllabusVersion: "2026"
+prerequisites:
+  - 报文段结构与序号/确认号
+  - 三次握手的直觉理解
+related:
+  - cross.va-access-chain
+  - os.page-replacement
+objectives:
+  - 能默写三次握手的 seq/ack 关系，并说明为什么不能只握两次
+  - 能画出四次挥手的完整状态迁移，解释 TIME_WAIT 与 2MSL 的存在理由
+  - 能处理三个异常场景：RST 拒绝、末次 ACK 丢失、同时关闭
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+simulator: "@visual408/sim-core#net.tcp-handshake"
+codeExamples:
+  - lang: cpp
+    file: examples/tcp_socket.cpp
+    verified: false
+labTasks:
+  - 把客户端 ISN 改成 100，逐个报文核对 seq 与 ack 的变化
+  - 切到「末次 ACK 丢失」，观察重传报文为什么序号不变
+questions:
+  - id: q1
+    kind: hand-calculation
+    stem: 客户端 ISN=1000、服务端 ISN=5000，第二次握手（SYN,ACK）报文的 seq 与 ack 分别是多少？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: "seq=5000, ack=1001"
+    explanation: seq 用服务端自己的 ISN；ack 是对客户端 SYN 的确认，等于客户端 ISN+1。
+  - id: q2
+    kind: choice
+    stem: TIME_WAIT 状态存在的两个理由是？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 保证最后的 ACK 能重传 + 让旧连接报文在网络中消散
+    explanation: 主动关闭方等待 2MSL：既能重发丢失的末次 ACK，也能确保本连接的历史报文全部过期。
+tests: tests.json
+sources:
+  - label: 408 考试大纲·计算机网络·传输层
+  - label: RFC 9293（TCP 状态机）

@@ -1,0 +1,25 @@
+{
+  "module": "os.page-replacement",
+  "cases": [
+    {
+      "name": "classic-3-frames",
+      "ref": "7,0,1,2,0,3,0,4,2,3,0,3,2,1,2,0,1,7,0,1",
+      "frames": 3,
+      "expect": {
+        "FIFO": 15,
+        "LRU": 12,
+        "OPT": 9
+      }
+    },
+    {
+      "name": "belady-anomaly",
+      "ref": "1,2,3,4,1,2,5,1,2,3,4,5",
+      "expect": {
+        "FIFO@3": 9,
+        "FIFO@4": 10,
+        "LRU@3": 10,
+        "LRU@4": 8
+      }
+    }
+  ]
+}

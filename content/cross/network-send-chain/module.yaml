@@ -1,0 +1,50 @@
+id: cross.network-send-chain
+subject: cross
+title: 网络数据发送链路
+syllabusVersion: "2026"
+prerequisites:
+  - TCP 分段与序号
+  - IPv4 子网划分
+  - 以太网帧结构
+related:
+  - net.tcp-handshake
+  - net.subnetting
+  - cross.va-access-chain
+objectives:
+  - 能区分 TCP 分段（按 MSS）与 IP 分片（按 MTU），并说出它们分别发生在哪一层
+  - 能判断一次发送是同子网直投还是跨子网经网关，并说明目的 MAC 取哪个地址
+  - 能算出一条消息在链路上的总字节数与头部开销
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+simulator: "@visual408/sim-core#cross.network-send-chain"
+codeExamples: []
+labTasks:
+  - 把 MSS 从 1460 改成 536，观察段数变化
+  - 把 MTU 调到 1000，观察 IP 分片与 8 字节对齐
+  - 只改前缀，让「跨子网」变成「同子网」，看 ARP 目标怎么变
+questions:
+  - id: q1
+    kind: hand-calculation
+    stem: 发送 3000 字节、MSS=1460，会产生几个 TCP 段？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: "3"
+    explanation: 1460 + 1460 + 80 = 3000，前两段满载，第三段只有 80 字节。
+  - id: q2
+    kind: choice
+    stem: 主机 192.168.10.10/24 向 192.168.20.50 发送数据，以太网帧的目的 MAC 应该是？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 网关的 MAC
+    explanation: 跨子网时链路层只负责把帧送到下一跳（网关），由网关继续转发，所以目的 MAC 是网关而不是最终主机。
+tests: tests.json
+sources:
+  - label: 408 考试大纲·计算机网络·传输层/网络层/链路层
+  - label: 本项目原创跨层组合实验

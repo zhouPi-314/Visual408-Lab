@@ -1,0 +1,24 @@
+{
+  "name": "@visual408/web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@visual408/sim-core": "workspace:*",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "@visual408/storage": "workspace:*",
+    "@visual408/display": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^6.0.3"
+  }
+}

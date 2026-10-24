@@ -1,0 +1,48 @@
+id: net.subnetting
+subject: net
+title: IPv4 子网划分
+syllabusVersion: "2026"
+prerequisites:
+  - 二进制与十进制转换
+  - IPv4 地址结构
+related:
+  - net.tcp-handshake
+  - cross.va-access-chain
+objectives:
+  - 能由「IP/前缀」直接写出子网掩码、网络地址与广播地址
+  - 能用「2^(32−前缀) − 2」算出可用主机数，并说明为什么要减 2
+  - 能识别 /31 与 /32 这两个特例
+theory: theory.mdx
+displayer: interactive
+inputModes:
+  - preset
+  - custom
+  - boundary
+simulator: "@visual408/sim-core#net.subnetting"
+codeExamples: []
+labTasks:
+  - 拖动前缀滑块，观察网络位与主机位的边界如何移动
+  - 找出「同一个 IP 在不同前缀下属于不同子网」的例子
+questions:
+  - id: q1
+    kind: hand-calculation
+    stem: 192.168.10.130/25 的网络地址是多少？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: "192.168.10.128"
+    explanation: 掩码 255.255.255.128，最后一段 130 与 128 按位与得 128，所以网络地址是 192.168.10.128。
+  - id: q2
+    kind: hand-calculation
+    stem: /26 的子网可用主机数是多少？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: "62"
+    explanation: 主机位 32 − 26 = 6 位，2^6 − 2 = 62（去掉网络地址与广播地址）。
+tests: tests.json
+sources:
+  - label: 408 考试大纲·计算机网络·网络层
+  - label: 本项目原创教学复述

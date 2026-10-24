@@ -1,0 +1,55 @@
+{
+  "module": "cross.network-send-chain",
+  "cases": [
+    {
+      "name": "cross-subnet",
+      "input": {
+        "dataBytes": 3000,
+        "mss": 1460,
+        "mtu": 1500,
+        "dstIp": "192.168.20.50",
+        "prefix": 24
+      },
+      "expect": {
+        "segments": [
+          1460,
+          1460,
+          80
+        ],
+        "sameSubnet": false,
+        "arpTarget": "192.168.10.1"
+      }
+    },
+    {
+      "name": "same-subnet",
+      "input": {
+        "dstIp": "192.168.10.50",
+        "prefix": 24
+      },
+      "expect": {
+        "sameSubnet": true,
+        "nextHop": "192.168.10.50"
+      }
+    },
+    {
+      "name": "fragmentation",
+      "input": {
+        "mtu": 1000
+      },
+      "expect": {
+        "fragments": [
+          {
+            "offset": 0,
+            "bytes": 976,
+            "more": true
+          },
+          {
+            "offset": 976,
+            "bytes": 484,
+            "more": false
+          }
+        ]
+      }
+    }
+  ]
+}

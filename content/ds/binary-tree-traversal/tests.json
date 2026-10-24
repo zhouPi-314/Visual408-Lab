@@ -1,0 +1,58 @@
+{
+  "module": "ds.binary-tree-traversal",
+  "tree": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    null,
+    "F"
+  ],
+  "cases": [
+    {
+      "order": "pre",
+      "expect": [
+        "A",
+        "B",
+        "D",
+        "E",
+        "C",
+        "F"
+      ]
+    },
+    {
+      "order": "in",
+      "expect": [
+        "D",
+        "B",
+        "E",
+        "A",
+        "C",
+        "F"
+      ]
+    },
+    {
+      "order": "post",
+      "expect": [
+        "D",
+        "E",
+        "B",
+        "F",
+        "C",
+        "A"
+      ]
+    },
+    {
+      "order": "level",
+      "expect": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F"
+      ]
+    }
+  ]
+}

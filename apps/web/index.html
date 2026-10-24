@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <!-- 静态站点的最小 CSP：只允许自身资源，禁止内联脚本 -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'none'" />
+    <meta name="theme-color" content="#0f766e" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Visual408 Lab · Cache 直接映射</title>
+    <meta name="description" content="计算机 408 可视化交互学习实验室：每一步都由你亲手推进。" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

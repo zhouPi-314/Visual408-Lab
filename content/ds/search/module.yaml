@@ -1,0 +1,48 @@
+id: ds.search
+subject: ds
+title: 查找：顺序 / 折半
+syllabusVersion: "2026"
+prerequisites:
+  - 有序表与随机访问
+  - 时间复杂度
+related:
+  - ds.sorting
+  - ds.binary-tree-traversal
+objectives:
+  - 能画出折半查找的区间收缩过程并数出比较次数
+  - 能说明折半查找为什么要求有序且顺序存储
+  - 能比较顺序查找与折半查找的最坏情况
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+  - boundary
+simulator: "@visual408/sim-core#ds.search"
+codeExamples: []
+labTasks:
+  - 连续查找不同的目标值，记录比较次数，画出判定树
+  - 把数据改成无序，观察折半查找被拒绝
+questions:
+  - id: q1
+    kind: hand-calculation
+    stem: 有序表 1, 3, 5, 7, 9, 11 中用折半查找找 7，需要比较几次？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: "3"
+    explanation: mid=2(值 5) < 7 → 右半区；mid=4(值 9) > 7 → 左半区；mid=3(值 7) 命中，共 3 次。
+  - id: q2
+    kind: choice
+    stem: 折半查找不能用于下列哪种存储结构？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 链表
+    explanation: 折半需要以 O(1) 随机访问中间元素，链表只能顺序访问，取 mid 代价 O(n)。
+tests: tests.json
+sources:
+  - label: 408 考试大纲·数据结构·查找
+  - label: 本项目原创教学复述

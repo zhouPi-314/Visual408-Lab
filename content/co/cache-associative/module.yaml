@@ -1,0 +1,48 @@
+id: co.cache-associative
+subject: co
+title: 组相联与全相联映射
+syllabusVersion: "2026"
+prerequisites:
+  - Cache 直接映射
+  - 二进制地址划分
+related:
+  - co.cache-direct-mapped
+  - cross.va-access-chain
+objectives:
+  - 能算出「总行数 / 每组行数 = 组数」，以及组号、tag、offset 各占几位
+  - 能解释组相联为什么能减少冲突缺失，代价是什么
+  - 能在同一地址串下比较 1 路、2 路、全相联的命中差异
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+  - boundary
+simulator: "@visual408/sim-core#co.cache-associative"
+codeExamples: []
+labTasks:
+  - 保持地址串不变，把每组行数从 1 切到 2、4、8，观察命中数怎么变
+  - 构造三个映射到同一组的地址，验证「组满才淘汰」
+questions:
+  - id: q1
+    kind: hand-calculation
+    stem: 16 位地址、块大小 16 B、Cache 8 行、每组 2 路，组号字段占几位？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: "2"
+    explanation: 8 行 / 2 路 = 4 组，log2(4) = 2 位；offset 为 log2(16) = 4 位，其余 10 位是 tag。
+  - id: q2
+    kind: hand-calculation
+    stem: 地址串 0x003、0x043、0x083、0x003、0x083 在 2 路组相联下的命中次数是多少？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: "1"
+    explanation: 前三次都是缺失（0x003 与 0x043 占满两组路，0x083 淘汰最久未用的 0x003），第四次 0x003 缺失并淘汰 0x043，第五次 0x083 命中。
+tests: tests.json
+sources:
+  - label: 408 考试大纲·计算机组成原理·存储系统
+  - label: 本项目原创教学复述（复用直接映射内核）

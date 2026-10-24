@@ -1,0 +1,31 @@
+{
+  "module": "ds.search",
+  "cases": [
+    {
+      "mode": "binary",
+      "data": "1, 3, 5, 7, 9, 11",
+      "target": 7,
+      "expect": {
+        "found": 3,
+        "compares": 3
+      }
+    },
+    {
+      "mode": "binary",
+      "data": "1, 3, 5, 7, 9, 11",
+      "target": 8,
+      "expect": {
+        "found": null
+      }
+    },
+    {
+      "mode": "sequential",
+      "data": "1, 3, 5, 7, 9, 11",
+      "target": 7,
+      "expect": {
+        "found": 3,
+        "compares": 4
+      }
+    }
+  ]
+}
