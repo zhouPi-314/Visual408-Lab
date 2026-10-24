@@ -18,8 +18,10 @@ jobs:
           node-version: 24
       - name: Check Cloudflare token
         id: check
+        env:
+          CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         run: |
-          if [ -z "${{ secrets.CLOUDFLARE_API_TOKEN }}" ]; then
+          if [ -z "$CF_TOKEN" ]; then
             echo "skip=true" >> "$GITHUB_OUTPUT"
             echo "未配置 CLOUDFLARE_API_TOKEN，跳过 Cloudflare 部署"
           else

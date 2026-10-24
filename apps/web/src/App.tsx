@@ -5,6 +5,7 @@ import { ExperimentView } from "./app/ExperimentView";
 import { SearchOverlay } from "./app/SearchOverlay";
 import { AttemptsOverlay } from "./app/AttemptsOverlay";
 import { QuestionsView } from "./app/QuestionsView";
+import { SiteFooter } from "./app/SiteFooter";
 import { ThemeToggle } from "./app/ThemeToggle";
 import {
   EXPERIMENTS,
@@ -158,17 +159,6 @@ export function App() {
         </div>
 
         <div className="top-actions">
-          <a
-            className="btn star-btn"
-            href="https://github.com/zhouPi-314/Visual408-Lab"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="在 GitHub 上给 Visual408 Lab 点 Star"
-            title="在 GitHub 上点 Star"
-          >
-            <span aria-hidden="true">★</span>
-            <span className="star-label">Star</span>
-          </a>
           <ThemeToggle />
           <label className="profile-picker" title="学习档案：不同档案的进度互相隔离">
             <span className="sr-only">学习档案</span>
@@ -241,6 +231,8 @@ export function App() {
           <CatalogPage subjectKey={route.subject} onOpen={(id) => navigate({ subject: route.subject, moduleId: id })} />
         )}
       </main>
+
+      {!ready?.renderer && <SiteFooter />}
 
       <SearchOverlay
         open={searchOpen}
