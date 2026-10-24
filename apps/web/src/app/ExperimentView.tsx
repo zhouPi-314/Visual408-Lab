@@ -31,7 +31,7 @@ export interface ExperimentViewProps {
   store: StorageApi;
 }
 
-export function ExperimentView({ moduleId, renderer: R, subjectLabel, onBack, onOpenModule, store }: ExperimentViewProps) {
+export function ExperimentView({ moduleId, renderer: R, subject, subjectLabel, onBack, onOpenModule, store }: ExperimentViewProps) {
   const [input, setInput] = useState<unknown>(R.defaultInput);
   const sim = useMemo(() => R.simulate(input), [R, input]);
   const issues = useMemo(() => [...sim.validate()], [sim]);
