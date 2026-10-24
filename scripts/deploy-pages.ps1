@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
   一键构建并部署 Visual408 Lab 到 Cloudflare Pages。
 .EXAMPLE

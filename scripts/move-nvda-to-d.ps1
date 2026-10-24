@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
   把 NVDA 安装到 D:\Tools\NVDA（需管理员权限）。
 

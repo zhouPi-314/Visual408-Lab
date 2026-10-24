@@ -34,6 +34,12 @@ pnpm build
 - 题目必须是原创或已获授权，`module.yaml` 里 `source.authorized` 必须为 `true`；
 - 中文为主、术语保留英文原文（如 Cache、TLB、CPI）。
 
+## 脚本编码（重要）
+
+仓库里的 `.ps1` 脚本必须保存为 **UTF-8 with BOM**。
+Windows PowerShell 5.1 在没有 BOM 时按本机 ANSI（中文环境为 GBK）解码，
+中文会变成乱码甚至把字符串引号吃掉，导致 `字符串缺少终止符` 的解析错误。
+
 ## 代码风格
 
 - 模拟器**禁止**使用随机数、`Date.now()`、DOM API；
