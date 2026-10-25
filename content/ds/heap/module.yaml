@@ -1,0 +1,42 @@
+id: ds.heap
+subject: ds
+title: 大根堆的插入与上浮
+syllabusVersion: "2026"
+prerequisites: []
+related: []
+objectives:
+  - 能写出插入后的上浮过程
+  - 能根据数组判断是否为堆
+  - 能说明建堆复杂度为何是 O(n)
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+simulator: "@visual408/sim-core#ds.heap"
+codeExamples: []
+labTasks:
+  - 改一个参数，观察哪一帧发生变化
+questions:
+  - id: q1
+    kind: choice
+    stem: 大根堆的插入与上浮：下列哪项描述是正确的？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: "见解析"
+    explanation: 插入放在数组末尾，然后与父结点比较并交换，直到父结点不小于自己。上浮路径长度不超过树高。
+  - id: q2
+    kind: hand-calculation
+    stem: 大根堆的插入与上浮：请按界面给定的参数手算一次并对照结果。
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: "见界面指标"
+    explanation: 把界面上的中间量与公式对照，注意单位与量纲。
+tests: tests.json
+sources:
+  - label: 408 考试大纲
+  - label: 本项目原创教学复述

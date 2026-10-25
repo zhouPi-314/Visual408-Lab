@@ -1,0 +1,42 @@
+id: ds.stack-queue
+subject: ds
+title: 栈与队列的操作对比
+syllabusVersion: "2026"
+prerequisites: []
+related: []
+objectives:
+  - 能说出栈 LIFO、队列 FIFO 的差别
+  - 能根据入/出序列推出栈的输出序列
+  - 能判断何时用栈、何时用队列
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+simulator: "@visual408/sim-core#ds.stack-queue"
+codeExamples: []
+labTasks:
+  - 改一个参数，观察哪一帧发生变化
+questions:
+  - id: q1
+    kind: choice
+    stem: 栈与队列的操作对比：下列哪项描述是正确的？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: "见解析"
+    explanation: 栈只能在栈顶进出；队列从队尾进、队首出。同一串操作在两套结构上的结果完全不同，答题时要先判断操作对象。
+  - id: q2
+    kind: hand-calculation
+    stem: 栈与队列的操作对比：请按界面给定的参数手算一次并对照结果。
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: "见界面指标"
+    explanation: 把界面上的中间量与公式对照，注意单位与量纲。
+tests: tests.json
+sources:
+  - label: 408 考试大纲
+  - label: 本项目原创教学复述

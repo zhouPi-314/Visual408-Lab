@@ -1,0 +1,42 @@
+id: os.semaphore
+subject: os
+title: PV 操作与生产者-消费者
+syllabusVersion: "2026"
+prerequisites: []
+related: []
+objectives:
+  - 能说明 P、V 操作对信号量的影响
+  - 能分析缓冲区满/空时的阻塞
+  - 能写出生产者与消费者的同步关系
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+simulator: "@visual408/sim-core#os.semaphore"
+codeExamples: []
+labTasks:
+  - 改一个参数，观察哪一帧发生变化
+questions:
+  - id: q1
+    kind: choice
+    stem: PV 操作与生产者-消费者：下列哪项描述是正确的？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: "见解析"
+    explanation: P 操作先减再判断是否小于 0，V 操作先加再唤醒。mutex 保证互斥，empty/full 保证同步。
+  - id: q2
+    kind: hand-calculation
+    stem: PV 操作与生产者-消费者：请按界面给定的参数手算一次并对照结果。
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: "见界面指标"
+    explanation: 把界面上的中间量与公式对照，注意单位与量纲。
+tests: tests.json
+sources:
+  - label: 408 考试大纲
+  - label: 本项目原创教学复述

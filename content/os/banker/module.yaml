@@ -1,0 +1,42 @@
+id: os.banker
+subject: os
+title: 银行家算法与安全序列
+syllabusVersion: "2026"
+prerequisites: []
+related: []
+objectives:
+  - 能写出 Need = Max − Allocation
+  - 能按安全算法找出安全序列
+  - 能判断系统是否不安全
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+simulator: "@visual408/sim-core#os.banker"
+codeExamples: []
+labTasks:
+  - 改一个参数，观察哪一帧发生变化
+questions:
+  - id: q1
+    kind: choice
+    stem: 银行家算法与安全序列：下列哪项描述是正确的？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: "见解析"
+    explanation: 每次尝试满足一个进程，完成后归还资源，直到所有进程完成；若中途卡住则不安全。
+  - id: q2
+    kind: hand-calculation
+    stem: 银行家算法与安全序列：请按界面给定的参数手算一次并对照结果。
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: "见界面指标"
+    explanation: 把界面上的中间量与公式对照，注意单位与量纲。
+tests: tests.json
+sources:
+  - label: 408 考试大纲
+  - label: 本项目原创教学复述

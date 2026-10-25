@@ -623,3 +623,45 @@ kbd { font-family: var(--mono); font-size: 11px; padding: 1px 5px; border-radius
   .star-actions { flex-direction: column; width: 100%; }
   .star-actions .btn { width: 100%; }
 }
+/* ---------- 通用视图层（15 个新实验共用） ---------- */
+.gv-stack { display: grid; gap: 16px; }
+.gv-block { display: grid; gap: 8px; }
+.gv-label { font-size: 12.5px; color: var(--ink-2); font-weight: 650; }
+.gv-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.gv-cell {
+  display: inline-flex; flex-direction: column; align-items: center; gap: 2px;
+  min-width: 46px; padding: 7px 10px; border: 1px solid var(--line); border-radius: var(--r-md);
+  font-family: var(--mono); font-size: 13px; line-height: 1.2;
+  transition: background .15s, border-color .15s;
+}
+.gv-cell small { font-size: 9.5px; opacity: .75; font-family: var(--font); }
+.gv-bars { display: grid; gap: 6px; }
+.gv-bar-row { display: grid; grid-template-columns: 72px 1fr 48px; gap: 8px; align-items: center; font-size: 12px; }
+.gv-bar-label { color: var(--ink-2); font-family: var(--mono); }
+.gv-bar-track { height: 16px; background: var(--surface-2); border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
+.gv-bar-fill { display: block; height: 100%; transition: width .25s ease; }
+.gv-bar-value { text-align: right; font-family: var(--mono); color: var(--ink-2); }
+.gv-table-wrap { overflow-x: auto; }
+.gv-table { font-size: 12.5px; }
+.gv-table td, .gv-table th { padding: 4px 6px; }
+.gv-hot { background: var(--accent-soft) !important; font-weight: 700; }
+.gv-bits { display: grid; gap: 6px; }
+.gv-bit-group { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.gv-bit-label { width: 96px; font-size: 11.5px; color: var(--ink-2); font-family: var(--mono); }
+.gv-bit-cells { display: flex; gap: 2px; }
+.gv-bit {
+  display: grid; place-items: center; width: 18px; height: 22px; border-radius: 3px;
+  font-family: var(--mono); font-size: 11px; background: var(--surface-2); color: var(--ink-3);
+}
+.gv-bit.is-one { background: var(--index); color: #fff; }
+.gv-bit.is-split { outline: 2px solid var(--accent); outline-offset: -1px; }
+.gv-timeline { display: grid; gap: 4px; }
+.gv-timeline-bar { position: relative; height: 34px; background: var(--surface-2); border: 1px solid var(--line); border-radius: var(--r-md); }
+.gv-seg {
+  position: absolute; top: 4px; height: 24px; display: grid; place-items: center;
+  border: 1px solid var(--line); border-radius: 5px; font-size: 10.5px;
+  font-family: var(--mono); overflow: hidden; white-space: nowrap;
+}
+.gv-marker { position: absolute; top: -6px; bottom: -6px; width: 2px; background: var(--accent); }
+.gv-marker span { position: absolute; top: -16px; left: 2px; font-size: 9.5px; color: var(--accent); white-space: nowrap; }
+.gv-timeline-axis { display: flex; justify-content: space-between; font-size: 10px; color: var(--ink-3); font-family: var(--mono); }

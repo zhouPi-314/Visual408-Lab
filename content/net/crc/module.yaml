@@ -1,0 +1,42 @@
+id: net.crc
+subject: net
+title: CRC 循环冗余校验
+syllabusVersion: "2026"
+prerequisites: []
+related: []
+objectives:
+  - 能完成模 2 除法求余数
+  - 能说明补零位数与生成多项式的关系
+  - 能判断接收端如何校验
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+simulator: "@visual408/sim-core#net.crc"
+codeExamples: []
+labTasks:
+  - 改一个参数，观察哪一帧发生变化
+questions:
+  - id: q1
+    kind: choice
+    stem: CRC 循环冗余校验：下列哪项描述是正确的？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: "见解析"
+    explanation: 在数据后补 r 个 0（r 为多项式阶），用异或做模 2 除法，余数即 CRC 码。
+  - id: q2
+    kind: hand-calculation
+    stem: CRC 循环冗余校验：请按界面给定的参数手算一次并对照结果。
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: "见界面指标"
+    explanation: 把界面上的中间量与公式对照，注意单位与量纲。
+tests: tests.json
+sources:
+  - label: 408 考试大纲
+  - label: 本项目原创教学复述

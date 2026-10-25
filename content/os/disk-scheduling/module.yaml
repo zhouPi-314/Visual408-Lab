@@ -1,0 +1,42 @@
+id: os.disk-scheduling
+subject: os
+title: 磁盘调度 FCFS / SSTF / SCAN
+syllabusVersion: "2026"
+prerequisites: []
+related: []
+objectives:
+  - 能计算各算法的寻道长度
+  - 能说明 SSTF 的饥饿问题
+  - 能画出 SCAN 的磁头轨迹
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+simulator: "@visual408/sim-core#os.disk-scheduling"
+codeExamples: []
+labTasks:
+  - 改一个参数，观察哪一帧发生变化
+questions:
+  - id: q1
+    kind: choice
+    stem: 磁盘调度 FCFS / SSTF / SCAN：下列哪项描述是正确的？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: "见解析"
+    explanation: 每次选择下一个磁道，移动距离之和即总寻道长度。SSTF 贪心但不公平，SCAN 像电梯。
+  - id: q2
+    kind: hand-calculation
+    stem: 磁盘调度 FCFS / SSTF / SCAN：请按界面给定的参数手算一次并对照结果。
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: "见界面指标"
+    explanation: 把界面上的中间量与公式对照，注意单位与量纲。
+tests: tests.json
+sources:
+  - label: 408 考试大纲
+  - label: 本项目原创教学复述

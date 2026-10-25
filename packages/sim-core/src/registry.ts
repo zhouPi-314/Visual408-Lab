@@ -27,6 +27,21 @@ const loaders: Record<ModuleId, () => Promise<{ module: AnyModule }>> = {
   "cross.va-access-chain": () => import("./modules/va-access-chain"),
   "cross.network-send-chain": () => import("./modules/network-send"),
   "cross.program-execution-chain": () => import("./modules/program-execution"),
+  "ds.stack-queue": () => import("./modules/generic/batch1").then((m) => ({ module: m.batch1.stackQueue as AnyModule })),
+  "ds.heap": () => import("./modules/generic/batch1").then((m) => ({ module: m.batch1.heap as AnyModule })),
+  "ds.hash-table": () => import("./modules/generic/batch1").then((m) => ({ module: m.batch1.hashTable as AnyModule })),
+  "ds.kruskal": () => import("./modules/generic/batch1").then((m) => ({ module: m.batch1.kruskal as AnyModule })),
+  "co.instruction-format": () => import("./modules/generic/batch2").then((m) => ({ module: m.batch2.instructionFormat as AnyModule })),
+  "co.ieee754": () => import("./modules/generic/batch2").then((m) => ({ module: m.batch2.ieee754 as AnyModule })),
+  "co.amat": () => import("./modules/generic/batch2").then((m) => ({ module: m.batch2.amat as AnyModule })),
+  "co.io-modes": () => import("./modules/generic/batch2").then((m) => ({ module: m.batch2.ioModes as AnyModule })),
+  "os.banker": () => import("./modules/generic/batch3").then((m) => ({ module: m.batch3.banker as AnyModule })),
+  "os.semaphore": () => import("./modules/generic/batch3").then((m) => ({ module: m.batch3.semaphore as AnyModule })),
+  "os.disk-scheduling": () => import("./modules/generic/batch3").then((m) => ({ module: m.batch3.diskScheduling as AnyModule })),
+  "os.inode": () => import("./modules/generic/batch3").then((m) => ({ module: m.batch3.inode as AnyModule })),
+  "net.crc": () => import("./modules/generic/batch3").then((m) => ({ module: m.batch3.crc as AnyModule })),
+  "net.gbn-window": () => import("./modules/generic/batch3").then((m) => ({ module: m.batch3.gbn as AnyModule })),
+  "net.arp": () => import("./modules/generic/batch3").then((m) => ({ module: m.batch3.arp as AnyModule })),
 };
 
 export function listModuleIds(): ModuleId[] {

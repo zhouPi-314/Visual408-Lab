@@ -1,0 +1,42 @@
+id: os.inode
+subject: os
+title: 文件索引分配与 inode
+syllabusVersion: "2026"
+prerequisites: []
+related: []
+objectives:
+  - 能算出直接块覆盖的最大文件
+  - 能算出一级/二级间接的容量
+  - 能判断给定文件需要几级间接
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+simulator: "@visual408/sim-core#os.inode"
+codeExamples: []
+labTasks:
+  - 改一个参数，观察哪一帧发生变化
+questions:
+  - id: q1
+    kind: choice
+    stem: 文件索引分配与 inode：下列哪项描述是正确的？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: "见解析"
+    explanation: inode 中存直接块指针与多级间接指针，文件越大需要的间接层级越高。
+  - id: q2
+    kind: hand-calculation
+    stem: 文件索引分配与 inode：请按界面给定的参数手算一次并对照结果。
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: "见界面指标"
+    explanation: 把界面上的中间量与公式对照，注意单位与量纲。
+tests: tests.json
+sources:
+  - label: 408 考试大纲
+  - label: 本项目原创教学复述

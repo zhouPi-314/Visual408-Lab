@@ -1,0 +1,42 @@
+id: net.gbn-window
+subject: net
+title: 滑动窗口与回退 N
+syllabusVersion: "2026"
+prerequisites: []
+related: []
+objectives:
+  - 能说明发送窗口与接收窗口大小
+  - 能分析超时后的重传范围
+  - 能比较 GBN 与选择重传
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+simulator: "@visual408/sim-core#net.gbn-window"
+codeExamples: []
+labTasks:
+  - 改一个参数，观察哪一帧发生变化
+questions:
+  - id: q1
+    kind: choice
+    stem: 滑动窗口与回退 N：下列哪项描述是正确的？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: "见解析"
+    explanation: GBN 的接收窗口为 1，某帧出错后该帧及其后所有帧都要重传，实现简单但重传多。
+  - id: q2
+    kind: hand-calculation
+    stem: 滑动窗口与回退 N：请按界面给定的参数手算一次并对照结果。
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: "见界面指标"
+    explanation: 把界面上的中间量与公式对照，注意单位与量纲。
+tests: tests.json
+sources:
+  - label: 408 考试大纲
+  - label: 本项目原创教学复述

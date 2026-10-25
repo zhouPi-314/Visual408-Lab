@@ -1,6 +1,38 @@
 {
-  "generatedAt": "2026-10-24T18:39:33.577Z",
+  "generatedAt": "2026-10-25T09:58:53.999Z",
   "modules": [
+    {
+      "id": "co.amat",
+      "subject": "co",
+      "title": "平均访问时间 AMAT",
+      "objectives": [
+        "能写出 AMAT 公式",
+        "能解释缺失率与缺失代价的影响",
+        "能比较不同命中率下的性能"
+      ],
+      "labTasks": [
+        "改一个参数，观察哪一帧发生变化"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "平均访问时间 AMAT：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "AMAT = 命中时间 + 缺失率 × 缺失代价。命中率提高会线性降低缺失带来的开销。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "平均访问时间 AMAT：请按界面给定的参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面上的中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "平均访问时间 AMAT AMAT = 命中时间 + 缺失率 × 缺失代价。命中率提高会线性降低缺失带来的开销。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
+    },
     {
       "id": "co.cache-associative",
       "subject": "co",
@@ -66,6 +98,102 @@
         }
       ],
       "theoryExcerpt": "Cache 直接映射与地址划分 直接映射 Cache 把主存的每一个块固定映射到唯一的 Cache 行： 地址被切成三段： 段 位数 作用 tag addrBits − offsetBits − indexBits 判断这一行装的是不是我要的块 index log2(行数) 定位到唯一一行 offset log2(块大小) 块内偏移 为什么同一地址会两次缺失 第 1 次访问块 10 装入第 2 行；第 2 次访问块 26 也映射到第 2 行，把块 10 踢掉； 第 3 次再访问块 10 —— 该行现在是块 26，于是又一次缺失。这就是 冲突缺失 ： Cache 里有空位，但这个块只能放在被别人占着的那一行。 教学要点：命中与否取决于"
+    },
+    {
+      "id": "co.ieee754",
+      "subject": "co",
+      "title": "IEEE 754 浮点拆解",
+      "objectives": [
+        "能拆出符号位、阶码、尾数",
+        "能算出偏移 127 后的阶码",
+        "能由位串还原真值"
+      ],
+      "labTasks": [
+        "改一个参数，观察哪一帧发生变化"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "IEEE 754 浮点拆解：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "单精度为 1+8+23 位：符号 1 位，阶码用移码（偏移 127），尾数隐含最高位 1。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "IEEE 754 浮点拆解：请按界面给定的参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面上的中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "IEEE 754 浮点拆解 单精度为 1+8+23 位：符号 1 位，阶码用移码（偏移 127），尾数隐含最高位 1。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
+    },
+    {
+      "id": "co.instruction-format",
+      "subject": "co",
+      "title": "指令格式与字段拆分",
+      "objectives": [
+        "能把 32 位指令拆成 opcode/rs/rt/imm",
+        "能计算字段位宽与取值范围",
+        "能区分定长与变长指令格式"
+      ],
+      "labTasks": [
+        "改一个参数，观察哪一帧发生变化"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "指令格式与字段拆分：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "指令字由固定位置划分的字段组成，字段位宽决定可表示的寄存器编号与立即数范围。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "指令格式与字段拆分：请按界面给定的参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面上的中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "指令格式与字段拆分 指令字由固定位置划分的字段组成，字段位宽决定可表示的寄存器编号与立即数范围。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
+    },
+    {
+      "id": "co.io-modes",
+      "subject": "co",
+      "title": "I/O 方式：查询 / 中断 / DMA",
+      "objectives": [
+        "能比较三种 I/O 方式的 CPU 占用",
+        "能说明 DMA 的启动与结束开销",
+        "能判断适用场景"
+      ],
+      "labTasks": [
+        "改一个参数，观察哪一帧发生变化"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "I/O 方式：查询 / 中断 / DMA：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "程序查询让 CPU 全程等待；中断按次打断；DMA 由控制器搬运，CPU 只在首尾参与。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "I/O 方式：查询 / 中断 / DMA：请按界面给定的参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面上的中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "I/O 方式：查询 / 中断 / DMA 程序查询让 CPU 全程等待；中断按次打断；DMA 由控制器搬运，CPU 只在首尾参与。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
     },
     {
       "id": "cross.network-send-chain",
@@ -234,6 +362,102 @@
       "theoryExcerpt": "图的遍历：BFS / DFS 两种策略，两个容器 容器 过程 BFS 队列（FIFO） 访问起点 → 邻居全部入队 → 逐个出队继续扩散 DFS 栈（LIFO） 访问起点 → 立刻深入第一个未访问邻居 → 走不通再回退 同一张图，从不同起点、不同邻接点顺序出发，遍历序列都可能不同—— 考试要求按邻接矩阵「下标从小到大」的顺序处理 ，本例即如此。 例：0 1、0 2、1 3、2 3、3 4，从 0 出发 不变式 每个结点 最多访问一次 （靠 visited 数组）； 遍历生成树的边数 = 访问结点数 − 1（连通图）； BFS 得到的是 边数最少 的路径树；DFS 不保证。 复杂度：邻接矩阵 O(n²)，邻接表 O(n+e)。"
     },
     {
+      "id": "ds.hash-table",
+      "subject": "ds",
+      "title": "哈希表：除留余数与线性探测",
+      "objectives": [
+        "能计算 H(key)=key mod m",
+        "能画出线性探测的探测序列",
+        "能算出平均查找长度"
+      ],
+      "labTasks": [
+        "改一个参数，观察哪一帧发生变化"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "哈希表：除留余数与线性探测：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "冲突时依次向后寻找空槽，遇到表尾回到开头。探测次数直接累加到平均查找长度。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "哈希表：除留余数与线性探测：请按界面给定的参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面上的中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "哈希表：除留余数与线性探测 冲突时依次向后寻找空槽，遇到表尾回到开头。探测次数直接累加到平均查找长度。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
+    },
+    {
+      "id": "ds.heap",
+      "subject": "ds",
+      "title": "大根堆的插入与上浮",
+      "objectives": [
+        "能写出插入后的上浮过程",
+        "能根据数组判断是否为堆",
+        "能说明建堆复杂度为何是 O(n)"
+      ],
+      "labTasks": [
+        "改一个参数，观察哪一帧发生变化"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "大根堆的插入与上浮：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "插入放在数组末尾，然后与父结点比较并交换，直到父结点不小于自己。上浮路径长度不超过树高。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "大根堆的插入与上浮：请按界面给定的参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面上的中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "大根堆的插入与上浮 插入放在数组末尾，然后与父结点比较并交换，直到父结点不小于自己。上浮路径长度不超过树高。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
+    },
+    {
+      "id": "ds.kruskal",
+      "subject": "ds",
+      "title": "Kruskal 最小生成树",
+      "objectives": [
+        "能按权值排序后逐步选边",
+        "能用并查集判断是否成环",
+        "能说明结束条件 n−1 条边"
+      ],
+      "labTasks": [
+        "改一个参数，观察哪一帧发生变化"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "Kruskal 最小生成树：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "按权值从小到大考察边，若两端不在同一集合就加入并合并集合，否则跳过。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "Kruskal 最小生成树：请按界面给定的参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面上的中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "Kruskal 最小生成树 按权值从小到大考察边，若两端不在同一集合就加入并合并集合，否则跳过。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
+    },
+    {
       "id": "ds.search",
       "subject": "ds",
       "title": "查找：顺序 / 折半",
@@ -298,6 +522,134 @@
         }
       ],
       "theoryExcerpt": "排序：插入 / 冒泡 / 快速 直接插入 把第 i 个元素 拿出来 （原位置空出一个洞），往前面已排序区里找位置： 每趟结束时，前 i+1 个元素一定有序（这是可断言的 不变量 ）。 序列近乎有序时几乎没有移动，接近 O(n)。 冒泡 相邻两两比较，逆序就交换。第 p 趟结束，末尾第 p 个元素一定就位。 若某一趟 一次交换都没发生 ，说明整体已经有序 → 提前结束。 稳定排序。 快速 选一个枢轴（本实验取区间最后一个），把比它小的换到左边、大的留在右边， 枢轴落位后递归处理左右两段。 枢轴一旦落位，它的最终位置就确定了。 不稳定 ；最坏 O(n²)（每次划分极不均衡）。 算法 平均 最坏 稳定 额外空间 插入 O(n²) O(n²"
+    },
+    {
+      "id": "ds.stack-queue",
+      "subject": "ds",
+      "title": "栈与队列的操作对比",
+      "objectives": [
+        "能说出栈 LIFO、队列 FIFO 的差别",
+        "能根据入/出序列推出栈的输出序列",
+        "能判断何时用栈、何时用队列"
+      ],
+      "labTasks": [
+        "改一个参数，观察哪一帧发生变化"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "栈与队列的操作对比：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "栈只能在栈顶进出；队列从队尾进、队首出。同一串操作在两套结构上的结果完全不同，答题时要先判断操作对象。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "栈与队列的操作对比：请按界面给定的参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面上的中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "栈与队列的操作对比 栈只能在栈顶进出；队列从队尾进、队首出。同一串操作在两套结构上的结果完全不同，答题时要先判断操作对象。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
+    },
+    {
+      "id": "net.arp",
+      "subject": "net",
+      "title": "ARP 解析与帧的目的 MAC",
+      "objectives": [
+        "能说明同网段与跨网段的目的 MAC",
+        "能描述 ARP 请求/响应过程",
+        "能解释 ARP 缓存的作用"
+      ],
+      "labTasks": [
+        "改一个参数，观察哪一帧发生变化"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "ARP 解析与帧的目的 MAC：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "ARP 把 IP 解析成 MAC，只解析下一跳：同网段问主机，跨网段问网关。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "ARP 解析与帧的目的 MAC：请按界面给定的参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面上的中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "ARP 解析与帧的目的 MAC ARP 把 IP 解析成 MAC，只解析下一跳：同网段问主机，跨网段问网关。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
+    },
+    {
+      "id": "net.crc",
+      "subject": "net",
+      "title": "CRC 循环冗余校验",
+      "objectives": [
+        "能完成模 2 除法求余数",
+        "能说明补零位数与生成多项式的关系",
+        "能判断接收端如何校验"
+      ],
+      "labTasks": [
+        "改一个参数，观察哪一帧发生变化"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "CRC 循环冗余校验：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "在数据后补 r 个 0（r 为多项式阶），用异或做模 2 除法，余数即 CRC 码。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "CRC 循环冗余校验：请按界面给定的参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面上的中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "CRC 循环冗余校验 在数据后补 r 个 0（r 为多项式阶），用异或做模 2 除法，余数即 CRC 码。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
+    },
+    {
+      "id": "net.gbn-window",
+      "subject": "net",
+      "title": "滑动窗口与回退 N",
+      "objectives": [
+        "能说明发送窗口与接收窗口大小",
+        "能分析超时后的重传范围",
+        "能比较 GBN 与选择重传"
+      ],
+      "labTasks": [
+        "改一个参数，观察哪一帧发生变化"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "滑动窗口与回退 N：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "GBN 的接收窗口为 1，某帧出错后该帧及其后所有帧都要重传，实现简单但重传多。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "滑动窗口与回退 N：请按界面给定的参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面上的中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "滑动窗口与回退 N GBN 的接收窗口为 1，某帧出错后该帧及其后所有帧都要重传，实现简单但重传多。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
     },
     {
       "id": "net.subnetting",
@@ -366,6 +718,102 @@
       "theoryExcerpt": "TCP 连接建立与释放 三次握手 SYN 与 FIN 各 消耗 1 个序号 ，纯 ACK 不消耗。 为什么不是两次：只有第三次才能让服务端确认「客户端收到了我的 SYN」， 否则一个延迟的旧 SYN 可能让服务端建立一条客户端并不认的连接。 四次挥手 被动方收到 FIN 后先回 ACK、等应用层处理完才发自己的 FIN —— 这就是\"四次\"而不是\"三次\"的原因。 异常 场景 关键点 端口未开放 服务端回 RST，客户端直接 CLOSED 末次 ACK 丢失 服务端超时 重传 FIN，序号不变 ；客户端重发 ACK 同时关闭 双方都经历 FIN WAIT 1 → CLOSING → TIME WAIT"
     },
     {
+      "id": "os.banker",
+      "subject": "os",
+      "title": "银行家算法与安全序列",
+      "objectives": [
+        "能写出 Need = Max − Allocation",
+        "能按安全算法找出安全序列",
+        "能判断系统是否不安全"
+      ],
+      "labTasks": [
+        "改一个参数，观察哪一帧发生变化"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "银行家算法与安全序列：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "每次尝试满足一个进程，完成后归还资源，直到所有进程完成；若中途卡住则不安全。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "银行家算法与安全序列：请按界面给定的参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面上的中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "银行家算法与安全序列 每次尝试满足一个进程，完成后归还资源，直到所有进程完成；若中途卡住则不安全。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
+    },
+    {
+      "id": "os.disk-scheduling",
+      "subject": "os",
+      "title": "磁盘调度 FCFS / SSTF / SCAN",
+      "objectives": [
+        "能计算各算法的寻道长度",
+        "能说明 SSTF 的饥饿问题",
+        "能画出 SCAN 的磁头轨迹"
+      ],
+      "labTasks": [
+        "改一个参数，观察哪一帧发生变化"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "磁盘调度 FCFS / SSTF / SCAN：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "每次选择下一个磁道，移动距离之和即总寻道长度。SSTF 贪心但不公平，SCAN 像电梯。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "磁盘调度 FCFS / SSTF / SCAN：请按界面给定的参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面上的中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "磁盘调度 FCFS / SSTF / SCAN 每次选择下一个磁道，移动距离之和即总寻道长度。SSTF 贪心但不公平，SCAN 像电梯。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
+    },
+    {
+      "id": "os.inode",
+      "subject": "os",
+      "title": "文件索引分配与 inode",
+      "objectives": [
+        "能算出直接块覆盖的最大文件",
+        "能算出一级/二级间接的容量",
+        "能判断给定文件需要几级间接"
+      ],
+      "labTasks": [
+        "改一个参数，观察哪一帧发生变化"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "文件索引分配与 inode：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "inode 中存直接块指针与多级间接指针，文件越大需要的间接层级越高。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "文件索引分配与 inode：请按界面给定的参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面上的中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "文件索引分配与 inode inode 中存直接块指针与多级间接指针，文件越大需要的间接层级越高。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
+    },
+    {
       "id": "os.page-replacement",
       "subject": "os",
       "title": "页面置换：FIFO / LRU / OPT",
@@ -430,6 +878,38 @@
         }
       ],
       "theoryExcerpt": "进程调度：FCFS / SJF / RR 两个公式就够 平均等待、平均周转就是对所有进程取平均。 三种算法 算法 抢占 选择依据 特点 FCFS 否 到达顺序 简单；短作业被长作业挡住（护航效应） SJF 否 已到达者中运行时间最短 平均等待最短；长作业可能饥饿 RR 是（时间片到期） 就绪队列 FIFO 响应快；时间片过大≈FCFS，过小则切换开销高 RR 的入队次序（考试常错点） 同一时刻既有人到达、又有人时间片到期时，约定是： 新到达者先入队，被剥夺者排到队尾 。 举例（q=1）：P1(0,3)、P2(1,2)、P3(2,1) 注意 t=2~3 跑的是 P1 而不是刚到 P3——这就是\"轮转\"而非\"每次换人\"。"
+    },
+    {
+      "id": "os.semaphore",
+      "subject": "os",
+      "title": "PV 操作与生产者-消费者",
+      "objectives": [
+        "能说明 P、V 操作对信号量的影响",
+        "能分析缓冲区满/空时的阻塞",
+        "能写出生产者与消费者的同步关系"
+      ],
+      "labTasks": [
+        "改一个参数，观察哪一帧发生变化"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "PV 操作与生产者-消费者：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "P 操作先减再判断是否小于 0，V 操作先加再唤醒。mutex 保证互斥，empty/full 保证同步。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "PV 操作与生产者-消费者：请按界面给定的参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面上的中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "PV 操作与生产者 消费者 P 操作先减再判断是否小于 0，V 操作先加再唤醒。mutex 保证互斥，empty/full 保证同步。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
     }
   ]
 }
