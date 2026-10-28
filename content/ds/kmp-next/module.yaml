@@ -1,0 +1,42 @@
+id: ds.kmp-next
+subject: ds
+title: KMP 的前缀函数
+syllabusVersion: "2026"
+prerequisites: []
+related: []
+objectives:
+  - 能手工求 next 数组
+  - 能说明失配时的跳转
+  - 能比较与朴素匹配的差异
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+simulator: "@visual408/sim-core#ds.kmp-next"
+codeExamples: []
+labTasks:
+  - 改一个参数，观察哪一帧发生变化
+questions:
+  - id: q1
+    kind: choice
+    stem: KMP 的前缀函数：下列哪项描述是正确的？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见解析
+    explanation: next[i] 是模式串前 i+1 个字符中「最长相等前后缀」的长度，失配时跳到这里而不是回到开头。
+  - id: q2
+    kind: hand-calculation
+    stem: KMP 的前缀函数：按界面参数手算一次并对照结果。
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见界面指标
+    explanation: 把界面中间量与公式对照，注意单位与量纲。
+tests: tests.json
+sources:
+  - label: 408 考试大纲
+  - label: 本项目原创教学复述

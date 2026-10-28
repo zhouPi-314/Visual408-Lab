@@ -1,0 +1,42 @@
+id: net.dns-resolve
+subject: net
+title: DNS 递归 vs 迭代查询
+syllabusVersion: "2026"
+prerequisites: []
+related: []
+objectives:
+  - 能区分两种查询方式
+  - 能说出查询顺序
+  - 能比较主机的负担
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+simulator: "@visual408/sim-core#net.dns-resolve"
+codeExamples: []
+labTasks:
+  - 改一个参数，观察哪一帧发生变化
+questions:
+  - id: q1
+    kind: choice
+    stem: DNS 递归 vs 迭代查询：下列哪项描述是正确的？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见解析
+    explanation: 递归由本地 DNS 代劳；迭代由主机自己依次问根、顶级、权威服务器。
+  - id: q2
+    kind: hand-calculation
+    stem: DNS 递归 vs 迭代查询：按界面参数手算一次并对照结果。
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见界面指标
+    explanation: 把界面中间量与公式对照，注意单位与量纲。
+tests: tests.json
+sources:
+  - label: 408 考试大纲
+  - label: 本项目原创教学复述

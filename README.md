@@ -5,7 +5,7 @@
 [在线使用](https://visual408-lab.pages.dev/) · [GitHub Pages 镜像](https://zhoupi-314.github.io/Visual408-Lab/) · [反馈建议](https://github.com/zhouPi-314/Visual408-Lab/issues) · [贡献指南](CONTRIBUTING.md)
 
 ![在线](https://img.shields.io/badge/%E5%9C%A8%E7%BA%BF%E4%BD%BF%E7%94%A8-visual408--lab.pages.dev-4338ca)
-![测试](https://img.shields.io/badge/tests-181%20passed-15803d)
+![测试](https://img.shields.io/badge/tests-196%20passed-15803d)
 ![无障碍](https://img.shields.io/badge/axe%20a11y-0%20violations-15803d)
 ![许可](https://img.shields.io/badge/license-MIT-444)
 
@@ -16,7 +16,7 @@
 把 408 的抽象概念做成**可以一步一步推的交互实验**：改参数、点下一步、看状态怎么变，而不是看动画。
 
 - **打开即用**：无需安装、无需注册，学习进度保存在你自己的浏览器里；
-- **28 个实验**：数据结构 8、计组 6、操作系统 6、计算机网络 5，另有 3 个跨学科综合实验；
+- **43 个实验**：数据结构 12、计组 10、操作系统 10、计算机网络 8，另有 3 个跨学科综合实验；
 - **每个实验都有确定性测试**：教学数值（命中率、缺页数、CPI、握手序号…）都能被复现和验证；
 - **多学习档案**：同一浏览器可建多个档案，进度互不干扰；
 - **实验内搜索与相关实验**：不用回目录就能找到本实验的知识点与相邻实验。
@@ -68,7 +68,27 @@
 | 计算机网络 | 滑动窗口 GBN | 超时整窗重传 |
 | 计算机网络 | ARP 解析 | 跨网段只问网关 |
 
-这 15 个实验共用一套**通用视图层**（chips / bars / grid / bits / timeline / matrix），
+### 再新增 15 个实验（第二批）
+
+| 学科 | 实验 | 看点 |
+| --- | --- | --- |
+| 数据结构 | Dijkstra 单源最短路 | 贪心选点 + 逐边松弛 |
+| 数据结构 | 拓扑排序（Kahn） | 入度表归零入队 |
+| 数据结构 | 并查集 | 按秩合并 + 路径压缩 |
+| 数据结构 | KMP 前缀函数 | next 数组逐位构造 |
+| 组成原理 | 写直达 vs 写回 | 主存写次数对比 |
+| 组成原理 | 指令周期四阶段 | 取指/间址/执行/中断时序 |
+| 组成原理 | 总线仲裁 | 链式/计数器/独立请求 |
+| 组成原理 | RAID 0/1/5 | 容量与容错权衡 |
+| 操作系统 | 动态分区分配 | 首次/最佳/最坏适应 |
+| 操作系统 | 段式地址转换 | 段表 + 越界检查 |
+| 操作系统 | 文件物理结构 | 连续/链接/索引寻址 |
+| 操作系统 | 中断处理流程 | 关中断→保存→识别→服务→恢复 |
+| 计算机网络 | CSMA/CD 退避 | 冲突 k 次窗口 2^k |
+| 计算机网络 | NAT 转换表 | 端口复用与回包还原 |
+| 计算机网络 | DNS 递归/迭代 | 谁去逐级问 |
+
+这 30 个实验共用一套**通用视图层**（chips / bars / grid / bits / timeline / matrix），
 模拟器只产出数据与状态，渲染由统一组件完成 —— 所以它们都有逐帧演示动画，且新增一个实验约 100 行代码。
 
 每个实验统一提供：参数输入、单步/回放、代码联动、巩固练习（答题记录进错题本）。
@@ -109,7 +129,7 @@ pnpm dev          # http://127.0.0.1:5173
 | 命令 | 作用 |
 | --- | --- |
 | `pnpm dev` | 开发服务器 |
-| `pnpm test` | 181 个单元测试 |
+| `pnpm test` | 196 个单元测试 |
 | `pnpm typecheck` | 类型检查 |
 | `pnpm build` | 生产构建（`apps/web/dist`） |
 | `pnpm content:check` | 内容校验 + 版权门禁 |
@@ -138,7 +158,7 @@ npx --yes wrangler@latest pages deploy apps/web/dist --project-name <你的项�
 
 ```
 apps/web                 导航、实验页、题库、播放器
-packages/sim-core        协议 + 28 个纯函数模拟器
+packages/sim-core        协议 + 43 个纯函数模拟器
 packages/display         共享渲染组件
 packages/storage         StoragePort（内存 / IndexedDB）
 packages/content-schema  内容 schema + 版权门禁
@@ -148,7 +168,7 @@ docs/                    架构、部署、无障碍、备份演练
 
 ## 进度与路线图
 
-**当前：28 个实验 / 181 个测试 / 双主题（浅色·深色）/ 无障碍 0 违规。**
+**当前：43 个实验 / 196 个测试 / 双主题（浅色·深色）/ 无障碍 0 违规。**
 
 **开发节奏（目标）**：以每天 15–20 个实验的速度补充，每个实验都附确定性测试与内容，
 不为了数量牺牲可验证性。

@@ -1,0 +1,42 @@
+id: net.nat
+subject: net
+title: NAT 地址转换
+syllabusVersion: "2026"
+prerequisites: []
+related: []
+objectives:
+  - 能说明 NAT 改写了什么
+  - 能解释端口的作用
+  - 能分析映射表
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+simulator: "@visual408/sim-core#net.nat"
+codeExamples: []
+labTasks:
+  - 改一个参数，观察哪一帧发生变化
+questions:
+  - id: q1
+    kind: choice
+    stem: NAT 地址转换：下列哪项描述是正确的？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见解析
+    explanation: 出口路由器把内网源 IP/端口改成公网 IP/端口并记录，回包按表还原。
+  - id: q2
+    kind: hand-calculation
+    stem: NAT 地址转换：按界面参数手算一次并对照结果。
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见界面指标
+    explanation: 把界面中间量与公式对照，注意单位与量纲。
+tests: tests.json
+sources:
+  - label: 408 考试大纲
+  - label: 本项目原创教学复述

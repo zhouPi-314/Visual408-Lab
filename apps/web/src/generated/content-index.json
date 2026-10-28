@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-25T09:58:53.999Z",
+  "generatedAt": "2026-10-28T02:59:18.131Z",
   "modules": [
     {
       "id": "co.amat",
@@ -32,6 +32,38 @@
         }
       ],
       "theoryExcerpt": "平均访问时间 AMAT AMAT = 命中时间 + 缺失率 × 缺失代价。命中率提高会线性降低缺失带来的开销。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
+    },
+    {
+      "id": "co.bus-arbitration",
+      "subject": "co",
+      "title": "总线仲裁三方式",
+      "objectives": [
+        "能比较链式/计数器/独立请求",
+        "能计算最坏仲裁时间",
+        "能说明线数代价"
+      ],
+      "labTasks": [
+        "改一个参数，观察哪一帧发生变化"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "总线仲裁三方式：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "链式逐级传递，计数器用 log2(n) 位，独立请求每个设备一对线但最快。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "总线仲裁三方式：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "总线仲裁三方式 链式逐级传递，计数器用 log2(n) 位，独立请求每个设备一对线但最快。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
     },
     {
       "id": "co.cache-associative",
@@ -100,6 +132,38 @@
       "theoryExcerpt": "Cache 直接映射与地址划分 直接映射 Cache 把主存的每一个块固定映射到唯一的 Cache 行： 地址被切成三段： 段 位数 作用 tag addrBits − offsetBits − indexBits 判断这一行装的是不是我要的块 index log2(行数) 定位到唯一一行 offset log2(块大小) 块内偏移 为什么同一地址会两次缺失 第 1 次访问块 10 装入第 2 行；第 2 次访问块 26 也映射到第 2 行，把块 10 踢掉； 第 3 次再访问块 10 —— 该行现在是块 26，于是又一次缺失。这就是 冲突缺失 ： Cache 里有空位，但这个块只能放在被别人占着的那一行。 教学要点：命中与否取决于"
     },
     {
+      "id": "co.cache-write",
+      "subject": "co",
+      "title": "写直达 vs 写回",
+      "objectives": [
+        "能说明两种写策略的差别",
+        "能计算主存写次数",
+        "能解释脏位的作用"
+      ],
+      "labTasks": [
+        "改一个参数，观察哪一帧发生变化"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "写直达 vs 写回：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "写直达每次写都写主存；写回只在脏块被换出时写主存，需要额外脏位。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "写直达 vs 写回：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "写直达 vs 写回 写直达每次写都写主存；写回只在脏块被换出时写主存，需要额外脏位。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
+    },
+    {
       "id": "co.ieee754",
       "subject": "co",
       "title": "IEEE 754 浮点拆解",
@@ -130,6 +194,38 @@
         }
       ],
       "theoryExcerpt": "IEEE 754 浮点拆解 单精度为 1+8+23 位：符号 1 位，阶码用移码（偏移 127），尾数隐含最高位 1。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
+    },
+    {
+      "id": "co.instruction-cycle",
+      "subject": "co",
+      "title": "指令周期的四个阶段",
+      "objectives": [
+        "能按顺序说出四个机器周期",
+        "能说明间接寻址多出的访存",
+        "能画出时序图"
+      ],
+      "labTasks": [
+        "改一个参数，观察哪一帧发生变化"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "指令周期的四个阶段：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "取指 → 间址（若有）→ 执行 → 中断（若有），每个阶段占用若干机器周期。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "指令周期的四个阶段：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "指令周期的四个阶段 取指 → 间址（若有）→ 执行 → 中断（若有），每个阶段占用若干机器周期。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
     },
     {
       "id": "co.instruction-format",
@@ -194,6 +290,38 @@
         }
       ],
       "theoryExcerpt": "I/O 方式：查询 / 中断 / DMA 程序查询让 CPU 全程等待；中断按次打断；DMA 由控制器搬运，CPU 只在首尾参与。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
+    },
+    {
+      "id": "co.raid",
+      "subject": "co",
+      "title": "RAID 0/1/5 容量与容错",
+      "objectives": [
+        "能计算可用容量",
+        "能说明各级别的容错能力",
+        "能解释校验盘的作用"
+      ],
+      "labTasks": [
+        "改一个参数，观察哪一帧发生变化"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "RAID 0/1/5 容量与容错：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "RAID0 无冗余；RAID1 镜像容量减半；RAID5 用一块盘存校验，可用 n−1 块。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "RAID 0/1/5 容量与容错：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "RAID 0/1/5 容量与容错 RAID0 无冗余；RAID1 镜像容量减半；RAID5 用一块盘存校验，可用 n−1 块。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
     },
     {
       "id": "cross.network-send-chain",
@@ -329,6 +457,38 @@
       "theoryExcerpt": "二叉树遍历与递归栈 三种深度优先遍历的差别只有一个： 访问根结点的位置 。 递归栈在做什么 每次 `traverse(child)` 都会把一个栈帧压入调用栈，返回时弹出。 所以： 栈深 = 还没返回的祖先个数 ； 栈的最大深度不超过 树高 ； 后序遍历时，访问根之前左右子树都必须返回过，栈里保留的是整条祖先链。 为什么中序非递归要用栈 中序要求「左子树全部完成 → 访问根 → 右子树」。走到最左边时，沿途的结点都还没访问， 必须 记住回来的路 ，这就是显式栈存在的理由。 层序遍历 层序用的是 队列 而不是栈：先入先出才能保证按层推进。"
     },
     {
+      "id": "ds.dijkstra",
+      "subject": "ds",
+      "title": "Dijkstra 单源最短路",
+      "objectives": [
+        "能按贪心顺序选出最短距离顶点",
+        "能写出松弛过程",
+        "能说明为何负权边会失效"
+      ],
+      "labTasks": [
+        "改一个参数，观察哪一帧发生变化"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "Dijkstra 单源最短路：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "每次从未确定的顶点里取距离最小的那个，然后松弛它的出边。贪心正确的前提是边权非负。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "Dijkstra 单源最短路：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "Dijkstra 单源最短路 每次从未确定的顶点里取距离最小的那个，然后松弛它的出边。贪心正确的前提是边权非负。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
+    },
+    {
       "id": "ds.graph-traversal",
       "subject": "ds",
       "title": "图的遍历 BFS / DFS",
@@ -424,6 +584,38 @@
         }
       ],
       "theoryExcerpt": "大根堆的插入与上浮 插入放在数组末尾，然后与父结点比较并交换，直到父结点不小于自己。上浮路径长度不超过树高。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
+    },
+    {
+      "id": "ds.kmp-next",
+      "subject": "ds",
+      "title": "KMP 的前缀函数",
+      "objectives": [
+        "能手工求 next 数组",
+        "能说明失配时的跳转",
+        "能比较与朴素匹配的差异"
+      ],
+      "labTasks": [
+        "改一个参数，观察哪一帧发生变化"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "KMP 的前缀函数：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "next[i] 是模式串前 i+1 个字符中「最长相等前后缀」的长度，失配时跳到这里而不是回到开头。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "KMP 的前缀函数：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "KMP 的前缀函数 next[i] 是模式串前 i+1 个字符中「最长相等前后缀」的长度，失配时跳到这里而不是回到开头。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
     },
     {
       "id": "ds.kruskal",
@@ -556,6 +748,70 @@
       "theoryExcerpt": "栈与队列的操作对比 栈只能在栈顶进出；队列从队尾进、队首出。同一串操作在两套结构上的结果完全不同，答题时要先判断操作对象。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
     },
     {
+      "id": "ds.topological",
+      "subject": "ds",
+      "title": "拓扑排序（Kahn）",
+      "objectives": [
+        "能算出各顶点入度",
+        "能按队列产出拓扑序",
+        "能判断图中是否有环"
+      ],
+      "labTasks": [
+        "改一个参数，观察哪一帧发生变化"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "拓扑排序（Kahn）：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "不断取出入度为 0 的顶点并删除其出边；若最后输出不足 n 个，说明有环。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "拓扑排序（Kahn）：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "拓扑排序（Kahn） 不断取出入度为 0 的顶点并删除其出边；若最后输出不足 n 个，说明有环。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
+    },
+    {
+      "id": "ds.union-find",
+      "subject": "ds",
+      "title": "并查集与路径压缩",
+      "objectives": [
+        "能写出 find/union",
+        "能说明路径压缩的作用",
+        "能分析近似复杂度"
+      ],
+      "labTasks": [
+        "改一个参数，观察哪一帧发生变化"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "并查集与路径压缩：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "find 沿父指针走到根，顺手把路径上的结点直接挂到根上；union 把一棵树的根指向另一棵。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "并查集与路径压缩：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "并查集与路径压缩 find 沿父指针走到根，顺手把路径上的结点直接挂到根上；union 把一棵树的根指向另一棵。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
+    },
+    {
       "id": "net.arp",
       "subject": "net",
       "title": "ARP 解析与帧的目的 MAC",
@@ -620,6 +876,70 @@
       "theoryExcerpt": "CRC 循环冗余校验 在数据后补 r 个 0（r 为多项式阶），用异或做模 2 除法，余数即 CRC 码。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
     },
     {
+      "id": "net.csma-cd",
+      "subject": "net",
+      "title": "CSMA/CD 与二进制退避",
+      "objectives": [
+        "能说明先听后发、边发边听",
+        "能计算退避窗口",
+        "能说明 16 次后丢弃"
+      ],
+      "labTasks": [
+        "改一个参数，观察哪一帧发生变化"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "CSMA/CD 与二进制退避：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "第 k 次冲突后从 0..2^k−1 个争用期里随机等待，连续 16 次冲突则丢弃。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "CSMA/CD 与二进制退避：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "CSMA/CD 与二进制退避 第 k 次冲突后从 0..2^k−1 个争用期里随机等待，连续 16 次冲突则丢弃。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
+    },
+    {
+      "id": "net.dns-resolve",
+      "subject": "net",
+      "title": "DNS 递归 vs 迭代查询",
+      "objectives": [
+        "能区分两种查询方式",
+        "能说出查询顺序",
+        "能比较主机的负担"
+      ],
+      "labTasks": [
+        "改一个参数，观察哪一帧发生变化"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "DNS 递归 vs 迭代查询：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "递归由本地 DNS 代劳；迭代由主机自己依次问根、顶级、权威服务器。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "DNS 递归 vs 迭代查询：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "DNS 递归 vs 迭代查询 递归由本地 DNS 代劳；迭代由主机自己依次问根、顶级、权威服务器。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
+    },
+    {
       "id": "net.gbn-window",
       "subject": "net",
       "title": "滑动窗口与回退 N",
@@ -650,6 +970,38 @@
         }
       ],
       "theoryExcerpt": "滑动窗口与回退 N GBN 的接收窗口为 1，某帧出错后该帧及其后所有帧都要重传，实现简单但重传多。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
+    },
+    {
+      "id": "net.nat",
+      "subject": "net",
+      "title": "NAT 地址转换",
+      "objectives": [
+        "能说明 NAT 改写了什么",
+        "能解释端口的作用",
+        "能分析映射表"
+      ],
+      "labTasks": [
+        "改一个参数，观察哪一帧发生变化"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "NAT 地址转换：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "出口路由器把内网源 IP/端口改成公网 IP/端口并记录，回包按表还原。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "NAT 地址转换：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "NAT 地址转换 出口路由器把内网源 IP/端口改成公网 IP/端口并记录，回包按表还原。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
     },
     {
       "id": "net.subnetting",
@@ -782,6 +1134,38 @@
       "theoryExcerpt": "磁盘调度 FCFS / SSTF / SCAN 每次选择下一个磁道，移动距离之和即总寻道长度。SSTF 贪心但不公平，SCAN 像电梯。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
     },
     {
+      "id": "os.file-allocate",
+      "subject": "os",
+      "title": "文件物理结构对比",
+      "objectives": [
+        "能比较三种分配方式",
+        "能计算访问第 k 块的开销",
+        "能说明各自碎片问题"
+      ],
+      "labTasks": [
+        "改一个参数，观察哪一帧发生变化"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "文件物理结构对比：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "连续分配寻址 1 次但有外部碎片；链接分配顺序访问；索引分配支持随机访问但多一次读索引。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "文件物理结构对比：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "文件物理结构对比 连续分配寻址 1 次但有外部碎片；链接分配顺序访问；索引分配支持随机访问但多一次读索引。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
+    },
+    {
       "id": "os.inode",
       "subject": "os",
       "title": "文件索引分配与 inode",
@@ -812,6 +1196,70 @@
         }
       ],
       "theoryExcerpt": "文件索引分配与 inode inode 中存直接块指针与多级间接指针，文件越大需要的间接层级越高。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
+    },
+    {
+      "id": "os.interrupt",
+      "subject": "os",
+      "title": "中断处理流程",
+      "objectives": [
+        "能按顺序说出处理步骤",
+        "能说明为何要关中断",
+        "能区分中断与异常"
+      ],
+      "labTasks": [
+        "改一个参数，观察哪一帧发生变化"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "中断处理流程：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "关中断 → 保存现场 → 识别中断源 → 执行服务 → 恢复现场并开中断。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "中断处理流程：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "中断处理流程 关中断 → 保存现场 → 识别中断源 → 执行服务 → 恢复现场并开中断。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
+    },
+    {
+      "id": "os.memory-partition",
+      "subject": "os",
+      "title": "动态分区分配策略",
+      "objectives": [
+        "能比较三种适应算法",
+        "能判断选中哪个分区",
+        "能解释外部碎片"
+      ],
+      "labTasks": [
+        "改一个参数，观察哪一帧发生变化"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "动态分区分配策略：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "首次适应找第一个够大的；最佳适应找最小的够用块；最坏适应找最大块。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "动态分区分配策略：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "动态分区分配策略 首次适应找第一个够大的；最佳适应找最小的够用块；最坏适应找最大块。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
     },
     {
       "id": "os.page-replacement",
@@ -878,6 +1326,38 @@
         }
       ],
       "theoryExcerpt": "进程调度：FCFS / SJF / RR 两个公式就够 平均等待、平均周转就是对所有进程取平均。 三种算法 算法 抢占 选择依据 特点 FCFS 否 到达顺序 简单；短作业被长作业挡住（护航效应） SJF 否 已到达者中运行时间最短 平均等待最短；长作业可能饥饿 RR 是（时间片到期） 就绪队列 FIFO 响应快；时间片过大≈FCFS，过小则切换开销高 RR 的入队次序（考试常错点） 同一时刻既有人到达、又有人时间片到期时，约定是： 新到达者先入队，被剥夺者排到队尾 。 举例（q=1）：P1(0,3)、P2(1,2)、P3(2,1) 注意 t=2~3 跑的是 P1 而不是刚到 P3——这就是\"轮转\"而非\"每次换人\"。"
+    },
+    {
+      "id": "os.segment",
+      "subject": "os",
+      "title": "段式地址转换",
+      "objectives": [
+        "能查段表算物理地址",
+        "能判断越界",
+        "能说明段与页的区别"
+      ],
+      "labTasks": [
+        "改一个参数，观察哪一帧发生变化"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "段式地址转换：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "段号查段表得基址与长度，偏移小于长度才合法，物理地址 = 基址 + 偏移。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "段式地址转换：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "段式地址转换 段号查段表得基址与长度，偏移小于长度才合法，物理地址 = 基址 + 偏移。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
     },
     {
       "id": "os.semaphore",

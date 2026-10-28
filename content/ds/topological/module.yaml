@@ -1,0 +1,42 @@
+id: ds.topological
+subject: ds
+title: 拓扑排序（Kahn）
+syllabusVersion: "2026"
+prerequisites: []
+related: []
+objectives:
+  - 能算出各顶点入度
+  - 能按队列产出拓扑序
+  - 能判断图中是否有环
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+simulator: "@visual408/sim-core#ds.topological"
+codeExamples: []
+labTasks:
+  - 改一个参数，观察哪一帧发生变化
+questions:
+  - id: q1
+    kind: choice
+    stem: 拓扑排序（Kahn）：下列哪项描述是正确的？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见解析
+    explanation: 不断取出入度为 0 的顶点并删除其出边；若最后输出不足 n 个，说明有环。
+  - id: q2
+    kind: hand-calculation
+    stem: 拓扑排序（Kahn）：按界面参数手算一次并对照结果。
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见界面指标
+    explanation: 把界面中间量与公式对照，注意单位与量纲。
+tests: tests.json
+sources:
+  - label: 408 考试大纲
+  - label: 本项目原创教学复述

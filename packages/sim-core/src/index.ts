@@ -67,3 +67,5 @@ export * from "./view";
 export { batch1 } from "./modules/generic/batch1";
 export { batch2 } from "./modules/generic/batch2";
 export { batch3 } from "./modules/generic/batch3";
+export { batch4 } from "./modules/generic/batch4";
+export { batch5 } from "./modules/generic/batch5";

@@ -1,0 +1,42 @@
+id: os.segment
+subject: os
+title: 段式地址转换
+syllabusVersion: "2026"
+prerequisites: []
+related: []
+objectives:
+  - 能查段表算物理地址
+  - 能判断越界
+  - 能说明段与页的区别
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+simulator: "@visual408/sim-core#os.segment"
+codeExamples: []
+labTasks:
+  - 改一个参数，观察哪一帧发生变化
+questions:
+  - id: q1
+    kind: choice
+    stem: 段式地址转换：下列哪项描述是正确的？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见解析
+    explanation: 段号查段表得基址与长度，偏移小于长度才合法，物理地址 = 基址 + 偏移。
+  - id: q2
+    kind: hand-calculation
+    stem: 段式地址转换：按界面参数手算一次并对照结果。
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见界面指标
+    explanation: 把界面中间量与公式对照，注意单位与量纲。
+tests: tests.json
+sources:
+  - label: 408 考试大纲
+  - label: 本项目原创教学复述

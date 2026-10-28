@@ -1,0 +1,42 @@
+id: co.instruction-cycle
+subject: co
+title: 指令周期的四个阶段
+syllabusVersion: "2026"
+prerequisites: []
+related: []
+objectives:
+  - 能按顺序说出四个机器周期
+  - 能说明间接寻址多出的访存
+  - 能画出时序图
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+simulator: "@visual408/sim-core#co.instruction-cycle"
+codeExamples: []
+labTasks:
+  - 改一个参数，观察哪一帧发生变化
+questions:
+  - id: q1
+    kind: choice
+    stem: 指令周期的四个阶段：下列哪项描述是正确的？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见解析
+    explanation: 取指 → 间址（若有）→ 执行 → 中断（若有），每个阶段占用若干机器周期。
+  - id: q2
+    kind: hand-calculation
+    stem: 指令周期的四个阶段：按界面参数手算一次并对照结果。
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见界面指标
+    explanation: 把界面中间量与公式对照，注意单位与量纲。
+tests: tests.json
+sources:
+  - label: 408 考试大纲
+  - label: 本项目原创教学复述

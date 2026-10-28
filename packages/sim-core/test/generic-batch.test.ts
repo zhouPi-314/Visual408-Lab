@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { batch1, batch2, batch3 } from "../src/index";
+import { batch1, batch2, batch3, batch4, batch5 } from "../src/index";
 import type { GenericState } from "../src/view";
 
 const run = (mod: any, input: any) => mod.simulate(input);
@@ -131,5 +131,86 @@ describe("net.arp", () => {
   it("跨网段时下一跳是网关", () => {
     const m = metricsOf(run(batch3.arp, { dst: "192.168.20.50" }));
     expect(m["下一跳"]).toBe("192.168.10.1");
+  });
+});
+describe("batch4/5 新增实验", () => {
+  const lastMetrics = (sim: any) => {
+    const last = sim.frames[sim.frames.length - 1]!;
+    const m: Record<string, any> = {};
+    for (const x of (last.state as any).metrics ?? []) m[x.label] = x.value;
+    return m;
+  };
+
+  it("ds.dijkstra：从 v0 出发的距离为 0,8,9,14,5", () => {
+    const sim = batch4.dijkstra.simulate({ start: "0" });
+    const last = sim.frames[sim.frames.length - 1]!.state as any;
+    const bars = last.views.find((v: any) => v.kind === "bars");
+    expect(bars.items.map((i: any) => i.value)).toEqual([0, 8, 9, 14, 5]);
+  });
+
+  it("ds.topological：DAG 输出 5 个顶点", () => {
+    expect(lastMetrics(batch4.topological.simulate({ note: "" }))["序列长度"]).toBe(5);
+  });
+
+  it("ds.union-find：三次合并后只剩 1 个连通分量", () => {
+    expect(lastMetrics(batch4.unionFind.simulate({ pairs: "0-1, 2-3, 1-3" }))["连通分量"]).toBe(1);
+  });
+
+  it("ds.kmp-next：ababaca 的 next 为 0,0,1,2,3,0,1", () => {
+    expect(lastMetrics(batch4.kmp.simulate({ pattern: "ababaca" }))["next"]).toBe("0,0,1,2,3,0,1");
+  });
+
+  it("co.cache-write：写回 100 次写入只产生 8 次主存写", () => {
+    const sim = batch4.cacheWrite.simulate({ writes: "100" });
+    const wb = sim.frames.find((f: any) => f.event.type === "WB")!;
+    expect((wb.state as any).metrics[0].value).toBe(8);
+  });
+
+  it("co.instruction-cycle：间接寻址总周期 12", () => {
+    expect(lastMetrics(batch4.instructionCycle.simulate({ mode: "indirect" }))["总周期"]).toBe(12);
+  });
+
+  it("co.bus-arbitration：8 设备时链式 8、计数器 3、独立 1", () => {
+    const sim = batch4.busArbitration.simulate({ devices: "8" });
+    const val = (type: string) => (sim.frames.find((f: any) => f.event.type === type)!.state as any).metrics[0].value;
+    expect(val("CHAIN")).toBe(8);
+    expect(val("COUNTER")).toBe(3);
+    expect(val("INDEP")).toBe(1);
+  });
+
+  it("co.raid：RAID5 四盘可用 3 块盘", () => {
+    expect(lastMetrics(batch4.raid.simulate({ level: "5", disks: "4" }))["可用容量"]).toBe(3);
+  });
+
+  it("os.memory-partition：最佳适应选中 #2（200）", () => {
+    const sim = batch5.partition.simulate({ size: "150", alg: "best" });
+    const choose = sim.frames.find((f: any) => f.event.type === "CHOOSE")!;
+    expect((choose.state as any).metrics[0].value).toBe("#2");
+  });
+
+  it("os.segment：段1 偏移 150 → 2150", () => {
+    expect(lastMetrics(batch5.segment.simulate({ seg: "1", offset: "150" }))["物理地址"]).toBe(2150);
+  });
+
+  it("os.file-allocate：索引分配寻址 2 次", () => {
+    expect(lastMetrics(batch5.fileAlloc.simulate({ blocks: "5" }))["寻址次数"]).toBe(2);
+  });
+
+  it("os.interrupt：I/O 中断走完五个阶段", () => {
+    const sim = batch5.interrupt.simulate({ kind: "io" });
+    expect(sim.frames).toHaveLength(5);
+    expect(lastMetrics(sim)["类型"]).toBe("I/O 完成");
+  });
+
+  it("net.csma-cd：k=2 时退避窗口 4", () => {
+    expect(lastMetrics(batch5.csma.simulate({ stations: "8", k: "2" }))["退避窗口"]).toBe(4);
+  });
+
+  it("net.nat：两台主机产生 2 条映射", () => {
+    expect(lastMetrics(batch5.nat.simulate({ hosts: "2" }))["映射条目"]).toBe(2);
+  });
+
+  it("net.dns-resolve：迭代查询主机发起 3 次", () => {
+    expect(lastMetrics(batch5.dns.simulate({ mode: "iterative" }))["主机发起查询"]).toBe(3);
   });
 });

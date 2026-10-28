@@ -42,6 +42,21 @@ const loaders: Record<ModuleId, () => Promise<{ module: AnyModule }>> = {
   "net.crc": () => import("./modules/generic/batch3").then((m) => ({ module: m.batch3.crc as AnyModule })),
   "net.gbn-window": () => import("./modules/generic/batch3").then((m) => ({ module: m.batch3.gbn as AnyModule })),
   "net.arp": () => import("./modules/generic/batch3").then((m) => ({ module: m.batch3.arp as AnyModule })),
+  "ds.dijkstra": () => import("./modules/generic/batch4").then((m) => ({ module: m.batch4.dijkstra as AnyModule })),
+  "ds.topological": () => import("./modules/generic/batch4").then((m) => ({ module: m.batch4.topological as AnyModule })),
+  "ds.union-find": () => import("./modules/generic/batch4").then((m) => ({ module: m.batch4.unionFind as AnyModule })),
+  "ds.kmp-next": () => import("./modules/generic/batch4").then((m) => ({ module: m.batch4.kmp as AnyModule })),
+  "co.cache-write": () => import("./modules/generic/batch4").then((m) => ({ module: m.batch4.cacheWrite as AnyModule })),
+  "co.instruction-cycle": () => import("./modules/generic/batch4").then((m) => ({ module: m.batch4.instructionCycle as AnyModule })),
+  "co.bus-arbitration": () => import("./modules/generic/batch4").then((m) => ({ module: m.batch4.busArbitration as AnyModule })),
+  "co.raid": () => import("./modules/generic/batch4").then((m) => ({ module: m.batch4.raid as AnyModule })),
+  "os.memory-partition": () => import("./modules/generic/batch5").then((m) => ({ module: m.batch5.partition as AnyModule })),
+  "os.segment": () => import("./modules/generic/batch5").then((m) => ({ module: m.batch5.segment as AnyModule })),
+  "os.file-allocate": () => import("./modules/generic/batch5").then((m) => ({ module: m.batch5.fileAlloc as AnyModule })),
+  "os.interrupt": () => import("./modules/generic/batch5").then((m) => ({ module: m.batch5.interrupt as AnyModule })),
+  "net.csma-cd": () => import("./modules/generic/batch5").then((m) => ({ module: m.batch5.csma as AnyModule })),
+  "net.nat": () => import("./modules/generic/batch5").then((m) => ({ module: m.batch5.nat as AnyModule })),
+  "net.dns-resolve": () => import("./modules/generic/batch5").then((m) => ({ module: m.batch5.dns as AnyModule })),
 };
 
 export function listModuleIds(): ModuleId[] {

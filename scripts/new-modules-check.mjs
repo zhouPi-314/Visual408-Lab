@@ -21,6 +21,10 @@ const routes = [
   "#co/co.instruction-format", "#co/co.ieee754", "#co/co.amat", "#co/co.io-modes",
   "#os/os.banker", "#os/os.semaphore", "#os/os.disk-scheduling", "#os/os.inode",
   "#net/net.crc", "#net/net.gbn-window", "#net/net.arp",
+  "#ds/ds.dijkstra", "#ds/ds.topological", "#ds/ds.union-find", "#ds/ds.kmp-next",
+  "#co/co.cache-write", "#co/co.instruction-cycle", "#co/co.bus-arbitration", "#co/co.raid",
+  "#os/os.memory-partition", "#os/os.segment", "#os/os.file-allocate", "#os/os.interrupt",
+  "#net/net.csma-cd", "#net/net.nat", "#net/net.dns-resolve",
 ];
 let ok = 0;
 for (const r of routes) {
