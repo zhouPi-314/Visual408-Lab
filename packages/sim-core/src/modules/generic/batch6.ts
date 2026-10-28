@@ -53,7 +53,7 @@ const bstSearch: GenericModuleDef<any> = (() => {
           specs.push({ type: "FOUND", narration: `第 ${steps} 次比较：${cur} == ${target} → 查找成功`, views: [grid(cur, true)], metrics: [{ label: "比较次数", value: steps }, { label: "结果", value: "命中", tone: "good" }] });
           break;
         }
-        const pair = CHILD[cur]!;
+        const pair: [number | null, number | null] = CHILD[cur]!;
         const next: number | null = target < cur ? pair[0] : pair[1];
         specs.push({ type: "STEP", narration: `第 ${steps} 次比较：${target} ${target < cur ? "<" : ">"} ${cur} → 去${target < cur ? "左" : "右"}子树`, views: [grid(cur, false)], metrics: [{ label: "比较次数", value: steps }] });
         cur = next;
