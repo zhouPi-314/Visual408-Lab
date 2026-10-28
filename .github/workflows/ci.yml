@@ -22,9 +22,10 @@ jobs:
       - name: Install
         run: pnpm install --frozen-lockfile
 
-      - name: Typecheck
+      - name: Clear TS incremental cache
         run: rm -f $(git ls-files '*.tsbuildinfo') 2>/dev/null || true
 
+      - name: Typecheck
         run: pnpm typecheck:ci
 
       - name: Unit tests
