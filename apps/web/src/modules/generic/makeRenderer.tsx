@@ -57,6 +57,14 @@ export function makeGenericRenderer(mod: GenericModuleDef<Record<string, never>>
             </label>
           );
         })}
+        <button
+          type="button"
+          className="btn btn-quiet reset-btn"
+          onClick={() => onChange(mod.defaultInput as Record<string, unknown>)}
+          aria-label="恢复默认参数"
+        >
+          重置参数
+        </button>
         <span className="field-note">{mod.summary}</span>
       </div>
     );

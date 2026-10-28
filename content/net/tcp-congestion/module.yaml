@@ -1,0 +1,42 @@
+id: net.tcp-congestion
+subject: net
+title: TCP 拥塞控制
+syllabusVersion: "2026"
+prerequisites: []
+related: []
+objectives:
+  - 能画出 cwnd 变化
+  - 能区分慢启动与拥塞避免
+  - 能说明丢包后的调整
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+simulator: "@visual408/sim-core#net.tcp-congestion"
+codeExamples: []
+labTasks:
+  - 点一个「快速场景」，对比不同参数下的结论
+questions:
+  - id: q1
+    kind: choice
+    stem: TCP 拥塞控制：下列哪项描述是正确的？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见解析
+    explanation: 慢启动每轮翻倍直到阈值，之后线性增长；检测到丢包则阈值减半、cwnd 回落。
+  - id: q2
+    kind: hand-calculation
+    stem: TCP 拥塞控制：按界面参数手算一次并对照结果。
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见界面指标
+    explanation: 把界面中间量与公式对照，注意单位与量纲。
+tests: tests.json
+sources:
+  - label: 408 考试大纲
+  - label: 本项目原创教学复述

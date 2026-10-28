@@ -11,7 +11,9 @@
     "typecheck": "tsc -b --pretty false",
     "content:check": "node scripts/validate-content.mjs",
     "content:index": "node scripts/build-content-index.mjs",
-    "a11y": "node scripts/a11y-audit.mjs http://127.0.0.1:4173/"
+    "a11y": "node scripts/a11y-audit.mjs http://127.0.0.1:4173/",
+    "typecheck:ci": "tsc -b --pretty false --force",
+    "verify": "pnpm typecheck:ci && pnpm test && pnpm content:check && pnpm build"
   },
   "devDependencies": {
     "@types/node": "^22.10.0",

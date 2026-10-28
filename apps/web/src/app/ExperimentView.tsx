@@ -40,6 +40,7 @@ export function ExperimentView({ moduleId, renderer: R, subject, subjectLabel, o
 
   const [index, setIndex] = useState(0);
   const [playing, setPlaying] = useState(false);
+  const [speed, setSpeed] = useState(1);
   const [toast, setToast] = useState<string | null>(null);
   const restoredFor = useRef<string | null>(null);
   const initialStep = useRef(Number(new URLSearchParams(window.location.search).get("step") ?? "0"));
@@ -86,9 +87,9 @@ export function ExperimentView({ moduleId, renderer: R, subject, subjectLabel, o
         }
         return i + 1;
       });
-    }, 700);
+    }, 700 / speed);
     return () => window.clearInterval(timer);
-  }, [playing, frames.length]);
+  }, [playing, frames.length, speed]);
 
   const go = useCallback(
     (next: number) => {
@@ -156,6 +157,10 @@ export function ExperimentView({ moduleId, renderer: R, subject, subjectLabel, o
         </p>
       </div>
 
+      <p className="kbd-hint">
+        <kbd>←</kbd> <kbd>→</kbd> 翻步 · <kbd>空格</kbd> 播放/暂停 · <kbd>R</kbd> 回到第一步
+      </p>
+
       <PracticePanel moduleId={moduleId} store={store} />
 
       <RelatedExperiments moduleId={moduleId} subject={subject} onOpen={onOpenModule} />
@@ -172,6 +177,29 @@ export function ExperimentView({ moduleId, renderer: R, subject, subjectLabel, o
           {playing ? "⏸ 暂停" : "▶ 播放"}
         </button>
         <button type="button" className="btn" onClick={() => go(index + 1)} disabled={index >= frames.length - 1}>下一步 ▶</button>
+        <button
+          type="button"
+          className="btn btn-quiet"
+          onClick={() => setSpeed((s) => (s === 1 ? 2 : 1))}
+          aria-pressed={speed === 2}
+          title="播放速度"
+        >
+          {speed === 1 ? "1×" : "2×"}
+        </button>
+        <button
+          type="button"
+          className="btn btn-quiet"
+          onClick={() => {
+            const url = new URL(window.location.href);
+            url.hash = `#${subject}/${moduleId}`;
+            url.searchParams.set("step", String(index + 1));
+            void navigator.clipboard?.writeText(url.toString());
+            notify("已复制本步链接");
+          }}
+          title="复制当前这一步的链接"
+        >
+          复制本步链接
+        </button>
 
         <div className="timeline">
           <input

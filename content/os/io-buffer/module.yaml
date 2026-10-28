@@ -1,0 +1,42 @@
+id: os.io-buffer
+subject: os
+title: I/O 缓冲对比
+syllabusVersion: "2026"
+prerequisites: []
+related: []
+objectives:
+  - 能比较无/单/双缓冲
+  - 能计算平均耗时
+  - 能说明缓冲池的作用
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+simulator: "@visual408/sim-core#os.io-buffer"
+codeExamples: []
+labTasks:
+  - 点一个「快速场景」，对比不同参数下的结论
+questions:
+  - id: q1
+    kind: choice
+    stem: I/O 缓冲对比：下列哪项描述是正确的？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见解析
+    explanation: 缓冲让设备传输与 CPU 处理重叠；双缓冲可以一块在传、一块在处理。
+  - id: q2
+    kind: hand-calculation
+    stem: I/O 缓冲对比：按界面参数手算一次并对照结果。
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见界面指标
+    explanation: 把界面中间量与公式对照，注意单位与量纲。
+tests: tests.json
+sources:
+  - label: 408 考试大纲
+  - label: 本项目原创教学复述

@@ -26,7 +26,8 @@ jobs:
         with:
           node-version: 24
       - run: pnpm install --frozen-lockfile
-      - run: pnpm typecheck
+      - run: rm -f $(git ls-files '*.tsbuildinfo') 2>/dev/null || true
+ run: pnpm typecheck:ci
       - run: pnpm test
       - run: pnpm content:check
       - run: node scripts/scan-secrets.mjs

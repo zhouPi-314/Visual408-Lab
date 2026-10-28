@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-28T03:09:48.231Z",
+  "generatedAt": "2026-10-28T03:27:47.888Z",
   "modules": [
     {
       "id": "co.amat",
@@ -64,6 +64,38 @@
         }
       ],
       "theoryExcerpt": "总线仲裁三方式 链式逐级传递，计数器用 log2(n) 位，独立请求每个设备一对线但最快。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
+    },
+    {
+      "id": "co.bus-timing",
+      "subject": "co",
+      "title": "同步/异步/半同步总线",
+      "objectives": [
+        "能比较三种时序",
+        "能说明异步握手的线数代价",
+        "能判断适用场景"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "同步/异步/半同步总线：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "同步靠统一时钟最快但迁就慢设备；异步用请求/应答握手最灵活；半同步折中。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "同步/异步/半同步总线：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "同步/异步/半同步总线 同步靠统一时钟最快但迁就慢设备；异步用请求/应答握手最灵活；半同步折中。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
     },
     {
       "id": "co.cache-associative",
@@ -196,6 +228,38 @@
       "theoryExcerpt": "写直达 vs 写回 写直达每次写都写主存；写回只在脏块被换出时写主存，需要额外脏位。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
     },
     {
+      "id": "co.cpi",
+      "subject": "co",
+      "title": "CPI 与加速比",
+      "objectives": [
+        "能计算平均 CPI",
+        "能分析指令混合的影响",
+        "能用 Amdahl 定律估算加速比"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "CPI 与加速比：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "CPI=Σ(指令比例×该类周期数)；整体加速受限于未被优化的部分。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "CPI 与加速比：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "CPI 与加速比 CPI=Σ(指令比例×该类周期数)；整体加速受限于未被优化的部分。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
+    },
+    {
       "id": "co.data-representation",
       "subject": "co",
       "title": "原码/反码/补码/移码",
@@ -258,6 +322,38 @@
         }
       ],
       "theoryExcerpt": "IEEE 754 浮点拆解 单精度为 1+8+23 位：符号 1 位，阶码用移码（偏移 127），尾数隐含最高位 1。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
+    },
+    {
+      "id": "co.instruction-addressing",
+      "subject": "co",
+      "title": "寻址方式与有效地址",
+      "objectives": [
+        "能写出各寻址方式的 EA 公式",
+        "能计算间接寻址的访存次数",
+        "能区分变址与相对寻址"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "寻址方式与有效地址：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "直接 EA=A；间接 EA=(A)；变址 EA=A+(R)；相对 EA=(PC)+A。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "寻址方式与有效地址：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "寻址方式与有效地址 直接 EA=A；间接 EA=(A)；变址 EA=A+(R)；相对 EA=(PC)+A。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
     },
     {
       "id": "co.instruction-cycle",
@@ -386,6 +482,38 @@
         }
       ],
       "theoryExcerpt": "多体交叉存储器 m 体交叉用地址低位作体号，连续访问时各体可并行启动，吞吐接近 m 倍。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
+    },
+    {
+      "id": "co.pipeline-hazard",
+      "subject": "co",
+      "title": "流水线冒险与气泡",
+      "objectives": [
+        "能识别三类冒险",
+        "能计算停顿周期",
+        "能说明分支预测的代价"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "流水线冒险与气泡：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "数据相关插入气泡等待，控制相关清空流水线，结构相关排队使用部件。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "流水线冒险与气泡：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "流水线冒险与气泡 数据相关插入气泡等待，控制相关清空流水线，结构相关排队使用部件。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
     },
     {
       "id": "co.pipeline-timing",
@@ -550,6 +678,70 @@
         }
       ],
       "theoryExcerpt": "虚拟地址访问链路 一次普通访存，在硬件与操作系统之间要走完八步： 阶段 谁在做 失败会怎样 1 拆分地址 MMU — 2 查 TLB MMU 未命中 → 查页表 3 查页表 MMU 页不在内存 → 缺页 4 缺页处理 操作系统 调页、更新页表与 TLB 5 合成物理地址 MMU — 6 查 Cache CPU 缺失 → 访问主存 7 访问主存 存储系统 装入 Cache 块 8 返回数据 CPU — 最容易混的两个「命中」 TLB 命中 ：虚拟页 → 物理页 的映射缓存命中，省掉页表访问。 Cache 命中 ：物理地址对应的主存块已在 Cache 里，省掉主存访问。 二者 互不蕴含 。同一次访问可以 TLB 命中却 Cache 缺失"
+    },
+    {
+      "id": "ds.avl-rotation",
+      "subject": "ds",
+      "title": "AVL 树的四种旋转",
+      "objectives": [
+        "能判断失衡类型",
+        "能写出四种旋转",
+        "能说明旋转后高度恢复"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "AVL 树的四种旋转：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "插入后若平衡因子绝对值超过 1，按 LL/RR/LR/RL 旋转，局部调整即可恢复平衡。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "AVL 树的四种旋转：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "AVL 树的四种旋转 插入后若平衡因子绝对值超过 1，按 LL/RR/LR/RL 旋转，局部调整即可恢复平衡。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
+    },
+    {
+      "id": "ds.b-tree",
+      "subject": "ds",
+      "title": "B 树的插入与分裂",
+      "objectives": [
+        "能说明分裂的触发条件",
+        "能写出分裂后关键字上移",
+        "能解释为何 B 树保持平衡"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "B 树的插入与分裂：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "结点关键字超过上限就从中位数分裂，中间关键字上移到父结点，树向上生长，所有叶子始终在同一层。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "B 树的插入与分裂：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "B 树的插入与分裂 结点关键字超过上限就从中位数分裂，中间关键字上移到父结点，树向上生长，所有叶子始终在同一层。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
     },
     {
       "id": "ds.binary-tree-traversal",
@@ -746,6 +938,38 @@
       "theoryExcerpt": "图的遍历：BFS / DFS 两种策略，两个容器 容器 过程 BFS 队列（FIFO） 访问起点 → 邻居全部入队 → 逐个出队继续扩散 DFS 栈（LIFO） 访问起点 → 立刻深入第一个未访问邻居 → 走不通再回退 同一张图，从不同起点、不同邻接点顺序出发，遍历序列都可能不同—— 考试要求按邻接矩阵「下标从小到大」的顺序处理 ，本例即如此。 例：0 1、0 2、1 3、2 3、3 4，从 0 出发 不变式 每个结点 最多访问一次 （靠 visited 数组）； 遍历生成树的边数 = 访问结点数 − 1（连通图）； BFS 得到的是 边数最少 的路径树；DFS 不保证。 复杂度：邻接矩阵 O(n²)，邻接表 O(n+e)。"
     },
     {
+      "id": "ds.hash-chain",
+      "subject": "ds",
+      "title": "哈希表：拉链法",
+      "objectives": [
+        "能画出拉链结构",
+        "能计算装载因子",
+        "能比较与开放定址的差异"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "哈希表：拉链法：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "冲突的元素挂到同一个桶的链表上；装填因子 α=n/m，链越长平均查找越长。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "哈希表：拉链法：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "哈希表：拉链法 冲突的元素挂到同一个桶的链表上；装填因子 α=n/m，链越长平均查找越长。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
+    },
+    {
       "id": "ds.hash-table",
       "subject": "ds",
       "title": "哈希表：除留余数与线性探测",
@@ -904,6 +1128,38 @@
         }
       ],
       "theoryExcerpt": "Kruskal 最小生成树 按权值从小到大考察边，若两端不在同一集合就加入并合并集合，否则跳过。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
+    },
+    {
+      "id": "ds.radix-sort",
+      "subject": "ds",
+      "title": "基数排序",
+      "objectives": [
+        "能说明按位分配与收集",
+        "能解释为何需要稳定排序",
+        "能分析时间与空间复杂度"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "基数排序：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "从最低位开始，按当前位把元素分配到 10 个桶，再按桶序收集；每轮稳定，位数决定轮数。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "基数排序：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "基数排序 从最低位开始，按当前位把元素分配到 10 个桶，再按桶序收集；每轮稳定，位数决定轮数。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
     },
     {
       "id": "ds.search",
@@ -1292,6 +1548,38 @@
       "theoryExcerpt": "滑动窗口与回退 N GBN 的接收窗口为 1，某帧出错后该帧及其后所有帧都要重传，实现简单但重传多。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
     },
     {
+      "id": "net.ip-fragment",
+      "subject": "net",
+      "title": "IP 分片计算",
+      "objectives": [
+        "能计算每片数据长度",
+        "能计算片偏移",
+        "能判断 MF 标志"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "IP 分片计算：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "MTU 减去首部后按 8 的倍数切片，片偏移以 8 字节为单位，最后一片 MF=0。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "IP 分片计算：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "IP 分片计算 MTU 减去首部后按 8 的倍数切片，片偏移以 8 字节为单位，最后一片 MF=0。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
+    },
+    {
       "id": "net.nat",
       "subject": "net",
       "title": "NAT 地址转换",
@@ -1322,6 +1610,38 @@
         }
       ],
       "theoryExcerpt": "NAT 地址转换 出口路由器把内网源 IP/端口改成公网 IP/端口并记录，回包按表还原。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
+    },
+    {
+      "id": "net.socket-api",
+      "subject": "net",
+      "title": "TCP socket 调用顺序",
+      "objectives": [
+        "能写出服务端调用序列",
+        "能说明 accept 的语义",
+        "能对应三次握手的位置"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "TCP socket 调用顺序：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "服务端 socket→bind→listen→accept，客户端 socket→connect；connect 触发三次握手。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "TCP socket 调用顺序：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "TCP socket 调用顺序 服务端 socket→bind→listen→accept，客户端 socket→connect；connect 触发三次握手。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
     },
     {
       "id": "net.subnetting",
@@ -1355,6 +1675,38 @@
         }
       ],
       "theoryExcerpt": "IPv4 子网划分 四个量，一条链 减 2 是因为：网络地址代表子网本身，广播地址代表\"本子网所有主机\"，两者都不能分配给某台主机。 例：192.168.10.130/25 特例 前缀 可用主机 说明 /31 2 点对点链路（RFC 3021，两端各一个地址，不保留网络/广播） /32 1 单主机路由 /30 2 传统点对点写法 考试通常按\"减 2\"的规则算，遇到 /31、/32 需按题目约定说明。"
+    },
+    {
+      "id": "net.tcp-congestion",
+      "subject": "net",
+      "title": "TCP 拥塞控制",
+      "objectives": [
+        "能画出 cwnd 变化",
+        "能区分慢启动与拥塞避免",
+        "能说明丢包后的调整"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "TCP 拥塞控制：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "慢启动每轮翻倍直到阈值，之后线性增长；检测到丢包则阈值减半、cwnd 回落。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "TCP 拥塞控制：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "TCP 拥塞控制 慢启动每轮翻倍直到阈值，之后线性增长；检测到丢包则阈值减半、cwnd 回落。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
     },
     {
       "id": "net.tcp-flow-control",
@@ -1452,6 +1804,38 @@
         }
       ],
       "theoryExcerpt": "银行家算法与安全序列 每次尝试满足一个进程，完成后归还资源，直到所有进程完成；若中途卡住则不安全。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
+    },
+    {
+      "id": "os.deadlock-detect",
+      "subject": "os",
+      "title": "死锁检测",
+      "objectives": [
+        "能画资源分配图",
+        "能判断环路与死锁",
+        "能说明实例数的影响"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "死锁检测：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "资源分配图有环且每类资源只有一个实例时必然死锁；多实例时需进一步化简判断。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "死锁检测：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "死锁检测 资源分配图有环且每类资源只有一个实例时必然死锁；多实例时需进一步化简判断。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
     },
     {
       "id": "os.disk-layout",
@@ -1614,6 +1998,38 @@
       "theoryExcerpt": "中断处理流程 关中断 → 保存现场 → 识别中断源 → 执行服务 → 恢复现场并开中断。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
     },
     {
+      "id": "os.io-buffer",
+      "subject": "os",
+      "title": "I/O 缓冲对比",
+      "objectives": [
+        "能比较无/单/双缓冲",
+        "能计算平均耗时",
+        "能说明缓冲池的作用"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "I/O 缓冲对比：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "缓冲让设备传输与 CPU 处理重叠；双缓冲可以一块在传、一块在处理。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "I/O 缓冲对比：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "I/O 缓冲对比 缓冲让设备传输与 CPU 处理重叠；双缓冲可以一块在传、一块在处理。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
+    },
+    {
       "id": "os.memory-partition",
       "subject": "os",
       "title": "动态分区分配策略",
@@ -1644,6 +2060,38 @@
         }
       ],
       "theoryExcerpt": "动态分区分配策略 首次适应找第一个够大的；最佳适应找最小的够用块；最坏适应找最大块。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
+    },
+    {
+      "id": "os.mlfq",
+      "subject": "os",
+      "title": "多级反馈队列",
+      "objectives": [
+        "能描述队列与时间片规则",
+        "能分析降级过程",
+        "能说明为何长作业不饿死"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "多级反馈队列：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "新进程进最高优先级队列，用完时间片降一级；短作业快速完成，长作业逐步下沉但仍会执行。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "多级反馈队列：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "多级反馈队列 新进程进最高优先级队列，用完时间片降一级；短作业快速完成，长作业逐步下沉但仍会执行。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
     },
     {
       "id": "os.page-fault",
@@ -1806,6 +2254,38 @@
         }
       ],
       "theoryExcerpt": "段式地址转换 段号查段表得基址与长度，偏移小于长度才合法，物理地址 = 基址 + 偏移。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
+    },
+    {
+      "id": "os.segment-page",
+      "subject": "os",
+      "title": "段页式地址转换",
+      "objectives": [
+        "能按段号查段表",
+        "能再查页表得页框",
+        "能计算物理地址"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "段页式地址转换：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "先由段号找到该段的页表基址，再由页号查页表得到页框号，最后拼页内偏移。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "段页式地址转换：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "段页式地址转换 先由段号找到该段的页表基址，再由页号查页表得到页框号，最后拼页内偏移。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
     },
     {
       "id": "os.semaphore",

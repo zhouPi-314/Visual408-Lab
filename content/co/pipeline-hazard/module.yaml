@@ -1,0 +1,42 @@
+id: co.pipeline-hazard
+subject: co
+title: 流水线冒险与气泡
+syllabusVersion: "2026"
+prerequisites: []
+related: []
+objectives:
+  - 能识别三类冒险
+  - 能计算停顿周期
+  - 能说明分支预测的代价
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+simulator: "@visual408/sim-core#co.pipeline-hazard"
+codeExamples: []
+labTasks:
+  - 点一个「快速场景」，对比不同参数下的结论
+questions:
+  - id: q1
+    kind: choice
+    stem: 流水线冒险与气泡：下列哪项描述是正确的？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见解析
+    explanation: 数据相关插入气泡等待，控制相关清空流水线，结构相关排队使用部件。
+  - id: q2
+    kind: hand-calculation
+    stem: 流水线冒险与气泡：按界面参数手算一次并对照结果。
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见界面指标
+    explanation: 把界面中间量与公式对照，注意单位与量纲。
+tests: tests.json
+sources:
+  - label: 408 考试大纲
+  - label: 本项目原创教学复述

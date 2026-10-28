@@ -1,0 +1,42 @@
+id: net.ip-fragment
+subject: net
+title: IP 分片计算
+syllabusVersion: "2026"
+prerequisites: []
+related: []
+objectives:
+  - 能计算每片数据长度
+  - 能计算片偏移
+  - 能判断 MF 标志
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+simulator: "@visual408/sim-core#net.ip-fragment"
+codeExamples: []
+labTasks:
+  - 点一个「快速场景」，对比不同参数下的结论
+questions:
+  - id: q1
+    kind: choice
+    stem: IP 分片计算：下列哪项描述是正确的？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见解析
+    explanation: MTU 减去首部后按 8 的倍数切片，片偏移以 8 字节为单位，最后一片 MF=0。
+  - id: q2
+    kind: hand-calculation
+    stem: IP 分片计算：按界面参数手算一次并对照结果。
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见界面指标
+    explanation: 把界面中间量与公式对照，注意单位与量纲。
+tests: tests.json
+sources:
+  - label: 408 考试大纲
+  - label: 本项目原创教学复述

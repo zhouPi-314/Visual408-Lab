@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { batch1, batch2, batch3, batch4, batch5, batch6, batch7 } from "../src/index";
+import { batch1, batch2, batch3, batch4, batch5, batch6, batch7, batch8, batch9 } from "../src/index";
 import type { GenericState } from "../src/view";
 
 const run = (mod: any, input: any) => mod.simulate(input);
@@ -288,5 +288,86 @@ describe("batch6/7 第三批实验", () => {
 
   it("net.dhcp：DORA 共 4 个报文", () => {
     expect(lastM(batch7.dhcp.simulate({ relay: "no" }))["报文数"]).toBe(4);
+  });
+});
+describe("batch8/9 第四批实验", () => {
+  const lastM = (sim: any) => {
+    const last = sim.frames[sim.frames.length - 1]!;
+    const m: Record<string, any> = {};
+    for (const x of (last.state as any).metrics ?? []) m[x.label] = x.value;
+    return m;
+  };
+
+  it("ds.b-tree：插入 10,20,30,40 触发分裂，根只剩 1 个关键字", () => {
+    const sim = batch8.bTree.simulate({ keys: "10,20,30,40" });
+    expect(lastM(sim)["根关键字"]).toBe(1);
+    expect(sim.frames.some((f: any) => f.event.type === "SPLIT")).toBe(true);
+  });
+
+  it("ds.radix-sort：排序后最小 329、最大 839", () => {
+    const m = lastM(batch8.radixSort.simulate({ nums: "329, 457, 657, 839, 436, 720, 355" }));
+    expect(m["最小值"]).toBe(329);
+    expect(m["最大值"]).toBe(839);
+  });
+
+  it("ds.hash-chain：全部同余时最长链为 5", () => {
+    expect(lastM(batch8.hashChain.simulate({ keys: "12, 19, 26, 33, 5", size: "7" }))["最长链"]).toBe(5);
+  });
+
+  it("ds.avl-rotation：30,10,20 经 LR 旋转后根为 20", () => {
+    expect(lastM(batch8.avl.simulate({ seq: "30, 10, 20" }))["根"]).toBe(20);
+  });
+
+  it("co.pipeline-hazard：load-use 总周期 10", () => {
+    expect(lastM(batch8.hazard.simulate({ kind: "load" }))["总周期"]).toBe(10);
+  });
+
+  it("co.instruction-addressing：变址寻址 EA=2100", () => {
+    const m = lastM(batch8.addressing.simulate({ mode: "index", addr: "100", reg: "2000" }));
+    expect(m["EA"]).toBe(2100);
+    expect(m["访存"]).toBe(1);
+  });
+
+  it("co.bus-timing：异步总线事务 5 个周期", () => {
+    expect(lastM(batch8.busTiming.simulate({ mode: "async" }))["事务周期"]).toBe(5);
+  });
+
+  it("co.cpi：运算密集型 CPI=1.60", () => {
+    const sim = batch8.cpi.simulate({ mix: "a" });
+    const frame = sim.frames.find((f: any) => f.event.type === "CPI")!;
+    expect((frame.state as any).metrics[0].value).toBe("1.60");
+  });
+
+  it("os.mlfq：8 个时间片后已用时间 8", () => {
+    const sim = batch9.mlfq.simulate({ ticks: "8" });
+    const runs = sim.frames.filter((f: any) => f.event.type === "RUN");
+    const lastRun = runs[runs.length - 1]!.state as any;
+    expect(lastRun.metrics.find((m: any) => m.label === "已用时间")?.value).toBe(8);
+  });
+
+  it("os.deadlock-detect：循环等待判定为死锁", () => {
+    expect(lastM(batch9.deadlockDetect.simulate({ case_: "dead" }))["死锁"]).toBe("是");
+  });
+
+  it("os.segment-page：1:2:64 → 物理地址 4160", () => {
+    expect(lastM(batch9.segmentPage.simulate({ addr: "1:2:64" }))["物理地址"]).toBe(4160);
+  });
+
+  it("os.io-buffer：双缓冲每块耗时 4", () => {
+    expect(lastM(batch9.ioBuffer.simulate({ mode: "double" }))["每块耗时"]).toBe(4);
+  });
+
+  it("net.tcp-congestion：8 轮后 cwnd=12", () => {
+    const sim = batch9.congestion.simulate({ rounds: "8" });
+    const m = (sim.frames[sim.frames.length - 1]!.state as any).metrics;
+    expect(m.find((x: any) => x.label.includes("cwnd"))?.value).toBe(12);
+  });
+
+  it("net.socket-api：服务端 6 个关键调用", () => {
+    expect(lastM(batch9.socketApi.simulate({ role: "server" }))["调用数"]).toBe(6);
+  });
+
+  it("net.ip-fragment：2000 字节 / MTU1500 分成 2 片", () => {
+    expect(lastM(batch9.ipFragment.simulate({ mtu: "1500", len: "2000" }))["分片数"]).toBe(2);
   });
 });

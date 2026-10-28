@@ -1,0 +1,42 @@
+id: os.mlfq
+subject: os
+title: 多级反馈队列
+syllabusVersion: "2026"
+prerequisites: []
+related: []
+objectives:
+  - 能描述队列与时间片规则
+  - 能分析降级过程
+  - 能说明为何长作业不饿死
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+simulator: "@visual408/sim-core#os.mlfq"
+codeExamples: []
+labTasks:
+  - 点一个「快速场景」，对比不同参数下的结论
+questions:
+  - id: q1
+    kind: choice
+    stem: 多级反馈队列：下列哪项描述是正确的？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见解析
+    explanation: 新进程进最高优先级队列，用完时间片降一级；短作业快速完成，长作业逐步下沉但仍会执行。
+  - id: q2
+    kind: hand-calculation
+    stem: 多级反馈队列：按界面参数手算一次并对照结果。
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见界面指标
+    explanation: 把界面中间量与公式对照，注意单位与量纲。
+tests: tests.json
+sources:
+  - label: 408 考试大纲
+  - label: 本项目原创教学复述

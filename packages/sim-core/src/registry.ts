@@ -72,6 +72,21 @@ const loaders: Record<ModuleId, () => Promise<{ module: AnyModule }>> = {
   "net.cidr-route": () => import("./modules/generic/batch7").then((m) => ({ module: m.batch7.cidrRoute as AnyModule })),
   "net.tcp-flow-control": () => import("./modules/generic/batch7").then((m) => ({ module: m.batch7.tcpFlow as AnyModule })),
   "net.dhcp": () => import("./modules/generic/batch7").then((m) => ({ module: m.batch7.dhcp as AnyModule })),
+  "ds.b-tree": () => import("./modules/generic/batch8").then((m) => ({ module: m.batch8.bTree as AnyModule })),
+  "ds.radix-sort": () => import("./modules/generic/batch8").then((m) => ({ module: m.batch8.radixSort as AnyModule })),
+  "ds.hash-chain": () => import("./modules/generic/batch8").then((m) => ({ module: m.batch8.hashChain as AnyModule })),
+  "ds.avl-rotation": () => import("./modules/generic/batch8").then((m) => ({ module: m.batch8.avl as AnyModule })),
+  "co.pipeline-hazard": () => import("./modules/generic/batch8").then((m) => ({ module: m.batch8.hazard as AnyModule })),
+  "co.instruction-addressing": () => import("./modules/generic/batch8").then((m) => ({ module: m.batch8.addressing as AnyModule })),
+  "co.bus-timing": () => import("./modules/generic/batch8").then((m) => ({ module: m.batch8.busTiming as AnyModule })),
+  "co.cpi": () => import("./modules/generic/batch8").then((m) => ({ module: m.batch8.cpi as AnyModule })),
+  "os.mlfq": () => import("./modules/generic/batch9").then((m) => ({ module: m.batch9.mlfq as AnyModule })),
+  "os.deadlock-detect": () => import("./modules/generic/batch9").then((m) => ({ module: m.batch9.deadlockDetect as AnyModule })),
+  "os.segment-page": () => import("./modules/generic/batch9").then((m) => ({ module: m.batch9.segmentPage as AnyModule })),
+  "os.io-buffer": () => import("./modules/generic/batch9").then((m) => ({ module: m.batch9.ioBuffer as AnyModule })),
+  "net.tcp-congestion": () => import("./modules/generic/batch9").then((m) => ({ module: m.batch9.congestion as AnyModule })),
+  "net.socket-api": () => import("./modules/generic/batch9").then((m) => ({ module: m.batch9.socketApi as AnyModule })),
+  "net.ip-fragment": () => import("./modules/generic/batch9").then((m) => ({ module: m.batch9.ipFragment as AnyModule })),
 };
 
 export function listModuleIds(): ModuleId[] {

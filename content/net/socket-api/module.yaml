@@ -1,0 +1,42 @@
+id: net.socket-api
+subject: net
+title: TCP socket 调用顺序
+syllabusVersion: "2026"
+prerequisites: []
+related: []
+objectives:
+  - 能写出服务端调用序列
+  - 能说明 accept 的语义
+  - 能对应三次握手的位置
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+simulator: "@visual408/sim-core#net.socket-api"
+codeExamples: []
+labTasks:
+  - 点一个「快速场景」，对比不同参数下的结论
+questions:
+  - id: q1
+    kind: choice
+    stem: TCP socket 调用顺序：下列哪项描述是正确的？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见解析
+    explanation: 服务端 socket→bind→listen→accept，客户端 socket→connect；connect 触发三次握手。
+  - id: q2
+    kind: hand-calculation
+    stem: TCP socket 调用顺序：按界面参数手算一次并对照结果。
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见界面指标
+    explanation: 把界面中间量与公式对照，注意单位与量纲。
+tests: tests.json
+sources:
+  - label: 408 考试大纲
+  - label: 本项目原创教学复述

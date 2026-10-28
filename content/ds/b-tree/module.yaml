@@ -1,0 +1,42 @@
+id: ds.b-tree
+subject: ds
+title: B 树的插入与分裂
+syllabusVersion: "2026"
+prerequisites: []
+related: []
+objectives:
+  - 能说明分裂的触发条件
+  - 能写出分裂后关键字上移
+  - 能解释为何 B 树保持平衡
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+simulator: "@visual408/sim-core#ds.b-tree"
+codeExamples: []
+labTasks:
+  - 点一个「快速场景」，对比不同参数下的结论
+questions:
+  - id: q1
+    kind: choice
+    stem: B 树的插入与分裂：下列哪项描述是正确的？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见解析
+    explanation: 结点关键字超过上限就从中位数分裂，中间关键字上移到父结点，树向上生长，所有叶子始终在同一层。
+  - id: q2
+    kind: hand-calculation
+    stem: B 树的插入与分裂：按界面参数手算一次并对照结果。
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见界面指标
+    explanation: 把界面中间量与公式对照，注意单位与量纲。
+tests: tests.json
+sources:
+  - label: 408 考试大纲
+  - label: 本项目原创教学复述
