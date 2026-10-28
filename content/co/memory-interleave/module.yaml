@@ -1,0 +1,42 @@
+id: co.memory-interleave
+subject: co
+title: 多体交叉存储器
+syllabusVersion: "2026"
+prerequisites: []
+related: []
+objectives:
+  - 能说明地址如何分体
+  - 能计算交叉访问周期
+  - 能说明加速比
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+simulator: "@visual408/sim-core#co.memory-interleave"
+codeExamples: []
+labTasks:
+  - 点一个「快速场景」，对比不同参数下的结论
+questions:
+  - id: q1
+    kind: choice
+    stem: 多体交叉存储器：下列哪项描述是正确的？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见解析
+    explanation: m 体交叉用地址低位作体号，连续访问时各体可并行启动，吞吐接近 m 倍。
+  - id: q2
+    kind: hand-calculation
+    stem: 多体交叉存储器：按界面参数手算一次并对照结果。
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见界面指标
+    explanation: 把界面中间量与公式对照，注意单位与量纲。
+tests: tests.json
+sources:
+  - label: 408 考试大纲
+  - label: 本项目原创教学复述

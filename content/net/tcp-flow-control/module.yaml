@@ -1,0 +1,42 @@
+id: net.tcp-flow-control
+subject: net
+title: TCP 流量控制
+syllabusVersion: "2026"
+prerequisites: []
+related: []
+objectives:
+  - 能说明 rwnd 的含义
+  - 能分析窗口收缩
+  - 能解释零窗口与探测
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+simulator: "@visual408/sim-core#net.tcp-flow-control"
+codeExamples: []
+labTasks:
+  - 点一个「快速场景」，对比不同参数下的结论
+questions:
+  - id: q1
+    kind: choice
+    stem: TCP 流量控制：下列哪项描述是正确的？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见解析
+    explanation: 接收方通过 rwnd 通告还能接收多少字节，窗口为 0 时发送方停止并周期性探测。
+  - id: q2
+    kind: hand-calculation
+    stem: TCP 流量控制：按界面参数手算一次并对照结果。
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见界面指标
+    explanation: 把界面中间量与公式对照，注意单位与量纲。
+tests: tests.json
+sources:
+  - label: 408 考试大纲
+  - label: 本项目原创教学复述

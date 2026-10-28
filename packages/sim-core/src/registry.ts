@@ -57,6 +57,21 @@ const loaders: Record<ModuleId, () => Promise<{ module: AnyModule }>> = {
   "net.csma-cd": () => import("./modules/generic/batch5").then((m) => ({ module: m.batch5.csma as AnyModule })),
   "net.nat": () => import("./modules/generic/batch5").then((m) => ({ module: m.batch5.nat as AnyModule })),
   "net.dns-resolve": () => import("./modules/generic/batch5").then((m) => ({ module: m.batch5.dns as AnyModule })),
+  "ds.bst-search": () => import("./modules/generic/batch6").then((m) => ({ module: m.batch6.bstSearch as AnyModule })),
+  "ds.floyd": () => import("./modules/generic/batch6").then((m) => ({ module: m.batch6.floyd as AnyModule })),
+  "ds.huffman": () => import("./modules/generic/batch6").then((m) => ({ module: m.batch6.huffman as AnyModule })),
+  "ds.cyclic-queue": () => import("./modules/generic/batch6").then((m) => ({ module: m.batch6.cyclicQueue as AnyModule })),
+  "co.pipeline-timing": () => import("./modules/generic/batch6").then((m) => ({ module: m.batch6.pipelineTiming as AnyModule })),
+  "co.cache-miss-types": () => import("./modules/generic/batch6").then((m) => ({ module: m.batch6.missTypes as AnyModule })),
+  "co.data-representation": () => import("./modules/generic/batch6").then((m) => ({ module: m.batch6.dataRepr as AnyModule })),
+  "co.memory-interleave": () => import("./modules/generic/batch6").then((m) => ({ module: m.batch6.interleave as AnyModule })),
+  "os.page-fault": () => import("./modules/generic/batch7").then((m) => ({ module: m.batch7.pageFault as AnyModule })),
+  "os.thrashing": () => import("./modules/generic/batch7").then((m) => ({ module: m.batch7.thrashing as AnyModule })),
+  "os.disk-layout": () => import("./modules/generic/batch7").then((m) => ({ module: m.batch7.diskLayout as AnyModule })),
+  "os.peterson": () => import("./modules/generic/batch7").then((m) => ({ module: m.batch7.peterson as AnyModule })),
+  "net.cidr-route": () => import("./modules/generic/batch7").then((m) => ({ module: m.batch7.cidrRoute as AnyModule })),
+  "net.tcp-flow-control": () => import("./modules/generic/batch7").then((m) => ({ module: m.batch7.tcpFlow as AnyModule })),
+  "net.dhcp": () => import("./modules/generic/batch7").then((m) => ({ module: m.batch7.dhcp as AnyModule })),
 };
 
 export function listModuleIds(): ModuleId[] {

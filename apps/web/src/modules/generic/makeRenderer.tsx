@@ -11,8 +11,24 @@ export function makeGenericRenderer(mod: GenericModuleDef<Record<string, never>>
   const fields = mod.fields as FieldDef[];
 
   function Inputs({ input, onChange }: { input: Record<string, unknown>; onChange: (n: Record<string, unknown>) => void; issues: readonly unknown[] }) {
+    const presets = (mod.presets ?? []) as { label: string; patch: Record<string, unknown> }[];
     return (
       <div className="input-bar">
+        {presets.length > 0 && (
+          <div className="preset-row" role="group" aria-label="预设场景">
+            <span className="preset-label">快速场景</span>
+            {presets.map((p) => (
+              <button
+                key={p.label}
+                type="button"
+                className="btn btn-quiet preset-chip"
+                onClick={() => onChange({ ...input, ...p.patch })}
+              >
+                {p.label}
+              </button>
+            ))}
+          </div>
+        )}
         {fields.map((f) => {
           const value = String(input[f.key] ?? "");
           if (f.type === "select") {

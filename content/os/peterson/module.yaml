@@ -1,0 +1,42 @@
+id: os.peterson
+subject: os
+title: Peterson 互斥算法
+syllabusVersion: "2026"
+prerequisites: []
+related: []
+objectives:
+  - 能写出两个进程的进入协议
+  - 能说明 flag 与 turn 的作用
+  - 能指出算法适用条件
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+simulator: "@visual408/sim-core#os.peterson"
+codeExamples: []
+labTasks:
+  - 点一个「快速场景」，对比不同参数下的结论
+questions:
+  - id: q1
+    kind: choice
+    stem: Peterson 互斥算法：下列哪项描述是正确的？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见解析
+    explanation: 设置 flag 表示想进，把 turn 让给对方，进入前再检查对方是否想进且轮到自己。
+  - id: q2
+    kind: hand-calculation
+    stem: Peterson 互斥算法：按界面参数手算一次并对照结果。
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见界面指标
+    explanation: 把界面中间量与公式对照，注意单位与量纲。
+tests: tests.json
+sources:
+  - label: 408 考试大纲
+  - label: 本项目原创教学复述

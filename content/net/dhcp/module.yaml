@@ -1,0 +1,42 @@
+id: net.dhcp
+subject: net
+title: DHCP 的 DORA 四报文
+syllabusVersion: "2026"
+prerequisites: []
+related: []
+objectives:
+  - 能按顺序说出四个报文
+  - 能说明为何用广播
+  - 能解释中继的作用
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+simulator: "@visual408/sim-core#net.dhcp"
+codeExamples: []
+labTasks:
+  - 点一个「快速场景」，对比不同参数下的结论
+questions:
+  - id: q1
+    kind: choice
+    stem: DHCP 的 DORA 四报文：下列哪项描述是正确的？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见解析
+    explanation: Discover → Offer → Request → ACK，客户端此时还没有 IP，只能广播；跨网段需 DHCP 中继。
+  - id: q2
+    kind: hand-calculation
+    stem: DHCP 的 DORA 四报文：按界面参数手算一次并对照结果。
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见界面指标
+    explanation: 把界面中间量与公式对照，注意单位与量纲。
+tests: tests.json
+sources:
+  - label: 408 考试大纲
+  - label: 本项目原创教学复述

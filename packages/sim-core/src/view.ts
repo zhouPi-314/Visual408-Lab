@@ -26,7 +26,7 @@ export type ViewData =
       markers?: { at: number; label: string }[];
     }
   | { kind: "fields"; label?: string; items: ViewCell[] }
-  | { kind: "matrix"; label?: string; columns: string[]; rowHeaders: string[]; rows: number[][]; highlight?: [number, number][] };
+  | { kind: "matrix"; label?: string; columns: string[]; rowHeaders: string[]; rows: (number | string)[][]; highlight?: [number, number][] };
 
 export interface MetricItem {
   label: string;
@@ -45,12 +45,19 @@ export type FieldDef =
   | { key: string; label: string; type: "text"; placeholder?: string }
   | { key: string; label: string; type: "number"; min: number; max: number };
 
+export interface GenericPreset {
+  label: string;
+  patch: Record<string, unknown>;
+}
+
 export interface GenericModuleDef<I> {
   meta: SimMeta;
   summary: string;
   takeaway: string;
   fields: FieldDef[];
   defaultInput: I;
+  /** 一键场景：点一下就把一组参数填进去 */
+  presets?: GenericPreset[];
   simulate: Simulator<I, GenericState, { type: string }>;
 }
 

@@ -1,0 +1,42 @@
+id: co.pipeline-timing
+subject: co
+title: 流水线时空图
+syllabusVersion: "2026"
+prerequisites: []
+related: []
+objectives:
+  - 能画出五级流水线时空图
+  - 能计算总周期
+  - 能说明流水线加速比上限
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+simulator: "@visual408/sim-core#co.pipeline-timing"
+codeExamples: []
+labTasks:
+  - 点一个「快速场景」，对比不同参数下的结论
+questions:
+  - id: q1
+    kind: choice
+    stem: 流水线时空图：下列哪项描述是正确的？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见解析
+    explanation: k 级流水线执行 n 条指令需要 n+k−1 个周期，理想加速比趋近 k。
+  - id: q2
+    kind: hand-calculation
+    stem: 流水线时空图：按界面参数手算一次并对照结果。
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见界面指标
+    explanation: 把界面中间量与公式对照，注意单位与量纲。
+tests: tests.json
+sources:
+  - label: 408 考试大纲
+  - label: 本项目原创教学复述

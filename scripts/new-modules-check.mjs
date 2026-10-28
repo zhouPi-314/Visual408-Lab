@@ -25,6 +25,10 @@ const routes = [
   "#co/co.cache-write", "#co/co.instruction-cycle", "#co/co.bus-arbitration", "#co/co.raid",
   "#os/os.memory-partition", "#os/os.segment", "#os/os.file-allocate", "#os/os.interrupt",
   "#net/net.csma-cd", "#net/net.nat", "#net/net.dns-resolve",
+  "#ds/ds.bst-search", "#ds/ds.floyd", "#ds/ds.huffman", "#ds/ds.cyclic-queue",
+  "#co/co.pipeline-timing", "#co/co.cache-miss-types", "#co/co.data-representation", "#co/co.memory-interleave",
+  "#os/os.page-fault", "#os/os.thrashing", "#os/os.disk-layout", "#os/os.peterson",
+  "#net/net.cidr-route", "#net/net.tcp-flow-control", "#net/net.dhcp",
 ];
 let ok = 0;
 for (const r of routes) {

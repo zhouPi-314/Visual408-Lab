@@ -665,3 +665,9 @@ kbd { font-family: var(--mono); font-size: 11px; padding: 1px 5px; border-radius
 .gv-marker { position: absolute; top: -6px; bottom: -6px; width: 2px; background: var(--accent); }
 .gv-marker span { position: absolute; top: -16px; left: 2px; font-size: 9.5px; color: var(--accent); white-space: nowrap; }
 .gv-timeline-axis { display: flex; justify-content: space-between; font-size: 10px; color: var(--ink-3); font-family: var(--mono); }
+/* ---------- 预设场景 ---------- */
+.preset-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; width: 100%; margin-bottom: 4px; }
+.preset-label { font-size: 11.5px; color: var(--ink-3); }
+.preset-chip { font-size: 12px; padding: 5px 11px; border: 1px solid var(--line); }
+.preset-chip:hover { border-color: var(--primary); color: var(--primary-hover); background: var(--primary-soft); }
+.gv-table-wrap { -webkit-overflow-scrolling: touch; }

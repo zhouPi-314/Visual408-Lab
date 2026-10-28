@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { batch1, batch2, batch3, batch4, batch5 } from "../src/index";
+import { batch1, batch2, batch3, batch4, batch5, batch6, batch7 } from "../src/index";
 import type { GenericState } from "../src/view";
 
 const run = (mod: any, input: any) => mod.simulate(input);
@@ -212,5 +212,81 @@ describe("batch4/5 新增实验", () => {
 
   it("net.dns-resolve：迭代查询主机发起 3 次", () => {
     expect(lastMetrics(batch5.dns.simulate({ mode: "iterative" }))["主机发起查询"]).toBe(3);
+  });
+});
+describe("batch6/7 第三批实验", () => {
+  const lastM = (sim: any) => {
+    const last = sim.frames[sim.frames.length - 1]!;
+    const m: Record<string, any> = {};
+    for (const x of (last.state as any).metrics ?? []) m[x.label] = x.value;
+    return m;
+  };
+
+  it("ds.bst-search：找 40 比较 3 次并命中", () => {
+    const m = lastM(batch6.bstSearch.simulate({ target: "40" }));
+    expect(m["比较次数"]).toBe(3);
+    expect(m["结果"]).toBe("命中");
+  });
+
+  it("ds.floyd：v0→v3 最短路 9", () => {
+    expect(lastM(batch6.floyd.simulate({ note: "" }))["d[0][3]"]).toBe(9);
+  });
+
+  it("ds.huffman：5,9,12,13,16,45 的 WPL 为 224", () => {
+    expect(lastM(batch6.huffman.simulate({ weights: "5, 9, 12, 13, 16, 45" }))["WPL"]).toBe(224);
+  });
+
+  it("ds.cyclic-queue：示例操作后 front=1、rear=4", () => {
+    const m = lastM(batch6.cyclicQueue.simulate({ ops: "入3, 入7, 出, 入1, 入4" }));
+    expect(m["front"]).toBe(1);
+    expect(m["rear"]).toBe(4);
+  });
+
+  it("co.pipeline-timing：5 条指令需要 9 个周期", () => {
+    expect(lastM(batch6.pipelineTiming.simulate({ n: "5" }))["总周期"]).toBe(9);
+  });
+
+  it("co.cache-miss-types：0,8,0,8 产生 2 强制 + 2 冲突", () => {
+    const sim = batch6.missTypes.simulate({ seq: "0, 8, 0, 8" });
+    const m = (sim.frames[sim.frames.length - 1]!.state as any).metrics;
+    const get = (k: string) => m.find((x: any) => x.label === k)?.value;
+    expect(get("强制")).toBe(2);
+    expect(get("冲突")).toBe(2);
+  });
+
+  it("co.data-representation：-5 的补码是 11111011", () => {
+    expect(lastM(batch6.dataRepr.simulate({ value: "-5" }))["补码"]).toBe("11111011");
+  });
+
+  it("co.memory-interleave：4 体 8 字加速比 1.6", () => {
+    expect(lastM(batch6.interleave.simulate({ banks: "4", words: "8" }))["加速比"]).toBe("1.60×");
+  });
+
+  it("os.page-fault：脏页需要 2 次磁盘 I/O", () => {
+    expect(lastM(batch7.pageFault.simulate({ dirty: "dirty" }))["磁盘 I/O"]).toBe(2);
+  });
+
+  it("os.thrashing：4 个页框对 8 页工作集判为抖动", () => {
+    expect(lastM(batch7.thrashing.simulate({ frames: "4" }))["状态"]).toBe("抖动");
+  });
+
+  it("os.disk-layout：C=100,H=3,S=17 → LBA 101005", () => {
+    expect(lastM(batch7.diskLayout.simulate({ c: "100", h: "3", s: "17" }))["LBA"]).toBe(101005);
+  });
+
+  it("os.peterson：不会同时进入临界区", () => {
+    expect(lastM(batch7.peterson.simulate({ order: "p0" }))["互斥"]).toBe("成立");
+  });
+
+  it("net.cidr-route：10.1.2.5 命中 /24 走 R3", () => {
+    expect(lastM(batch7.cidrRoute.simulate({ dst: "10.1.2.5" }))["下一跳"]).toBe("R3");
+  });
+
+  it("net.tcp-flow-control：窗口收缩后恢复为 4", () => {
+    expect(lastM(batch7.tcpFlow.simulate({ rwnd: "4" }))["rwnd"]).toBe(4);
+  });
+
+  it("net.dhcp：DORA 共 4 个报文", () => {
+    expect(lastM(batch7.dhcp.simulate({ relay: "no" }))["报文数"]).toBe(4);
   });
 });

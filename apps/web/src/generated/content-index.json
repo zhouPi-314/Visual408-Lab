@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-28T02:59:18.131Z",
+  "generatedAt": "2026-10-28T03:09:48.231Z",
   "modules": [
     {
       "id": "co.amat",
@@ -132,6 +132,38 @@
       "theoryExcerpt": "Cache 直接映射与地址划分 直接映射 Cache 把主存的每一个块固定映射到唯一的 Cache 行： 地址被切成三段： 段 位数 作用 tag addrBits − offsetBits − indexBits 判断这一行装的是不是我要的块 index log2(行数) 定位到唯一一行 offset log2(块大小) 块内偏移 为什么同一地址会两次缺失 第 1 次访问块 10 装入第 2 行；第 2 次访问块 26 也映射到第 2 行，把块 10 踢掉； 第 3 次再访问块 10 —— 该行现在是块 26，于是又一次缺失。这就是 冲突缺失 ： Cache 里有空位，但这个块只能放在被别人占着的那一行。 教学要点：命中与否取决于"
     },
     {
+      "id": "co.cache-miss-types",
+      "subject": "co",
+      "title": "三类缺失判定",
+      "objectives": [
+        "能区分强制/冲突/容量缺失",
+        "能针对直接映射判断缺失类型",
+        "能说明全相联只有强制缺失"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "三类缺失判定：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "第一次访问必然强制缺失；同 index 不同 tag 互踢是冲突缺失；相联度足够时只剩强制与容量缺失。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "三类缺失判定：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "三类缺失判定 第一次访问必然强制缺失；同 index 不同 tag 互踢是冲突缺失；相联度足够时只剩强制与容量缺失。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
+    },
+    {
       "id": "co.cache-write",
       "subject": "co",
       "title": "写直达 vs 写回",
@@ -162,6 +194,38 @@
         }
       ],
       "theoryExcerpt": "写直达 vs 写回 写直达每次写都写主存；写回只在脏块被换出时写主存，需要额外脏位。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
+    },
+    {
+      "id": "co.data-representation",
+      "subject": "co",
+      "title": "原码/反码/补码/移码",
+      "objectives": [
+        "能写出负数的四种机器数",
+        "能说明补码的加减法优势",
+        "能说明移码与补码的关系"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "原码/反码/补码/移码：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "补码等于反码加一；移码把补码的符号位取反，便于比较阶码大小。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "原码/反码/补码/移码：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "原码/反码/补码/移码 补码等于反码加一；移码把补码的符号位取反，便于比较阶码大小。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
     },
     {
       "id": "co.ieee754",
@@ -290,6 +354,70 @@
         }
       ],
       "theoryExcerpt": "I/O 方式：查询 / 中断 / DMA 程序查询让 CPU 全程等待；中断按次打断；DMA 由控制器搬运，CPU 只在首尾参与。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
+    },
+    {
+      "id": "co.memory-interleave",
+      "subject": "co",
+      "title": "多体交叉存储器",
+      "objectives": [
+        "能说明地址如何分体",
+        "能计算交叉访问周期",
+        "能说明加速比"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "多体交叉存储器：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "m 体交叉用地址低位作体号，连续访问时各体可并行启动，吞吐接近 m 倍。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "多体交叉存储器：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "多体交叉存储器 m 体交叉用地址低位作体号，连续访问时各体可并行启动，吞吐接近 m 倍。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
+    },
+    {
+      "id": "co.pipeline-timing",
+      "subject": "co",
+      "title": "流水线时空图",
+      "objectives": [
+        "能画出五级流水线时空图",
+        "能计算总周期",
+        "能说明流水线加速比上限"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "流水线时空图：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "k 级流水线执行 n 条指令需要 n+k−1 个周期，理想加速比趋近 k。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "流水线时空图：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "流水线时空图 k 级流水线执行 n 条指令需要 n+k−1 个周期，理想加速比趋近 k。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
     },
     {
       "id": "co.raid",
@@ -457,6 +585,70 @@
       "theoryExcerpt": "二叉树遍历与递归栈 三种深度优先遍历的差别只有一个： 访问根结点的位置 。 递归栈在做什么 每次 `traverse(child)` 都会把一个栈帧压入调用栈，返回时弹出。 所以： 栈深 = 还没返回的祖先个数 ； 栈的最大深度不超过 树高 ； 后序遍历时，访问根之前左右子树都必须返回过，栈里保留的是整条祖先链。 为什么中序非递归要用栈 中序要求「左子树全部完成 → 访问根 → 右子树」。走到最左边时，沿途的结点都还没访问， 必须 记住回来的路 ，这就是显式栈存在的理由。 层序遍历 层序用的是 队列 而不是栈：先入先出才能保证按层推进。"
     },
     {
+      "id": "ds.bst-search",
+      "subject": "ds",
+      "title": "二叉搜索树查找路径",
+      "objectives": [
+        "能写出查找的比较序列",
+        "能计算查找长度",
+        "能判断查找失败的位置"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "二叉搜索树查找路径：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "从根开始，比当前结点小往左、大往右，直到命中或走到空指针。路径长度就是比较次数。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "二叉搜索树查找路径：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "二叉搜索树查找路径 从根开始，比当前结点小往左、大往右，直到命中或走到空指针。路径长度就是比较次数。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
+    },
+    {
+      "id": "ds.cyclic-queue",
+      "subject": "ds",
+      "title": "循环队列的取模运算",
+      "objectives": [
+        "能写出 front/rear 的更新",
+        "能判断队空与队满",
+        "能说明牺牲一个单元的原因"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "循环队列的取模运算：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "入队 rear=(rear+1)%n，出队 front=(front+1)%n；为了区分空与满，通常牺牲一个存储单元。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "循环队列的取模运算：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "循环队列的取模运算 入队 rear=(rear+1)%n，出队 front=(front+1)%n；为了区分空与满，通常牺牲一个存储单元。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
+    },
+    {
       "id": "ds.dijkstra",
       "subject": "ds",
       "title": "Dijkstra 单源最短路",
@@ -487,6 +679,38 @@
         }
       ],
       "theoryExcerpt": "Dijkstra 单源最短路 每次从未确定的顶点里取距离最小的那个，然后松弛它的出边。贪心正确的前提是边权非负。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
+    },
+    {
+      "id": "ds.floyd",
+      "subject": "ds",
+      "title": "Floyd 全源最短路",
+      "objectives": [
+        "能按 k 轮更新距离矩阵",
+        "能说明为何 k 必须在最外层",
+        "能还原最短路径"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "Floyd 全源最短路：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "每一轮允许经过顶点 k 中转，三重循环里 k 在最外层，顺序错了结果就错。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "Floyd 全源最短路：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "Floyd 全源最短路 每一轮允许经过顶点 k 中转，三重循环里 k 在最外层，顺序错了结果就错。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
     },
     {
       "id": "ds.graph-traversal",
@@ -584,6 +808,38 @@
         }
       ],
       "theoryExcerpt": "大根堆的插入与上浮 插入放在数组末尾，然后与父结点比较并交换，直到父结点不小于自己。上浮路径长度不超过树高。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
+    },
+    {
+      "id": "ds.huffman",
+      "subject": "ds",
+      "title": "哈夫曼树与带权路径长度",
+      "objectives": [
+        "能按贪心合并构造哈夫曼树",
+        "能计算 WPL",
+        "能说明前缀编码的意义"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "哈夫曼树与带权路径长度：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "每次取权值最小的两个结点合并，新结点权值为两者之和；WPL 等于所有合并代价之和。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "哈夫曼树与带权路径长度：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "哈夫曼树与带权路径长度 每次取权值最小的两个结点合并，新结点权值为两者之和；WPL 等于所有合并代价之和。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
     },
     {
       "id": "ds.kmp-next",
@@ -844,6 +1100,38 @@
       "theoryExcerpt": "ARP 解析与帧的目的 MAC ARP 把 IP 解析成 MAC，只解析下一跳：同网段问主机，跨网段问网关。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
     },
     {
+      "id": "net.cidr-route",
+      "subject": "net",
+      "title": "路由表最长前缀匹配",
+      "objectives": [
+        "能对目的地址做掩码匹配",
+        "能选出最长前缀",
+        "能解释默认路由"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "路由表最长前缀匹配：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "同一目的地址可能匹配多条路由，转发时选前缀最长（最具体）的那条。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "路由表最长前缀匹配：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "路由表最长前缀匹配 同一目的地址可能匹配多条路由，转发时选前缀最长（最具体）的那条。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
+    },
+    {
       "id": "net.crc",
       "subject": "net",
       "title": "CRC 循环冗余校验",
@@ -906,6 +1194,38 @@
         }
       ],
       "theoryExcerpt": "CSMA/CD 与二进制退避 第 k 次冲突后从 0..2^k−1 个争用期里随机等待，连续 16 次冲突则丢弃。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
+    },
+    {
+      "id": "net.dhcp",
+      "subject": "net",
+      "title": "DHCP 的 DORA 四报文",
+      "objectives": [
+        "能按顺序说出四个报文",
+        "能说明为何用广播",
+        "能解释中继的作用"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "DHCP 的 DORA 四报文：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "Discover → Offer → Request → ACK，客户端此时还没有 IP，只能广播；跨网段需 DHCP 中继。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "DHCP 的 DORA 四报文：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "DHCP 的 DORA 四报文 Discover → Offer → Request → ACK，客户端此时还没有 IP，只能广播；跨网段需 DHCP 中继。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
     },
     {
       "id": "net.dns-resolve",
@@ -1037,6 +1357,38 @@
       "theoryExcerpt": "IPv4 子网划分 四个量，一条链 减 2 是因为：网络地址代表子网本身，广播地址代表\"本子网所有主机\"，两者都不能分配给某台主机。 例：192.168.10.130/25 特例 前缀 可用主机 说明 /31 2 点对点链路（RFC 3021，两端各一个地址，不保留网络/广播） /32 1 单主机路由 /30 2 传统点对点写法 考试通常按\"减 2\"的规则算，遇到 /31、/32 需按题目约定说明。"
     },
     {
+      "id": "net.tcp-flow-control",
+      "subject": "net",
+      "title": "TCP 流量控制",
+      "objectives": [
+        "能说明 rwnd 的含义",
+        "能分析窗口收缩",
+        "能解释零窗口与探测"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "TCP 流量控制：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "接收方通过 rwnd 通告还能接收多少字节，窗口为 0 时发送方停止并周期性探测。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "TCP 流量控制：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "TCP 流量控制 接收方通过 rwnd 通告还能接收多少字节，窗口为 0 时发送方停止并周期性探测。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
+    },
+    {
       "id": "net.tcp-handshake",
       "subject": "net",
       "title": "TCP 连接建立与释放",
@@ -1100,6 +1452,38 @@
         }
       ],
       "theoryExcerpt": "银行家算法与安全序列 每次尝试满足一个进程，完成后归还资源，直到所有进程完成；若中途卡住则不安全。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
+    },
+    {
+      "id": "os.disk-layout",
+      "subject": "os",
+      "title": "磁盘地址 CHS→LBA",
+      "objectives": [
+        "能由 CHS 算出 LBA",
+        "能说明各字段范围",
+        "能比较寻道与旋转开销"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "磁盘地址 CHS→LBA：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "LBA = ((C×磁头数)+H)×每道扇区数 + (S−1)；寻道是毫秒级，旋转是微秒级。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "磁盘地址 CHS→LBA：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "磁盘地址 CHS→LBA LBA = ((C×磁头数)+H)×每道扇区数 + (S−1)；寻道是毫秒级，旋转是微秒级。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
     },
     {
       "id": "os.disk-scheduling",
@@ -1262,6 +1646,38 @@
       "theoryExcerpt": "动态分区分配策略 首次适应找第一个够大的；最佳适应找最小的够用块；最坏适应找最大块。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
     },
     {
+      "id": "os.page-fault",
+      "subject": "os",
+      "title": "缺页异常的处理流程",
+      "objectives": [
+        "能按顺序说出处理步骤",
+        "能说明脏页为何多一次 I/O",
+        "能解释为何要重新执行指令"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "缺页异常的处理流程：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "缺页陷入内核 → 查页表 → 选牺牲页 →（脏则写回）→ 读入 → 更新页表 → 重新执行。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "缺页异常的处理流程：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "缺页异常的处理流程 缺页陷入内核 → 查页表 → 选牺牲页 →（脏则写回）→ 读入 → 更新页表 → 重新执行。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
+    },
+    {
       "id": "os.page-replacement",
       "subject": "os",
       "title": "页面置换：FIFO / LRU / OPT",
@@ -1293,6 +1709,38 @@
         }
       ],
       "theoryExcerpt": "页面置换：FIFO / LRU / OPT 物理块满了又发生缺页，就必须选一页淘汰。 算法 淘汰谁 是否栈算法 FIFO 最早 调入 的页 否（会出现 Belady 异常） LRU 最久 未使用 的页 是 OPT 将来 最晚 才会用到的页 是（不可实现，只作理论上界） 三个必须记住的坑 1. 命中时也要更新 LRU 次序 ，否则 LRU 会退化成 FIFO。 2. FIFO 的淘汰依据是装入时间，不是使用时间 。 3. Belady 异常只出现在非栈算法上：经典用例 `1,2,3,4,1,2,5,1,2,3,4,5` 在 FIFO 下 3 帧缺页 9 次、4 帧反而 10 次。 记号 引用串长度 = 总访问次数 缺页率 = 缺页次数"
+    },
+    {
+      "id": "os.peterson",
+      "subject": "os",
+      "title": "Peterson 互斥算法",
+      "objectives": [
+        "能写出两个进程的进入协议",
+        "能说明 flag 与 turn 的作用",
+        "能指出算法适用条件"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "Peterson 互斥算法：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "设置 flag 表示想进，把 turn 让给对方，进入前再检查对方是否想进且轮到自己。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "Peterson 互斥算法：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "Peterson 互斥算法 设置 flag 表示想进，把 turn 让给对方，进入前再检查对方是否想进且轮到自己。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
     },
     {
       "id": "os.scheduling",
@@ -1390,6 +1838,38 @@
         }
       ],
       "theoryExcerpt": "PV 操作与生产者 消费者 P 操作先减再判断是否小于 0，V 操作先加再唤醒。mutex 保证互斥，empty/full 保证同步。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
+    },
+    {
+      "id": "os.thrashing",
+      "subject": "os",
+      "title": "工作集与抖动",
+      "objectives": [
+        "能说明抖动的成因",
+        "能判断页框是否足够",
+        "能提出缓解措施"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "工作集与抖动：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "分配的页框少于工作集时，进程频繁缺页，CPU 利用率反而下降，这就是抖动。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "工作集与抖动：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "工作集与抖动 分配的页框少于工作集时，进程频繁缺页，CPU 利用率反而下降，这就是抖动。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
     }
   ]
 }

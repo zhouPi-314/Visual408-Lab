@@ -1,0 +1,42 @@
+id: os.thrashing
+subject: os
+title: 工作集与抖动
+syllabusVersion: "2026"
+prerequisites: []
+related: []
+objectives:
+  - 能说明抖动的成因
+  - 能判断页框是否足够
+  - 能提出缓解措施
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+simulator: "@visual408/sim-core#os.thrashing"
+codeExamples: []
+labTasks:
+  - 点一个「快速场景」，对比不同参数下的结论
+questions:
+  - id: q1
+    kind: choice
+    stem: 工作集与抖动：下列哪项描述是正确的？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见解析
+    explanation: 分配的页框少于工作集时，进程频繁缺页，CPU 利用率反而下降，这就是抖动。
+  - id: q2
+    kind: hand-calculation
+    stem: 工作集与抖动：按界面参数手算一次并对照结果。
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见界面指标
+    explanation: 把界面中间量与公式对照，注意单位与量纲。
+tests: tests.json
+sources:
+  - label: 408 考试大纲
+  - label: 本项目原创教学复述

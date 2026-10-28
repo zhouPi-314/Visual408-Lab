@@ -1,0 +1,42 @@
+id: co.data-representation
+subject: co
+title: 原码/反码/补码/移码
+syllabusVersion: "2026"
+prerequisites: []
+related: []
+objectives:
+  - 能写出负数的四种机器数
+  - 能说明补码的加减法优势
+  - 能说明移码与补码的关系
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+simulator: "@visual408/sim-core#co.data-representation"
+codeExamples: []
+labTasks:
+  - 点一个「快速场景」，对比不同参数下的结论
+questions:
+  - id: q1
+    kind: choice
+    stem: 原码/反码/补码/移码：下列哪项描述是正确的？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见解析
+    explanation: 补码等于反码加一；移码把补码的符号位取反，便于比较阶码大小。
+  - id: q2
+    kind: hand-calculation
+    stem: 原码/反码/补码/移码：按界面参数手算一次并对照结果。
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见界面指标
+    explanation: 把界面中间量与公式对照，注意单位与量纲。
+tests: tests.json
+sources:
+  - label: 408 考试大纲
+  - label: 本项目原创教学复述

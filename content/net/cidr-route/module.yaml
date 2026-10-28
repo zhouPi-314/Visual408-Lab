@@ -1,0 +1,42 @@
+id: net.cidr-route
+subject: net
+title: 路由表最长前缀匹配
+syllabusVersion: "2026"
+prerequisites: []
+related: []
+objectives:
+  - 能对目的地址做掩码匹配
+  - 能选出最长前缀
+  - 能解释默认路由
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+simulator: "@visual408/sim-core#net.cidr-route"
+codeExamples: []
+labTasks:
+  - 点一个「快速场景」，对比不同参数下的结论
+questions:
+  - id: q1
+    kind: choice
+    stem: 路由表最长前缀匹配：下列哪项描述是正确的？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见解析
+    explanation: 同一目的地址可能匹配多条路由，转发时选前缀最长（最具体）的那条。
+  - id: q2
+    kind: hand-calculation
+    stem: 路由表最长前缀匹配：按界面参数手算一次并对照结果。
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见界面指标
+    explanation: 把界面中间量与公式对照，注意单位与量纲。
+tests: tests.json
+sources:
+  - label: 408 考试大纲
+  - label: 本项目原创教学复述
