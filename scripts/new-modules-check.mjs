@@ -33,6 +33,7 @@ const routes = [
   "#co/co.pipeline-hazard", "#co/co.instruction-addressing", "#co/co.bus-timing", "#co/co.cpi",
   "#os/os.mlfq", "#os/os.deadlock-detect", "#os/os.segment-page", "#os/os.io-buffer",
   "#net/net.tcp-congestion", "#net/net.socket-api", "#net/net.ip-fragment",
+  "#ds/ds.critical-path", "#ds/ds.sparse-matrix", "#co/co.tlb", "#co/co.float-add", "#co/co.bus-bandwidth", "#co/co.microop", "#os/os.process-state", "#os/os.multilevel-page-table", "#os/os.readers-writers", "#os/os.producer-consumer", "#net/net.stop-wait", "#net/net.selective-repeat", "#net/net.ethernet-frame", "#net/net.rip", "#net/net.ipv6-address",
 ];
 let ok = 0;
 for (const r of routes) {

@@ -1,0 +1,42 @@
+id: net.selective-repeat
+subject: net
+title: 选择重传 SR
+syllabusVersion: "2026"
+prerequisites: []
+related: []
+objectives:
+  - 能算 SR 重传帧数
+  - 能对比 GBN
+  - 能说明接收缓存
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+simulator: "@visual408/sim-core#net.selective-repeat"
+codeExamples: []
+labTasks:
+  - 点一个「快速场景」，对比不同参数下的结论
+questions:
+  - id: q1
+    kind: choice
+    stem: 选择重传 SR：下列哪项描述是正确的？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见解析
+    explanation: "选择重传只重传丢失的帧；GBN 要把丢失帧之后的全部帧重发一遍。"
+  - id: q2
+    kind: hand-calculation
+    stem: 选择重传 SR：按界面参数手算一次并对照结果。
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见界面指标
+    explanation: "把界面中间量与公式对照，注意单位与量纲。"
+tests: tests.json
+sources:
+  - label: 408 考试大纲
+  - label: 本项目原创教学复述

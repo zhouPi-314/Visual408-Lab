@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-28T03:27:47.888Z",
+  "generatedAt": "2026-11-04T13:03:50.497Z",
   "modules": [
     {
       "id": "co.amat",
@@ -64,6 +64,38 @@
         }
       ],
       "theoryExcerpt": "总线仲裁三方式 链式逐级传递，计数器用 log2(n) 位，独立请求每个设备一对线但最快。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
+    },
+    {
+      "id": "co.bus-bandwidth",
+      "subject": "co",
+      "title": "总线带宽计算",
+      "objectives": [
+        "能算一次传输的字节数",
+        "能算带宽",
+        "能判断哪种参数组合更快"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "总线带宽计算：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "一次传输 width/8 字节，占 cycles 个时钟，带宽 = 字节数 ÷ 周期数 × 频率。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "总线带宽计算：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "总线带宽计算 一次传输 width/8 字节，占 cycles 个时钟，带宽 = 字节数 ÷ 周期数 × 频率。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
     },
     {
       "id": "co.bus-timing",
@@ -292,6 +324,38 @@
       "theoryExcerpt": "原码/反码/补码/移码 补码等于反码加一；移码把补码的符号位取反，便于比较阶码大小。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
     },
     {
+      "id": "co.float-add",
+      "subject": "co",
+      "title": "浮点加减法",
+      "objectives": [
+        "能完成对阶",
+        "能做规格化",
+        "能判断溢出"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "浮点加减法：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "小阶向大阶对齐，尾数相加后规格化，最后判断阶码是否溢出。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "浮点加减法：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "浮点加减法 小阶向大阶对齐，尾数相加后规格化，最后判断阶码是否溢出。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
+    },
+    {
       "id": "co.ieee754",
       "subject": "co",
       "title": "IEEE 754 浮点拆解",
@@ -484,6 +548,38 @@
       "theoryExcerpt": "多体交叉存储器 m 体交叉用地址低位作体号，连续访问时各体可并行启动，吞吐接近 m 倍。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
     },
     {
+      "id": "co.microop",
+      "subject": "co",
+      "title": "指令的微操作序列",
+      "objectives": [
+        "能写出取指周期微操作",
+        "能区分执行周期",
+        "能对应控制信号"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "指令的微操作序列：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "取指 → 间址 → 执行 → 中断；每一步微操作都对应一组控制信号。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "指令的微操作序列：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "指令的微操作序列 取指 → 间址 → 执行 → 中断；每一步微操作都对应一组控制信号。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
+    },
+    {
       "id": "co.pipeline-hazard",
       "subject": "co",
       "title": "流水线冒险与气泡",
@@ -578,6 +674,38 @@
         }
       ],
       "theoryExcerpt": "RAID 0/1/5 容量与容错 RAID0 无冗余；RAID1 镜像容量减半；RAID5 用一块盘存校验，可用 n−1 块。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
+    },
+    {
+      "id": "co.tlb",
+      "subject": "co",
+      "title": "TLB 与地址转换",
+      "objectives": [
+        "能分解虚拟地址",
+        "能查 TLB 与页表",
+        "能算物理地址与访存次数"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "TLB 与地址转换：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "页号:页内偏移 → 查 TLB → 得页框号 → 拼物理地址；TLB 缺失时要多访存一次去查页表。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "TLB 与地址转换：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "TLB 与地址转换 页号:页内偏移 → 查 TLB → 得页框号 → 拼物理地址；TLB 缺失时要多访存一次去查页表。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
     },
     {
       "id": "cross.network-send-chain",
@@ -807,6 +935,38 @@
         }
       ],
       "theoryExcerpt": "二叉搜索树查找路径 从根开始，比当前结点小往左、大往右，直到命中或走到空指针。路径长度就是比较次数。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
+    },
+    {
+      "id": "ds.critical-path",
+      "subject": "ds",
+      "title": "关键路径",
+      "objectives": [
+        "能求最早发生时间",
+        "能求最迟发生时间",
+        "能识别关键路径"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "关键路径：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "先按拓扑序求各事件最早时间，再逆序求最迟时间；活动的松弛为 0 就是关键活动，最长的那条路径决定工期。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "关键路径：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "关键路径 先按拓扑序求各事件最早时间，再逆序求最迟时间；活动的松弛为 0 就是关键活动，最长的那条路径决定工期。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
     },
     {
       "id": "ds.cyclic-queue",
@@ -1228,6 +1388,38 @@
       "theoryExcerpt": "排序：插入 / 冒泡 / 快速 直接插入 把第 i 个元素 拿出来 （原位置空出一个洞），往前面已排序区里找位置： 每趟结束时，前 i+1 个元素一定有序（这是可断言的 不变量 ）。 序列近乎有序时几乎没有移动，接近 O(n)。 冒泡 相邻两两比较，逆序就交换。第 p 趟结束，末尾第 p 个元素一定就位。 若某一趟 一次交换都没发生 ，说明整体已经有序 → 提前结束。 稳定排序。 快速 选一个枢轴（本实验取区间最后一个），把比它小的换到左边、大的留在右边， 枢轴落位后递归处理左右两段。 枢轴一旦落位，它的最终位置就确定了。 不稳定 ；最坏 O(n²)（每次划分极不均衡）。 算法 平均 最坏 稳定 额外空间 插入 O(n²) O(n²"
     },
     {
+      "id": "ds.sparse-matrix",
+      "subject": "ds",
+      "title": "稀疏矩阵快速转置",
+      "objectives": [
+        "能写三元组表",
+        "能算 num 与 cpot",
+        "能一次扫描完成转置"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "稀疏矩阵快速转置：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "先统计每列非零元个数，再累加得到各列在转置表中的起点，然后按列主序扫描一次即可完成转置。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "稀疏矩阵快速转置：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "稀疏矩阵快速转置 先统计每列非零元个数，再累加得到各列在转置表中的起点，然后按列主序扫描一次即可完成转置。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
+    },
+    {
       "id": "ds.stack-queue",
       "subject": "ds",
       "title": "栈与队列的操作对比",
@@ -1516,6 +1708,38 @@
       "theoryExcerpt": "DNS 递归 vs 迭代查询 递归由本地 DNS 代劳；迭代由主机自己依次问根、顶级、权威服务器。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
     },
     {
+      "id": "net.ethernet-frame",
+      "subject": "net",
+      "title": "以太网帧格式",
+      "objectives": [
+        "能算各段字节数",
+        "能判断是否填充",
+        "能算整帧长度"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "以太网帧格式：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "目的 MAC 6 + 源 MAC 6 + 类型 2 + 数据（至少 46）+ FCS 4，数据不够要填充。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "以太网帧格式：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "以太网帧格式 目的 MAC 6 + 源 MAC 6 + 类型 2 + 数据（至少 46）+ FCS 4，数据不够要填充。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
+    },
+    {
       "id": "net.gbn-window",
       "subject": "net",
       "title": "滑动窗口与回退 N",
@@ -1580,6 +1804,38 @@
       "theoryExcerpt": "IP 分片计算 MTU 减去首部后按 8 的倍数切片，片偏移以 8 字节为单位，最后一片 MF=0。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
     },
     {
+      "id": "net.ipv6-address",
+      "subject": "net",
+      "title": "IPv6 地址压缩",
+      "objectives": [
+        "能去掉前导零",
+        "能压缩全零段",
+        "能判断前缀长度"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "IPv6 地址压缩：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "IPv6 地址 128 位 8 组，每组前导零可省，最长一段连续全零用 :: 压缩，只能用一次。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "IPv6 地址压缩：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "IPv6 地址压缩 IPv6 地址 128 位 8 组，每组前导零可省，最长一段连续全零用 :: 压缩，只能用一次。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
+    },
+    {
       "id": "net.nat",
       "subject": "net",
       "title": "NAT 地址转换",
@@ -1612,6 +1868,70 @@
       "theoryExcerpt": "NAT 地址转换 出口路由器把内网源 IP/端口改成公网 IP/端口并记录，回包按表还原。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
     },
     {
+      "id": "net.rip",
+      "subject": "net",
+      "title": "RIP 距离向量路由",
+      "objectives": [
+        "能写出距离向量",
+        "能数出收敛轮数",
+        "能生成路由表"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "RIP 距离向量路由：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "RIP 用跳数做代价，最大 15 跳；路由器之间多轮交换距离向量后收敛到最短路径。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "RIP 距离向量路由：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "RIP 距离向量路由 RIP 用跳数做代价，最大 15 跳；路由器之间多轮交换距离向量后收敛到最短路径。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
+    },
+    {
+      "id": "net.selective-repeat",
+      "subject": "net",
+      "title": "选择重传 SR",
+      "objectives": [
+        "能算 SR 重传帧数",
+        "能对比 GBN",
+        "能说明接收缓存"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "选择重传 SR：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "选择重传只重传丢失的帧；GBN 要把丢失帧之后的全部帧重发一遍。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "选择重传 SR：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "选择重传 SR 选择重传只重传丢失的帧；GBN 要把丢失帧之后的全部帧重发一遍。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
+    },
+    {
       "id": "net.socket-api",
       "subject": "net",
       "title": "TCP socket 调用顺序",
@@ -1642,6 +1962,38 @@
         }
       ],
       "theoryExcerpt": "TCP socket 调用顺序 服务端 socket→bind→listen→accept，客户端 socket→connect；connect 触发三次握手。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
+    },
+    {
+      "id": "net.stop-wait",
+      "subject": "net",
+      "title": "停等协议与 ARQ",
+      "objectives": [
+        "能画出停等过程",
+        "能算重传次数",
+        "能判断哪种丢失"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "停等协议与 ARQ：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "停止等待：一次只发一帧，超时未收到确认就重传，信道利用率最低但实现最简单。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "停等协议与 ARQ：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "停等协议与 ARQ 停止等待：一次只发一帧，超时未收到确认就重传，信道利用率最低但实现最简单。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
     },
     {
       "id": "net.subnetting",
@@ -2094,6 +2446,38 @@
       "theoryExcerpt": "多级反馈队列 新进程进最高优先级队列，用完时间片降一级；短作业快速完成，长作业逐步下沉但仍会执行。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
     },
     {
+      "id": "os.multilevel-page-table",
+      "subject": "os",
+      "title": "两级页表地址转换",
+      "objectives": [
+        "能逐级查表",
+        "能算物理地址",
+        "能数清访存次数"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "两级页表地址转换：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "几级页表就要几次访存才能拿到物理页，TLB 就是为了省掉这些访存。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "两级页表地址转换：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "两级页表地址转换 几级页表就要几次访存才能拿到物理页，TLB 就是为了省掉这些访存。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
+    },
+    {
       "id": "os.page-fault",
       "subject": "os",
       "title": "缺页异常的处理流程",
@@ -2189,6 +2573,102 @@
         }
       ],
       "theoryExcerpt": "Peterson 互斥算法 设置 flag 表示想进，把 turn 让给对方，进入前再检查对方是否想进且轮到自己。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
+    },
+    {
+      "id": "os.process-state",
+      "subject": "os",
+      "title": "进程状态转换",
+      "objectives": [
+        "能写出状态转换",
+        "能判断非法转换",
+        "能说明挂起与激活"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "进程状态转换：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "创建→就绪→运行→阻塞→终止；只有运行态能阻塞，阻塞态必须先回到就绪才能运行。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "进程状态转换：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "进程状态转换 创建→就绪→运行→阻塞→终止；只有运行态能阻塞，阻塞态必须先回到就绪才能运行。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
+    },
+    {
+      "id": "os.producer-consumer",
+      "subject": "os",
+      "title": "生产者消费者问题",
+      "objectives": [
+        "能算缓冲区占用",
+        "能判断阻塞条件",
+        "能说明三个信号量作用"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "生产者消费者问题：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "空槽与满槽数量之和等于缓冲区容量，互斥信号量保护进出缓冲区的操作。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "生产者消费者问题：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "生产者消费者问题 空槽与满槽数量之和等于缓冲区容量，互斥信号量保护进出缓冲区的操作。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
+    },
+    {
+      "id": "os.readers-writers",
+      "subject": "os",
+      "title": "读者写者问题",
+      "objectives": [
+        "能判断读写冲突",
+        "能说明互斥需求",
+        "能数出等待次数"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "读者写者问题：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "读者写者问题：第一个读者上锁、最后一个读者解锁，写者独占访问。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "读者写者问题：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "读者写者问题 读者写者问题：第一个读者上锁、最后一个读者解锁，写者独占访问。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
     },
     {
       "id": "os.scheduling",

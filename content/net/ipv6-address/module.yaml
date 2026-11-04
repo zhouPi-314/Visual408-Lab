@@ -1,0 +1,42 @@
+id: net.ipv6-address
+subject: net
+title: IPv6 地址压缩
+syllabusVersion: "2026"
+prerequisites: []
+related: []
+objectives:
+  - 能去掉前导零
+  - 能压缩全零段
+  - 能判断前缀长度
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+simulator: "@visual408/sim-core#net.ipv6-address"
+codeExamples: []
+labTasks:
+  - 点一个「快速场景」，对比不同参数下的结论
+questions:
+  - id: q1
+    kind: choice
+    stem: IPv6 地址压缩：下列哪项描述是正确的？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见解析
+    explanation: "IPv6 地址 128 位 8 组，每组前导零可省，最长一段连续全零用 :: 压缩，只能用一次。"
+  - id: q2
+    kind: hand-calculation
+    stem: IPv6 地址压缩：按界面参数手算一次并对照结果。
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见界面指标
+    explanation: "把界面中间量与公式对照，注意单位与量纲。"
+tests: tests.json
+sources:
+  - label: 408 考试大纲
+  - label: 本项目原创教学复述

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { batch1, batch2, batch3, batch4, batch5, batch6, batch7, batch8, batch9 } from "../src/index";
+import { batch1, batch2, batch3, batch4, batch5, batch6, batch7, batch8, batch9, batch10, batch11 } from "../src/index";
 import type { GenericState } from "../src/view";
 
 const run = (mod: any, input: any) => mod.simulate(input);
@@ -369,5 +369,81 @@ describe("batch8/9 第四批实验", () => {
 
   it("net.ip-fragment：2000 字节 / MTU1500 分成 2 片", () => {
     expect(lastM(batch9.ipFragment.simulate({ mtu: "1500", len: "2000" }))["分片数"]).toBe(2);
+  });
+});
+describe("batch10/11 第五批实验", () => {
+  const lastM = (sim: any) => {
+    const last = sim.frames[sim.frames.length - 1]!;
+    const m: Record<string, any> = {};
+    for (const x of (last.state as any).metrics ?? []) m[x.label] = x.value;
+    return m;
+  };
+
+  it("ds.critical-path：工期 10、关键活动 3 条、路径长 10", () => {
+    const m = lastM(batch10.criticalPath.simulate({ edges: "1,2,3;1,3,2;2,4,4;3,4,2;4,5,3" }));
+    expect(m["工期"]).toBe(10);
+    expect(m["关键活动"]).toBe(3);
+    expect(m["关键路径长"]).toBe(10);
+  });
+  it("ds.sparse-matrix：转置后 3 行 5 个非零元", () => {
+    const m = lastM(batch10.sparseTranspose.simulate({ triples: "0,0,3;0,2,5;1,1,2;2,0,1;2,2,4" }));
+    expect(m["转置行数"]).toBe(3);
+    expect(m["非零元"]).toBe(5);
+  });
+  it("co.tlb：2:100 命中快表 → 物理地址 28772、访存 1 次", () => {
+    const m = lastM(batch10.tlb.simulate({ addr: "2:100", pageSize: "4096" }));
+    expect(m["物理地址"]).toBe(28772);
+    expect(m["访存次数"]).toBe(1);
+  });
+  it("co.float-add：1.5×2^3 + 2.25×2^1 规格化为 1.03125×2^4", () => {
+    const m = lastM(batch10.floatAdd.simulate({ am: "1.5", ae: "3", bm: "2.25", be: "1" }));
+    expect(m["尾数"]).toBeCloseTo(1.03125, 6);
+    expect(m["阶码"]).toBe(4);
+  });
+  it("co.bus-bandwidth：32 位 /100MHz /2 周期 = 200 MB/s", () => {
+    const sim = batch10.busBandwidth.simulate({ width: "32", clock: "100", cycles: "2" });
+    const m = (sim.frames.find((f: any) => f.event.type === "BANDWIDTH")!.state as any).metrics;
+    expect(m[0].value).toBe(200);
+  });
+  it("co.microop：ADD 有 6 个微操作", () => {
+    expect(lastM(batch10.microop.simulate({ instr: "add" }))["微操作数"]).toBe(6);
+  });
+  it("os.process-state：六个事件后进程终止", () => {
+    expect(lastM(batch10.processState.simulate({ events: "create,ready,run,block,run,terminate" }))["最终状态"]).toBe("终止");
+  });
+  it("os.multilevel-page-table：5:1:100 → 物理地址 45156、访存 3 次", () => {
+    const m = lastM(batch11.pageTable2.simulate({ vaddr: "5:1:100" }));
+    expect(m["物理地址"]).toBe(45156);
+    expect(m["访存次数"]).toBe(3);
+  });
+  it("os.readers-writers：r,r,w,r,w 出现 2 次等待", () => {
+    expect(lastM(batch11.readersWriters.simulate({ actions: "r,r,w,r,w", count: "2" }))["等待冲突"]).toBe(2);
+  });
+  it("os.producer-consumer：第 4 次生产被满缓冲阻塞，最终占用 2", () => {
+    const m = lastM(batch11.producerConsumer.simulate({ events: "P,P,P,P,C", size: "3" }));
+    expect(m["最终占用"]).toBe(2);
+    expect(m["阻塞次数"]).toBe(1);
+  });
+  it("net.stop-wait：4 帧丢 1 帧 → 发送 4、重传 1", () => {
+    const m = lastM(batch11.stopWait.simulate({ frames: "4", lostAt: "2" }));
+    expect(m["发送帧数"]).toBe(4);
+    expect(m["重传帧数"]).toBe(1);
+  });
+  it("net.selective-repeat：6 帧 3 窗口丢第 2 帧，SR 重传 1、GBN 要重传 5", () => {
+    const m = lastM(batch11.selectiveRepeat.simulate({ frames: "6", window: "3", lost: "2" }));
+    expect(m["SR重传"]).toBe(1);
+    expect(m["GBN重传"]).toBe(5);
+  });
+  it("net.ethernet-frame：20 字节数据 → 整帧 72 字节、填充 26", () => {
+    const m = lastM(batch11.ethernetFrame.simulate({ payload: "20", dest: "01:00:5E:00:00:01" }));
+    expect(m["整帧字节"]).toBe(72);
+    expect(m["帧体字节"]).toBe(64);
+  });
+  it("net.rip：A,B,1;B,C,1;A,C,5 收敛后最大跳数 2", () => {
+    expect(lastM(batch11.rip.simulate({ edges: "A,B,1;B,C,1;A,C,5", source: "A" }))["最大跳数"]).toBe(2);
+  });
+  it("net.ipv6-address：压缩为 2001:db8::ff00:42:8329/64", () => {
+    const m = lastM(batch11.ipv6.simulate({ addr: "2001:0db8:0000:0000:0000:ff00:0042:8329", prefix: "64" }));
+    expect(m["压缩写法"]).toBe("2001:db8::ff00:42:8329/64");
   });
 });

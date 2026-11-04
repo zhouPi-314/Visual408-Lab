@@ -1,0 +1,42 @@
+id: os.producer-consumer
+subject: os
+title: 生产者消费者问题
+syllabusVersion: "2026"
+prerequisites: []
+related: []
+objectives:
+  - 能算缓冲区占用
+  - 能判断阻塞条件
+  - 能说明三个信号量作用
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+simulator: "@visual408/sim-core#os.producer-consumer"
+codeExamples: []
+labTasks:
+  - 点一个「快速场景」，对比不同参数下的结论
+questions:
+  - id: q1
+    kind: choice
+    stem: 生产者消费者问题：下列哪项描述是正确的？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见解析
+    explanation: "空槽与满槽数量之和等于缓冲区容量，互斥信号量保护进出缓冲区的操作。"
+  - id: q2
+    kind: hand-calculation
+    stem: 生产者消费者问题：按界面参数手算一次并对照结果。
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见界面指标
+    explanation: "把界面中间量与公式对照，注意单位与量纲。"
+tests: tests.json
+sources:
+  - label: 408 考试大纲
+  - label: 本项目原创教学复述

@@ -87,6 +87,21 @@ const loaders: Record<ModuleId, () => Promise<{ module: AnyModule }>> = {
   "net.tcp-congestion": () => import("./modules/generic/batch9").then((m) => ({ module: m.batch9.congestion as AnyModule })),
   "net.socket-api": () => import("./modules/generic/batch9").then((m) => ({ module: m.batch9.socketApi as AnyModule })),
   "net.ip-fragment": () => import("./modules/generic/batch9").then((m) => ({ module: m.batch9.ipFragment as AnyModule })),
+  "ds.critical-path": () => import("./modules/generic/batch10").then((m) => ({ module: m.batch10.criticalPath as AnyModule })),
+  "ds.sparse-matrix": () => import("./modules/generic/batch10").then((m) => ({ module: m.batch10.sparseTranspose as AnyModule })),
+  "co.tlb": () => import("./modules/generic/batch10").then((m) => ({ module: m.batch10.tlb as AnyModule })),
+  "co.float-add": () => import("./modules/generic/batch10").then((m) => ({ module: m.batch10.floatAdd as AnyModule })),
+  "co.bus-bandwidth": () => import("./modules/generic/batch10").then((m) => ({ module: m.batch10.busBandwidth as AnyModule })),
+  "co.microop": () => import("./modules/generic/batch10").then((m) => ({ module: m.batch10.microop as AnyModule })),
+  "os.process-state": () => import("./modules/generic/batch10").then((m) => ({ module: m.batch10.processState as AnyModule })),
+  "os.multilevel-page-table": () => import("./modules/generic/batch11").then((m) => ({ module: m.batch11.pageTable2 as AnyModule })),
+  "os.readers-writers": () => import("./modules/generic/batch11").then((m) => ({ module: m.batch11.readersWriters as AnyModule })),
+  "os.producer-consumer": () => import("./modules/generic/batch11").then((m) => ({ module: m.batch11.producerConsumer as AnyModule })),
+  "net.stop-wait": () => import("./modules/generic/batch11").then((m) => ({ module: m.batch11.stopWait as AnyModule })),
+  "net.selective-repeat": () => import("./modules/generic/batch11").then((m) => ({ module: m.batch11.selectiveRepeat as AnyModule })),
+  "net.ethernet-frame": () => import("./modules/generic/batch11").then((m) => ({ module: m.batch11.ethernetFrame as AnyModule })),
+  "net.rip": () => import("./modules/generic/batch11").then((m) => ({ module: m.batch11.rip as AnyModule })),
+  "net.ipv6-address": () => import("./modules/generic/batch11").then((m) => ({ module: m.batch11.ipv6 as AnyModule })),
 };
 
 export function listModuleIds(): ModuleId[] {
