@@ -1,0 +1,42 @@
+id: co.cache-amat
+subject: co
+title: Cache 平均访问时间
+syllabusVersion: "2026"
+prerequisites: []
+related: []
+objectives:
+  - 能算两种口径的 Ta
+  - 能比较同时与层次访问
+  - 能算提升命中率收益
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+simulator: "@visual408/sim-core#co.cache-amat"
+codeExamples: []
+labTasks:
+  - 点一个「快速场景」，对比不同参数下的结论
+questions:
+  - id: q1
+    kind: choice
+    stem: Cache 平均访问时间：下列哪项描述是正确的？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见解析
+    explanation: "同时访问 Ta=h·Tc+(1−h)·Tm；层次访问 Ta=Tc+(1−h)·Tm。命中率决定平均访问时间。"
+  - id: q2
+    kind: hand-calculation
+    stem: Cache 平均访问时间：按界面参数手算一次并对照结果。
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见界面指标
+    explanation: 把界面中间量与公式对照，注意单位与量纲。
+tests: tests.json
+sources:
+  - label: 408 考试大纲
+  - label: 本项目原创教学复述

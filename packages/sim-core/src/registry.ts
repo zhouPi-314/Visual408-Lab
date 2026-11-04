@@ -117,6 +117,21 @@ const loaders: Record<ModuleId, () => Promise<{ module: AnyModule }>> = {
   "net.cidr-sum": () => import("./modules/generic/batch13").then((m) => ({ module: m.batch13.cidrSum as AnyModule })),
   "net.ip-mac": () => import("./modules/generic/batch13").then((m) => ({ module: m.batch13.ipMac as AnyModule })),
   "net.link-util": () => import("./modules/generic/batch13").then((m) => ({ module: m.batch13.linkUtil as AnyModule })),
+  "ds.kmp-match": () => import("./modules/generic/batch14").then((m) => ({ module: m.batch14.kmpMatch as AnyModule })),
+  "ds.threaded-tree": () => import("./modules/generic/batch14").then((m) => ({ module: m.batch14.threadedTree as AnyModule })),
+  "ds.poly-add": () => import("./modules/generic/batch14").then((m) => ({ module: m.batch14.polyAdd as AnyModule })),
+  "ds.expr-tree": () => import("./modules/generic/batch14").then((m) => ({ module: m.batch14.exprTree as AnyModule })),
+  "co.hamming-code": () => import("./modules/generic/batch14").then((m) => ({ module: m.batch14.hamming as AnyModule })),
+  "co.cache-amat": () => import("./modules/generic/batch14").then((m) => ({ module: m.batch14.cacheAmat as AnyModule })),
+  "co.adder-delay": () => import("./modules/generic/batch14").then((m) => ({ module: m.batch14.adderDelay as AnyModule })),
+  "co.datapath-regs": () => import("./modules/generic/batch15").then((m) => ({ module: m.batch15.datapathRegs as AnyModule })),
+  "os.hrrn": () => import("./modules/generic/batch15").then((m) => ({ module: m.batch15.hrrn as AnyModule })),
+  "os.working-set": () => import("./modules/generic/batch15").then((m) => ({ module: m.batch15.workingSet as AnyModule })),
+  "os.spooling": () => import("./modules/generic/batch15").then((m) => ({ module: m.batch15.spooling as AnyModule })),
+  "os.dir-access": () => import("./modules/generic/batch15").then((m) => ({ module: m.batch15.dirAccess as AnyModule })),
+  "net.http-persist": () => import("./modules/generic/batch15").then((m) => ({ module: m.batch15.httpPersist as AnyModule })),
+  "net.tcp-udp-header": () => import("./modules/generic/batch15").then((m) => ({ module: m.batch15.tcpUdpHeader as AnyModule })),
+  "net.switch-learn": () => import("./modules/generic/batch15").then((m) => ({ module: m.batch15.switchLearn as AnyModule })),
 };
 
 export function listModuleIds(): ModuleId[] {

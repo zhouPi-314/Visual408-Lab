@@ -1,0 +1,42 @@
+id: net.http-persist
+subject: net
+title: HTTP 持久连接
+syllabusVersion: "2026"
+prerequisites: []
+related: []
+objectives:
+  - 能算两种方式总时间
+  - 能解释 2RTT 构成
+  - 能比较性能差异
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+simulator: "@visual408/sim-core#net.http-persist"
+codeExamples: []
+labTasks:
+  - 点一个「快速场景」，对比不同参数下的结论
+questions:
+  - id: q1
+    kind: choice
+    stem: HTTP 持久连接：下列哪项描述是正确的？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见解析
+    explanation: "非持久每对象 2RTT+传输；持久连接首对象 2RTT、其余 1RTT，复用同一条 TCP 连接。"
+  - id: q2
+    kind: hand-calculation
+    stem: HTTP 持久连接：按界面参数手算一次并对照结果。
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见界面指标
+    explanation: 把界面中间量与公式对照，注意单位与量纲。
+tests: tests.json
+sources:
+  - label: 408 考试大纲
+  - label: 本项目原创教学复述

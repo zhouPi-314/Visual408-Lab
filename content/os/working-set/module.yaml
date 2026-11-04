@@ -1,0 +1,42 @@
+id: os.working-set
+subject: os
+title: 工作集与窗口
+syllabusVersion: "2026"
+prerequisites: []
+related: []
+objectives:
+  - 能按窗口求工作集
+  - 能找到工作集峰值
+  - 能解释与颠簸关系
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+simulator: "@visual408/sim-core#os.working-set"
+codeExamples: []
+labTasks:
+  - 点一个「快速场景」，对比不同参数下的结论
+questions:
+  - id: q1
+    kind: choice
+    stem: 工作集与窗口：下列哪项描述是正确的？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见解析
+    explanation: "工作集是最近 Δ 次引用里出现的页集合；驻留页框数小于工作集大小就会发生颠簸。"
+  - id: q2
+    kind: hand-calculation
+    stem: 工作集与窗口：按界面参数手算一次并对照结果。
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见界面指标
+    explanation: 把界面中间量与公式对照，注意单位与量纲。
+tests: tests.json
+sources:
+  - label: 408 考试大纲
+  - label: 本项目原创教学复述

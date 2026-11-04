@@ -1,6 +1,38 @@
 {
-  "generatedAt": "2026-11-04T13:33:50.402Z",
+  "generatedAt": "2026-11-04T14:02:30.515Z",
   "modules": [
+    {
+      "id": "co.adder-delay",
+      "subject": "co",
+      "title": "加法器进位延迟",
+      "objectives": [
+        "能算行波延迟",
+        "能解释 CLA 分组",
+        "能比较两种延迟"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "加法器进位延迟：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "行波进位延迟 (n+1)·t 与位数成正比；先行进位组内并行算生成/传播、组间再并行，延迟降到常数级。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "加法器进位延迟：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "加法器进位延迟 行波进位延迟 (n+1)·t 与位数成正比；先行进位组内并行算生成/传播、组间再并行，延迟降到常数级。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
+    },
     {
       "id": "co.alu-flags",
       "subject": "co",
@@ -192,6 +224,38 @@
         }
       ],
       "theoryExcerpt": "同步/异步/半同步总线 同步靠统一时钟最快但迁就慢设备；异步用请求/应答握手最灵活；半同步折中。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
+    },
+    {
+      "id": "co.cache-amat",
+      "subject": "co",
+      "title": "Cache 平均访问时间",
+      "objectives": [
+        "能算两种口径的 Ta",
+        "能比较同时与层次访问",
+        "能算提升命中率收益"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "Cache 平均访问时间：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "同时访问 Ta=h·Tc+(1−h)·Tm；层次访问 Ta=Tc+(1−h)·Tm。命中率决定平均访问时间。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "Cache 平均访问时间：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "Cache 平均访问时间 同时访问 Ta=h·Tc+(1−h)·Tm；层次访问 Ta=Tc+(1−h)·Tm。命中率决定平均访问时间。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
     },
     {
       "id": "co.cache-associative",
@@ -388,6 +452,38 @@
       "theoryExcerpt": "原码/反码/补码/移码 补码等于反码加一；移码把补码的符号位取反，便于比较阶码大小。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
     },
     {
+      "id": "co.datapath-regs",
+      "subject": "co",
+      "title": "CPU 寄存器数据通路",
+      "objectives": [
+        "能写出取指传送序列",
+        "能写出执行周期传送",
+        "能说明 MAR/MDR 作用"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "CPU 寄存器数据通路：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "PC→MAR 发地址、存储器→MDR 收数据、MDR→IR 译码；访存必经 MAR/MDR，它们对用户不可见。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "CPU 寄存器数据通路：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "CPU 寄存器数据通路 PC→MAR 发地址、存储器→MDR 收数据、MDR→IR 译码；访存必经 MAR/MDR，它们对用户不可见。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
+    },
+    {
       "id": "co.float-add",
       "subject": "co",
       "title": "浮点加减法",
@@ -418,6 +514,38 @@
         }
       ],
       "theoryExcerpt": "浮点加减法 小阶向大阶对齐，尾数相加后规格化，最后判断阶码是否溢出。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
+    },
+    {
+      "id": "co.hamming-code",
+      "subject": "co",
+      "title": "汉明码检错纠错",
+      "objectives": [
+        "能算需要的校验位数",
+        "能构造码字",
+        "能用 syndrome 定位并纠错"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "汉明码检错纠错：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "校验位放在 2 的幂位上各自监督一组偶校验；出错后 syndrome 的二进制就是错位号。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "汉明码检错纠错：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "汉明码检错纠错 校验位放在 2 的幂位上各自监督一组偶校验；出错后 syndrome 的二进制就是错位号。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
     },
     {
       "id": "co.ieee754",
@@ -1161,6 +1289,38 @@
       "theoryExcerpt": "Dijkstra 单源最短路 每次从未确定的顶点里取距离最小的那个，然后松弛它的出边。贪心正确的前提是边权非负。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
     },
     {
+      "id": "ds.expr-tree",
+      "subject": "ds",
+      "title": "后缀式建表达式树",
+      "objectives": [
+        "能逐步建树",
+        "能区分左右子树",
+        "能由树还原中缀式"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "后缀式建表达式树：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "数字压入单叶树；操作符弹出两棵树（先弹为右、后弹为左）拼成新树压回，最后栈里剩根。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "后缀式建表达式树：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "后缀式建表达式树 数字压入单叶树；操作符弹出两棵树（先弹为右、后弹为左）拼成新树压回，最后栈里剩根。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
+    },
+    {
       "id": "ds.floyd",
       "subject": "ds",
       "title": "Floyd 全源最短路",
@@ -1386,6 +1546,38 @@
       "theoryExcerpt": "哈夫曼树与带权路径长度 每次取权值最小的两个结点合并，新结点权值为两者之和；WPL 等于所有合并代价之和。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
     },
     {
+      "id": "ds.kmp-match",
+      "subject": "ds",
+      "title": "KMP 匹配过程",
+      "objectives": [
+        "能手算 next 数组",
+        "能模拟逐位比较",
+        "能解释 i 不回退"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "KMP 匹配过程：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "失配时主串指针 i 不动，模式串指针 j 跳到 next[j−1]；next 记录每个前缀的最长相等前后缀长度。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "KMP 匹配过程：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "KMP 匹配过程 失配时主串指针 i 不动，模式串指针 j 跳到 next[j−1]；next 记录每个前缀的最长相等前后缀长度。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
+    },
+    {
       "id": "ds.kmp-next",
       "subject": "ds",
       "title": "KMP 的前缀函数",
@@ -1480,6 +1672,38 @@
         }
       ],
       "theoryExcerpt": "归并排序 把序列拆成有序小段，再两两归并；每轮段长翻倍，总比较次数约 n·log2 n，需要 O(n) 辅助空间。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
+    },
+    {
+      "id": "ds.poly-add",
+      "subject": "ds",
+      "title": "一元多项式相加",
+      "objectives": [
+        "能模拟双指针归并",
+        "能处理系数相消",
+        "能写出结果链表"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "一元多项式相加：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "两条按指数递减的链表做归并：指数大的直接接上，指数相同的系数相加，和为 0 则删项。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "一元多项式相加：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "一元多项式相加 两条按指数递减的链表做归并：指数大的直接接上，指数相同的系数相加，和为 0 则删项。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
     },
     {
       "id": "ds.postfix-eval",
@@ -1706,6 +1930,38 @@
         }
       ],
       "theoryExcerpt": "栈与队列的操作对比 栈只能在栈顶进出；队列从队尾进、队首出。同一串操作在两套结构上的结果完全不同，答题时要先判断操作对象。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
+    },
+    {
+      "id": "ds.threaded-tree",
+      "subject": "ds",
+      "title": "中序线索二叉树",
+      "objectives": [
+        "能写出中序序列",
+        "能标出前驱后继线索",
+        "能找某结点的中序后继"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "中序线索二叉树：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "n 个结点有 n+1 个空指针；空左链指前驱、空右链指后继，中序遍历不再需要栈。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "中序线索二叉树：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "中序线索二叉树 n 个结点有 n+1 个空指针；空左链指前驱、空右链指后继，中序遍历不再需要栈。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
     },
     {
       "id": "ds.topological",
@@ -2060,6 +2316,38 @@
       "theoryExcerpt": "滑动窗口与回退 N GBN 的接收窗口为 1，某帧出错后该帧及其后所有帧都要重传，实现简单但重传多。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
     },
     {
+      "id": "net.http-persist",
+      "subject": "net",
+      "title": "HTTP 持久连接",
+      "objectives": [
+        "能算两种方式总时间",
+        "能解释 2RTT 构成",
+        "能比较性能差异"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "HTTP 持久连接：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "非持久每对象 2RTT+传输；持久连接首对象 2RTT、其余 1RTT，复用同一条 TCP 连接。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "HTTP 持久连接：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "HTTP 持久连接 非持久每对象 2RTT+传输；持久连接首对象 2RTT、其余 1RTT，复用同一条 TCP 连接。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
+    },
+    {
       "id": "net.ip-fragment",
       "subject": "net",
       "title": "IP 分片计算",
@@ -2381,6 +2669,38 @@
       "theoryExcerpt": "IPv4 子网划分 四个量，一条链 减 2 是因为：网络地址代表子网本身，广播地址代表\"本子网所有主机\"，两者都不能分配给某台主机。 例：192.168.10.130/25 特例 前缀 可用主机 说明 /31 2 点对点链路（RFC 3021，两端各一个地址，不保留网络/广播） /32 1 单主机路由 /30 2 传统点对点写法 考试通常按\"减 2\"的规则算，遇到 /31、/32 需按题目约定说明。"
     },
     {
+      "id": "net.switch-learn",
+      "subject": "net",
+      "title": "交换机自学习",
+      "objectives": [
+        "能模拟表项积累",
+        "能判断泛洪与点对点",
+        "能解释广播处理"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "交换机自学习：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "从某端口收到帧就登记源 MAC→端口；转发时目的在表就点对点，不在表就除入口外泛洪。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "交换机自学习：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "交换机自学习 从某端口收到帧就登记源 MAC→端口；转发时目的在表就点对点，不在表就除入口外泛洪。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
+    },
+    {
       "id": "net.tcp-congestion",
       "subject": "net",
       "title": "TCP 拥塞控制",
@@ -2478,6 +2798,38 @@
       "theoryExcerpt": "TCP 连接建立与释放 三次握手 SYN 与 FIN 各 消耗 1 个序号 ，纯 ACK 不消耗。 为什么不是两次：只有第三次才能让服务端确认「客户端收到了我的 SYN」， 否则一个延迟的旧 SYN 可能让服务端建立一条客户端并不认的连接。 四次挥手 被动方收到 FIN 后先回 ACK、等应用层处理完才发自己的 FIN —— 这就是\"四次\"而不是\"三次\"的原因。 异常 场景 关键点 端口未开放 服务端回 RST，客户端直接 CLOSED 末次 ACK 丢失 服务端超时 重传 FIN，序号不变 ；客户端重发 ACK 同时关闭 双方都经历 FIN WAIT 1 → CLOSING → TIME WAIT"
     },
     {
+      "id": "net.tcp-udp-header",
+      "subject": "net",
+      "title": "TCP 与 UDP 首部",
+      "objectives": [
+        "能列出首部字段",
+        "能算线上总字节",
+        "能说明可靠性代价"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "TCP 与 UDP 首部：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "TCP 首部最少 20 字节（序号、确认、窗口等换可靠）；UDP 固定 8 字节（端口、长度、校验和）。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "TCP 与 UDP 首部：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "TCP 与 UDP 首部 TCP 首部最少 20 字节（序号、确认、窗口等换可靠）；UDP 固定 8 字节（端口、长度、校验和）。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
+    },
+    {
       "id": "os.banker",
       "subject": "os",
       "title": "银行家算法与安全序列",
@@ -2572,6 +2924,38 @@
         }
       ],
       "theoryExcerpt": "哲学家就餐 每人都先拿左手筷会形成环路等待；限制最多 n−1 人上桌、或让奇数号先拿右手筷，都能破坏死锁四个必要条件之一。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
+    },
+    {
+      "id": "os.dir-access",
+      "subject": "os",
+      "title": "多级目录按名存取",
+      "objectives": [
+        "能逐级解析路径",
+        "能数访盘次数",
+        "能解释打开文件开销"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "多级目录按名存取：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "从根目录起逐级读目录块找目录项；路径有 n 级就至少 n 次访盘，最后再读一次 i 节点。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "多级目录按名存取：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "多级目录按名存取 从根目录起逐级读目录块找目录项；路径有 n 级就至少 n 次访盘，最后再读一次 i 节点。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
     },
     {
       "id": "os.disk-layout",
@@ -2700,6 +3084,38 @@
         }
       ],
       "theoryExcerpt": "fork 进程计数 fork 返回两次：父进程与子进程各自继续执行后续语句；n 次连续 fork 得到 2ⁿ 个进程，输出行数 = 进程数 × 语句数。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
+    },
+    {
+      "id": "os.hrrn",
+      "subject": "os",
+      "title": "高响应比优先调度",
+      "objectives": [
+        "能算各候选响应比",
+        "能模拟调度过程",
+        "能算平均周转时间"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "高响应比优先调度：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "每次从就绪队列挑 Rp=(等待+服务)/服务 最大的进程；兼顾短作业与等待久的长作业。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "高响应比优先调度：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "高响应比优先调度 每次从就绪队列挑 Rp=(等待+服务)/服务 最大的进程；兼顾短作业与等待久的长作业。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
     },
     {
       "id": "os.inode",
@@ -3280,6 +3696,38 @@
       "theoryExcerpt": "PV 操作与生产者 消费者 P 操作先减再判断是否小于 0，V 操作先加再唤醒。mutex 保证互斥，empty/full 保证同步。 怎么用这个实验 1. 改参数；2. 点「下一步」逐帧看；3. 对照右侧指标手算一遍。"
     },
     {
+      "id": "os.spooling",
+      "subject": "os",
+      "title": "SPOOLing 假脱机",
+      "objectives": [
+        "能算直接打印总时间",
+        "能算 SPOOLing 总时间",
+        "能解释输入井输出井"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "SPOOLing 假脱机：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "作业把输出先写进磁盘输出井，守护进程串行打印；独占设备被虚拟成共享设备，CPU 与 I/O 重叠。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "SPOOLing 假脱机：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "SPOOLing 假脱机 作业把输出先写进磁盘输出井，守护进程串行打印；独占设备被虚拟成共享设备，CPU 与 I/O 重叠。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
+    },
+    {
       "id": "os.thrashing",
       "subject": "os",
       "title": "工作集与抖动",
@@ -3310,6 +3758,38 @@
         }
       ],
       "theoryExcerpt": "工作集与抖动 分配的页框少于工作集时，进程频繁缺页，CPU 利用率反而下降，这就是抖动。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
+    },
+    {
+      "id": "os.working-set",
+      "subject": "os",
+      "title": "工作集与窗口",
+      "objectives": [
+        "能按窗口求工作集",
+        "能找到工作集峰值",
+        "能解释与颠簸关系"
+      ],
+      "labTasks": [
+        "点一个「快速场景」，对比不同参数下的结论"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "kind": "choice",
+          "stem": "工作集与窗口：下列哪项描述是正确的？",
+          "answer": "见解析",
+          "explanation": "工作集是最近 Δ 次引用里出现的页集合；驻留页框数小于工作集大小就会发生颠簸。",
+          "source": "original"
+        },
+        {
+          "id": "q2",
+          "kind": "hand-calculation",
+          "stem": "工作集与窗口：按界面参数手算一次并对照结果。",
+          "answer": "见界面指标",
+          "explanation": "把界面中间量与公式对照，注意单位与量纲。",
+          "source": "original"
+        }
+      ],
+      "theoryExcerpt": "工作集与窗口 工作集是最近 Δ 次引用里出现的页集合；驻留页框数小于工作集大小就会发生颠簸。 怎么用这个实验 1. 先点一个「快速场景」；2. 逐帧看变化；3. 对照右侧指标手算验证。"
     }
   ]
 }

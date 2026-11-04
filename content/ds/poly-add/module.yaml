@@ -1,0 +1,42 @@
+id: ds.poly-add
+subject: ds
+title: 一元多项式相加
+syllabusVersion: "2026"
+prerequisites: []
+related: []
+objectives:
+  - 能模拟双指针归并
+  - 能处理系数相消
+  - 能写出结果链表
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+simulator: "@visual408/sim-core#ds.poly-add"
+codeExamples: []
+labTasks:
+  - 点一个「快速场景」，对比不同参数下的结论
+questions:
+  - id: q1
+    kind: choice
+    stem: 一元多项式相加：下列哪项描述是正确的？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见解析
+    explanation: "两条按指数递减的链表做归并：指数大的直接接上，指数相同的系数相加，和为 0 则删项。"
+  - id: q2
+    kind: hand-calculation
+    stem: 一元多项式相加：按界面参数手算一次并对照结果。
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见界面指标
+    explanation: 把界面中间量与公式对照，注意单位与量纲。
+tests: tests.json
+sources:
+  - label: 408 考试大纲
+  - label: 本项目原创教学复述

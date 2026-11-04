@@ -1,0 +1,42 @@
+id: net.tcp-udp-header
+subject: net
+title: TCP 与 UDP 首部
+syllabusVersion: "2026"
+prerequisites: []
+related: []
+objectives:
+  - 能列出首部字段
+  - 能算线上总字节
+  - 能说明可靠性代价
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+simulator: "@visual408/sim-core#net.tcp-udp-header"
+codeExamples: []
+labTasks:
+  - 点一个「快速场景」，对比不同参数下的结论
+questions:
+  - id: q1
+    kind: choice
+    stem: TCP 与 UDP 首部：下列哪项描述是正确的？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见解析
+    explanation: "TCP 首部最少 20 字节（序号、确认、窗口等换可靠）；UDP 固定 8 字节（端口、长度、校验和）。"
+  - id: q2
+    kind: hand-calculation
+    stem: TCP 与 UDP 首部：按界面参数手算一次并对照结果。
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见界面指标
+    explanation: 把界面中间量与公式对照，注意单位与量纲。
+tests: tests.json
+sources:
+  - label: 408 考试大纲
+  - label: 本项目原创教学复述

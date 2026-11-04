@@ -1,0 +1,42 @@
+id: ds.expr-tree
+subject: ds
+title: 后缀式建表达式树
+syllabusVersion: "2026"
+prerequisites: []
+related: []
+objectives:
+  - 能逐步建树
+  - 能区分左右子树
+  - 能由树还原中缀式
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+simulator: "@visual408/sim-core#ds.expr-tree"
+codeExamples: []
+labTasks:
+  - 点一个「快速场景」，对比不同参数下的结论
+questions:
+  - id: q1
+    kind: choice
+    stem: 后缀式建表达式树：下列哪项描述是正确的？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见解析
+    explanation: "数字压入单叶树；操作符弹出两棵树（先弹为右、后弹为左）拼成新树压回，最后栈里剩根。"
+  - id: q2
+    kind: hand-calculation
+    stem: 后缀式建表达式树：按界面参数手算一次并对照结果。
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见界面指标
+    explanation: 把界面中间量与公式对照，注意单位与量纲。
+tests: tests.json
+sources:
+  - label: 408 考试大纲
+  - label: 本项目原创教学复述

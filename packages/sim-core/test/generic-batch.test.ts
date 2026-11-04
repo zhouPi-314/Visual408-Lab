@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { batch1, batch2, batch3, batch4, batch5, batch6, batch7, batch8, batch9, batch10, batch11, batch12, batch13 } from "../src/index";
+import { batch1, batch2, batch3, batch4, batch5, batch6, batch7, batch8, batch9, batch10, batch11, batch12, batch13, batch14, batch15 } from "../src/index";
 import type { GenericState } from "../src/view";
 
 const run = (mod: any, input: any) => mod.simulate(input);
@@ -557,5 +557,118 @@ describe("batch12/13 第六批实验", () => {
     const sim = batch13.linkUtil.simulate({ len: "1000", bw: "1", rt: "200" });
     expect(mOf(sim, "PIPE")["时延带宽积"]).toBe(200);
     expect(lastM(sim)["利用率百分比"]).toBeCloseTo(71.4, 1);
+  });
+});
+
+describe("batch14/15 第七批实验", () => {
+  const lastM = (sim: any) => {
+    const last = sim.frames[sim.frames.length - 1]!;
+    const m: Record<string, any> = {};
+    for (const x of (last.state as any).metrics ?? []) m[x.label] = x.value;
+    return m;
+  };
+  const mOf = (sim: any, type: string) => {
+    const fr = sim.frames.find((x: any) => x.event.type === type)!;
+    const m: Record<string, any> = {};
+    for (const x of ((fr.state as any).metrics ?? [])) m[x.label] = x.value;
+    return m;
+  };
+
+  it("ds.kmp-match：ababcababa 里 ababa 比较 12 次命中 1 次", () => {
+    const m = lastM(batch14.kmpMatch.simulate({ text: "ababcababa", pat: "ababa" }));
+    expect(m["命中次数"]).toBe(1);
+    expect(m["比较次数"]).toBe(12);
+  });
+
+  it("ds.kmp-match：aaaaaa 里 aaa 命中 4 次", () => {
+    expect(lastM(batch14.kmpMatch.simulate({ text: "aaaaaa", pat: "aaa" }))["命中次数"]).toBe(4);
+  });
+
+  it("ds.threaded-tree：6 结点加 5 条线索（首尾空指针留空）", () => {
+    const m = lastM(batch14.threadedTree.simulate({ tree: "A,B,D,E,C,F" }));
+    expect(m["结点数"]).toBe(6);
+    expect(m["线索数"]).toBe(5);
+  });
+
+  it("ds.poly-add：(x³+2x²+3)+(4x³−2x²+5x) = 5x³+5x+3", () => {
+    const sim = batch14.polyAdd.simulate({ a: "1,3;2,2;3,0", b: "4,3;-2,2;5,1" });
+    expect(lastM(sim)["结果项数"]).toBe(3);
+    expect(sim.frames[sim.frames.length - 1]!.narration).toContain("5x^3 + 5x^1 + 3x^0");
+  });
+
+  it("ds.poly-add：相消得零多项式", () => {
+    expect(lastM(batch14.polyAdd.simulate({ a: "2,5;-3,2", b: "-2,5;3,2" }))["结果项数"]).toBe(0);
+  });
+
+  it("ds.expr-tree：34*2+5- 的根是 ((3*4)+2)-5", () => {
+    const sim = batch14.exprTree.simulate({ post: "34*2+5-" });
+    expect(sim.frames[sim.frames.length - 1]!.narration).toContain("((3*4)+2)");
+  });
+
+  it("co.hamming-code：4 位数据 3 位校验，翻数据位 syndrome=6", () => {
+    const sim = batch14.hamming.simulate({ data: "1010", flip: "6" });
+    expect(mOf(sim, "SIZE")["校验位数"]).toBe(3);
+    expect(mOf(sim, "SYNDROME")["syndrome"]).toBe(6);
+    expect(sim.frames[sim.frames.length - 1]!.narration).toContain("1010（与原始一致）");
+  });
+
+  it("co.hamming-code：翻校验位 syndrome=3", () => {
+    expect(mOf(batch14.hamming.simulate({ data: "1010", flip: "3" }), "SYNDROME")["syndrome"]).toBe(3);
+  });
+
+  it("co.cache-amat：95%/10/100 同时 14.5ns、层次 15ns", () => {
+    expect(lastM(batch14.cacheAmat.simulate({ hit: "95", tc: "10", tm: "100", mode: "sim" }))["平均访问时间"]).toBe(14.5);
+    expect(lastM(batch14.cacheAmat.simulate({ hit: "95", tc: "10", tm: "100", mode: "hier" }))["平均访问时间"]).toBe(15);
+  });
+
+  it("co.adder-delay：16 位行波 17ns 快于先行进位", () => {
+    const m = lastM(batch14.adderDelay.simulate({ bits: "16", per: "1", group: "4" }));
+    expect(m["行波延迟"]).toBe(17);
+    expect(m["加速倍数"]).toBeGreaterThan(1);
+  });
+
+  it("co.datapath-regs：LOAD 全程 7 次寄存器传送", () => {
+    expect(lastM(batch15.datapathRegs.simulate({ instr: "load" }))["传送次数"]).toBe(7);
+  });
+
+  it("os.hrrn：P1,P3,P2 顺序、平均周转 8", () => {
+    const m = lastM(batch15.hrrn.simulate({ procs: "P1,0,8;P2,2,4;P3,4,1" }));
+    expect(m["顺序"]).toBe("P1P3P2");
+    expect(m["平均周转"]).toBe(8);
+  });
+
+  it("os.working-set：Δ=3 峰值 3、平均 2.5", () => {
+    const m = lastM(batch15.workingSet.simulate({ refs: "1,2,1,3,1,2,4,1,2,3", delta: "3" }));
+    expect(m["峰值"]).toBe(3);
+    expect(m["平均"]).toBe(2.5);
+  });
+
+  it("os.spooling：3 作业省 4 个时间单位", () => {
+    expect(lastM(batch15.spooling.simulate({ jobs: "3", gen: "2", io: "10" }))["节省时间"]).toBe(4);
+  });
+
+  it("os.dir-access：/usr/test/prog.c 三次目录访盘", () => {
+    expect(lastM(batch15.dirAccess.simulate({ path: "/usr/test/prog.c" }))["目录访盘次数"]).toBe(3);
+  });
+
+  it("os.dir-access：不存在的路径在第 2 级停下", () => {
+    expect(lastM(batch15.dirAccess.simulate({ path: "/usr/nope/x" }))["目录访盘次数"]).toBe(2);
+  });
+
+  it("net.http-persist：5 对象 100ms 省 400ms", () => {
+    expect(lastM(batch15.httpPersist.simulate({ objs: "5", rtt: "100" }))["节省毫秒"]).toBe(400);
+  });
+
+  it("net.tcp-udp-header：1000B 3 段 TCP 1060 vs UDP 1008", () => {
+    const m = lastM(batch15.tcpUdpHeader.simulate({ payload: "1000", segs: "3" }));
+    expect(m["TCP 总字节"]).toBe(1060);
+    expect(m["UDP 总字节"]).toBe(1008);
+  });
+
+  it("net.switch-learn：学 3 项、泛洪 3 次、点对点 3 次", () => {
+    const m = lastM(batch15.switchLearn.simulate({ events: "A-in,H,B-in,H,A-in,D-in" }));
+    expect(m["表项数"]).toBe(3);
+    expect(m["泛洪次数"]).toBe(3);
+    expect(m["点对点次数"]).toBe(3);
   });
 });

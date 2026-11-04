@@ -1,0 +1,42 @@
+id: os.spooling
+subject: os
+title: SPOOLing 假脱机
+syllabusVersion: "2026"
+prerequisites: []
+related: []
+objectives:
+  - 能算直接打印总时间
+  - 能算 SPOOLing 总时间
+  - 能解释输入井输出井
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+simulator: "@visual408/sim-core#os.spooling"
+codeExamples: []
+labTasks:
+  - 点一个「快速场景」，对比不同参数下的结论
+questions:
+  - id: q1
+    kind: choice
+    stem: SPOOLing 假脱机：下列哪项描述是正确的？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见解析
+    explanation: "作业把输出先写进磁盘输出井，守护进程串行打印；独占设备被虚拟成共享设备，CPU 与 I/O 重叠。"
+  - id: q2
+    kind: hand-calculation
+    stem: SPOOLing 假脱机：按界面参数手算一次并对照结果。
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见界面指标
+    explanation: 把界面中间量与公式对照，注意单位与量纲。
+tests: tests.json
+sources:
+  - label: 408 考试大纲
+  - label: 本项目原创教学复述

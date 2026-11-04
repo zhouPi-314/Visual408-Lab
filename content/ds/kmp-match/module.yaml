@@ -1,0 +1,42 @@
+id: ds.kmp-match
+subject: ds
+title: KMP 匹配过程
+syllabusVersion: "2026"
+prerequisites: []
+related: []
+objectives:
+  - 能手算 next 数组
+  - 能模拟逐位比较
+  - 能解释 i 不回退
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+simulator: "@visual408/sim-core#ds.kmp-match"
+codeExamples: []
+labTasks:
+  - 点一个「快速场景」，对比不同参数下的结论
+questions:
+  - id: q1
+    kind: choice
+    stem: KMP 匹配过程：下列哪项描述是正确的？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见解析
+    explanation: "失配时主串指针 i 不动，模式串指针 j 跳到 next[j−1]；next 记录每个前缀的最长相等前后缀长度。"
+  - id: q2
+    kind: hand-calculation
+    stem: KMP 匹配过程：按界面参数手算一次并对照结果。
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见界面指标
+    explanation: 把界面中间量与公式对照，注意单位与量纲。
+tests: tests.json
+sources:
+  - label: 408 考试大纲
+  - label: 本项目原创教学复述
