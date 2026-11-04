@@ -1,0 +1,42 @@
+id: ds.graph-storage
+subject: ds
+title: 图的存储结构
+syllabusVersion: "2026"
+prerequisites: []
+related: []
+objectives:
+  - 能画邻接矩阵
+  - 能写邻接表
+  - 能按密度选择结构
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+simulator: "@visual408/sim-core#ds.graph-storage"
+codeExamples: []
+labTasks:
+  - 点一个「快速场景」，对比不同参数下的结论
+questions:
+  - id: q1
+    kind: choice
+    stem: 图的存储结构：下列哪项描述是正确的？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见解析
+    explanation: "邻接矩阵 n² 个格子、判边 O(1)；邻接表只存真实边、遍历邻居高效；有向图可配逆邻接表。按密度选结构。"
+  - id: q2
+    kind: hand-calculation
+    stem: 图的存储结构：按界面参数手算一次并对照结果。
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见界面指标
+    explanation: 把界面中间量与公式对照，注意单位与量纲。
+tests: tests.json
+sources:
+  - label: 408 考试大纲
+  - label: 本项目原创教学复述

@@ -1,0 +1,42 @@
+id: co.booth-mul
+subject: co
+title: Booth 补码乘法
+syllabusVersion: "2026"
+prerequisites: []
+related: []
+objectives:
+  - 能判断每步操作
+  - 能模拟右移
+  - 能验证乘积
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+simulator: "@visual408/sim-core#co.booth-mul"
+codeExamples: []
+labTasks:
+  - 点一个「快速场景」，对比不同参数下的结论
+questions:
+  - id: q1
+    kind: choice
+    stem: Booth 补码乘法：下列哪项描述是正确的？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见解析
+    explanation: "附加位 Q₋₁ 与乘数末位组成 01 加 M、10 减 M、00/11 不动，每步整体算术右移，n 步后 AQ 即 2n 位补码乘积。"
+  - id: q2
+    kind: hand-calculation
+    stem: Booth 补码乘法：按界面参数手算一次并对照结果。
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见界面指标
+    explanation: 把界面中间量与公式对照，注意单位与量纲。
+tests: tests.json
+sources:
+  - label: 408 考试大纲
+  - label: 本项目原创教学复述

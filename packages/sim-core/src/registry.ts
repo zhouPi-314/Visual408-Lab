@@ -102,6 +102,21 @@ const loaders: Record<ModuleId, () => Promise<{ module: AnyModule }>> = {
   "net.ethernet-frame": () => import("./modules/generic/batch11").then((m) => ({ module: m.batch11.ethernetFrame as AnyModule })),
   "net.rip": () => import("./modules/generic/batch11").then((m) => ({ module: m.batch11.rip as AnyModule })),
   "net.ipv6-address": () => import("./modules/generic/batch11").then((m) => ({ module: m.batch11.ipv6 as AnyModule })),
+  "ds.prim-mst": () => import("./modules/generic/batch12").then((m) => ({ module: m.batch12.prim as AnyModule })),
+  "ds.merge-sort": () => import("./modules/generic/batch12").then((m) => ({ module: m.batch12.mergeSort as AnyModule })),
+  "ds.postfix-eval": () => import("./modules/generic/batch12").then((m) => ({ module: m.batch12.postfix as AnyModule })),
+  "ds.graph-storage": () => import("./modules/generic/batch12").then((m) => ({ module: m.batch12.graphStorage as AnyModule })),
+  "co.alu-flags": () => import("./modules/generic/batch12").then((m) => ({ module: m.batch12.aluFlags as AnyModule })),
+  "co.mem-expand": () => import("./modules/generic/batch12").then((m) => ({ module: m.batch12.memExpand as AnyModule })),
+  "co.pipe-perf": () => import("./modules/generic/batch12").then((m) => ({ module: m.batch12.pipePerf as AnyModule })),
+  "co.booth-mul": () => import("./modules/generic/batch13").then((m) => ({ module: m.batch13.booth as AnyModule })),
+  "os.fork-count": () => import("./modules/generic/batch13").then((m) => ({ module: m.batch13.forkCount as AnyModule })),
+  "os.dining": () => import("./modules/generic/batch13").then((m) => ({ module: m.batch13.philosophers as AnyModule })),
+  "os.min-resources": () => import("./modules/generic/batch13").then((m) => ({ module: m.batch13.minResources as AnyModule })),
+  "os.inode-size": () => import("./modules/generic/batch13").then((m) => ({ module: m.batch13.inodeSize as AnyModule })),
+  "net.cidr-sum": () => import("./modules/generic/batch13").then((m) => ({ module: m.batch13.cidrSum as AnyModule })),
+  "net.ip-mac": () => import("./modules/generic/batch13").then((m) => ({ module: m.batch13.ipMac as AnyModule })),
+  "net.link-util": () => import("./modules/generic/batch13").then((m) => ({ module: m.batch13.linkUtil as AnyModule })),
 };
 
 export function listModuleIds(): ModuleId[] {

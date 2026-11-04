@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { batch1, batch2, batch3, batch4, batch5, batch6, batch7, batch8, batch9, batch10, batch11 } from "../src/index";
+import { batch1, batch2, batch3, batch4, batch5, batch6, batch7, batch8, batch9, batch10, batch11, batch12, batch13 } from "../src/index";
 import type { GenericState } from "../src/view";
 
 const run = (mod: any, input: any) => mod.simulate(input);
@@ -445,5 +445,117 @@ describe("batch10/11 第五批实验", () => {
   it("net.ipv6-address：压缩为 2001:db8::ff00:42:8329/64", () => {
     const m = lastM(batch11.ipv6.simulate({ addr: "2001:0db8:0000:0000:0000:ff00:0042:8329", prefix: "64" }));
     expect(m["压缩写法"]).toBe("2001:db8::ff00:42:8329/64");
+  });
+});
+
+describe("batch12/13 第六批实验", () => {
+  const mOf = (sim: any, type: string) => {
+    const fr = sim.frames.find((x: any) => x.event.type === type)!;
+    const m: Record<string, any> = {};
+    for (const x of ((fr.state as any).metrics ?? [])) m[x.label] = x.value;
+    return m;
+  };
+  const lastM = (sim: any) => {
+    const last = sim.frames[sim.frames.length - 1]!;
+    const m: Record<string, any> = {};
+    for (const x of (last.state as any).metrics ?? []) m[x.label] = x.value;
+    return m;
+  };
+
+  it("ds.prim-mst：从 0 出发总权值 11、3 条边", () => {
+    const m = lastM(batch12.prim.simulate({ matrix: "0,6,1,5;6,0,5,0;1,5,0,5;5,0,5,0", start: "0" }));
+    expect(m["边数"]).toBe(3);
+    expect(m["总权值"]).toBe(11);
+  });
+
+  it("ds.merge-sort：8 个元素排好且给出比较次数", () => {
+    const sim = batch12.mergeSort.simulate({ values: "8,3,5,1,7,2,6,4" });
+    const last = sim.frames[sim.frames.length - 1]!;
+    expect(last.narration).toContain("1,2,3,4,5,6,7,8");
+    expect(lastM(sim)["比较次数"]).toBeGreaterThan(0);
+  });
+
+  it("ds.postfix-eval：a+b*(c-d)-e/f 转 abc d-*+ef/- 结果 18", () => {
+    const sim = batch12.postfix.simulate({ expr: "a+b*(c-d)-e/f" });
+    const conv = sim.frames.find((x: any) => x.event.type === "CONVERT")!;
+    expect(conv.narration).toContain("abcd-*+ef/-");
+    expect(lastM(sim)["结果"]).toBe(18);
+  });
+
+  it("ds.graph-storage：5 条边 4 点密度 83.3% 推荐邻接矩阵", () => {
+    const m = lastM(batch12.graphStorage.simulate({ edges: "0-1,0-2,1-2,1-3,2-3", directed: "no", n: "4" }));
+    expect(m["密度百分比"]).toBeCloseTo(83.3, 1);
+    expect(m["推荐结构"]).toBe("邻接矩阵");
+  });
+
+  it("co.alu-flags：100+50 在 8 位下 OF=1、CF=0", () => {
+    const m = mOf(batch12.aluFlags.simulate({ a: "100", b: "50", op: "add", bits: "8" }), "FLAGS");
+    expect(m["OF"]).toBe(1);
+    expect(m["CF"]).toBe(0);
+  });
+
+  it("co.alu-flags：5-9 无符号借位 CF=1、OF=0", () => {
+    const m = mOf(batch12.aluFlags.simulate({ a: "5", b: "9", op: "sub", bits: "8" }), "FLAGS");
+    expect(m["CF"]).toBe(1);
+    expect(m["OF"]).toBe(0);
+  });
+
+  it("co.mem-expand：64KB 用 8KB×8 位片配 16 位总线要 16 片", () => {
+    const m = lastM(batch12.memExpand.simulate({ want: "64", chipK: "8", chipW: "8", mdr: "16" }));
+    expect(m["芯片数"]).toBe(16);
+    expect(m["地址线位数"]).toBe(12);
+    expect(m["片选位数"]).toBe(3);
+  });
+
+  it("co.pipe-perf：5 段 /100 任务加速比 4.81、效率 96.2%", () => {
+    const sim = batch12.pipePerf.simulate({ stages: "5", dt: "2", n: "100", k: "0" });
+    expect(mOf(sim, "SE")["加速比"]).toBeCloseTo(4.81, 2);
+    expect(mOf(sim, "SE")["效率"]).toBeCloseTo(0.9615, 3);
+    expect(lastM(sim)["效率百分比"]).toBeCloseTo(96.15, 1);
+  });
+
+  it("co.booth-mul：3×(−6)=−18、(−4)×(−3)=12", () => {
+    expect(lastM(batch13.booth.simulate({ m: "3", q: "-6", bits: "4" }))["乘积"]).toBe(-18);
+    expect(lastM(batch13.booth.simulate({ m: "-4", q: "-3", bits: "5" }))["乘积"]).toBe(12);
+  });
+
+  it("os.fork-count：3 次 fork 得 8 进程 8 行输出", () => {
+    const m = lastM(batch13.forkCount.simulate({ forks: "3", prints: "1" }));
+    expect(m["进程数"]).toBe(8);
+    expect(m["输出行数"]).toBe(8);
+  });
+
+  it("os.dining：先左后右死锁，限制上桌可推进", () => {
+    expect(lastM(batch13.philosophers.simulate({ n: "5", strategy: "none" }))["死锁"]).toBe("是");
+    expect(lastM(batch13.philosophers.simulate({ n: "5", strategy: "limit" }))["死锁"]).toBe("否");
+    expect(lastM(batch13.philosophers.simulate({ n: "5", strategy: "async" }))["死锁"]).toBe("否");
+  });
+
+  it("os.min-resources：3 进程各需 4 最少 10 个资源", () => {
+    expect(lastM(batch13.minResources.simulate({ procs: "3", need: "4" }))["最小资源数"]).toBe(10);
+  });
+
+  it("os.inode-size：1KB 块 4 字节地址 10 直接 3 级间接", () => {
+    const sim = batch13.inodeSize.simulate({ blockK: "1", addr: "4", direct: "10", levels: "3" });
+    expect(mOf(sim, "INIT")["每块指针数"]).toBe(256);
+    expect(lastM(sim)["总块数"]).toBe(10 + 256 + 65536 + 16777216);
+  });
+
+  it("net.cidr-sum：192.168.0–3 聚合成 /22", () => {
+    const m = lastM(batch13.cidrSum.simulate({ nets: "192.168.0.0,192.168.1.0,192.168.2.0,192.168.3.0", mask: "24" }));
+    expect(m["聚合前缀"]).toBe(22);
+    expect(m["路由条数"]).toBe(1);
+  });
+
+  it("net.ip-mac：跨网段 2 跳、MAC 换 2 次", () => {
+    const m = lastM(batch13.ipMac.simulate({ same: "no" }));
+    expect(m["跳数"]).toBe(2);
+    expect(m["MAC 更换次数"]).toBe(2);
+  });
+
+  it("net.link-util：1000bit/1Mbps/200μs 时延带宽积 200bit、利用率 71.4%", () => {
+    const sim = batch13.linkUtil.simulate({ len: "1000", bw: "1", rt: "200" });
+    expect(mOf(sim, "PIPE")["时延带宽积"]).toBe(200);
+    expect(lastM(sim)["利用率百分比"]).toBeCloseTo(71.4, 1);
   });
 });

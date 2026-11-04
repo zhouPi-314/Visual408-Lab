@@ -1,0 +1,42 @@
+id: os.min-resources
+subject: os
+title: 最少资源防死锁
+syllabusVersion: "2026"
+prerequisites: []
+related: []
+objectives:
+  - 能构造最坏情况
+  - 能算最小资源数
+  - 能解释为什么多 1 个就够
+theory: theory.mdx
+displayer: single-step
+inputModes:
+  - preset
+  - custom
+simulator: "@visual408/sim-core#os.min-resources"
+codeExamples: []
+labTasks:
+  - 点一个「快速场景」，对比不同参数下的结论
+questions:
+  - id: q1
+    kind: choice
+    stem: 最少资源防死锁：下列哪项描述是正确的？
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见解析
+    explanation: "最坏情况每个进程都持有 k−1 个还差 1 个；只要资源总数达到 n×(k−1)+1，必有一个进程能拿满并释放，系统不会死锁。"
+  - id: q2
+    kind: hand-calculation
+    stem: 最少资源防死锁：按界面参数手算一次并对照结果。
+    source:
+      kind: original
+      license: original-work
+      authorized: true
+    answer: 见界面指标
+    explanation: 把界面中间量与公式对照，注意单位与量纲。
+tests: tests.json
+sources:
+  - label: 408 考试大纲
+  - label: 本项目原创教学复述

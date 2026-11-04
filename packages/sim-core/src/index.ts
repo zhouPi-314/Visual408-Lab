@@ -75,3 +75,5 @@ export { batch8 } from "./modules/generic/batch8";
 export { batch9 } from "./modules/generic/batch9";
 export { batch10 } from "./modules/generic/batch10";
 export { batch11 } from "./modules/generic/batch11";
+export { batch12 } from "./modules/generic/batch12";
+export { batch13 } from "./modules/generic/batch13";
