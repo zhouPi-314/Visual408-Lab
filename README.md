@@ -1,4 +1,4 @@
-# Visual408 Lab · 计算机 408 可视化交互学习实验室
+# Visual408 Lab · 计算机综合学科基础 408 可视化交互学习综合实验室
 
 **An interactive, open-source lab for visualizing CS408 fundamentals — right in your browser.**
 
